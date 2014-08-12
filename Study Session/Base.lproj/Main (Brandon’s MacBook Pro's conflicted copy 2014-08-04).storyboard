@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="b6F-y1-kxD">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="IZN-fB-z2z">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mxn-qZ-adb" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="09u-rM-xTo"/>
+                        <viewControllerLayoutGuide type="bottom" id="dOr-ax-0O1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bBF-9w-BCi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lNY-Ao-xiD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Study" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2g-qn-JGE">
+                                <rect key="frame" x="47" y="83" width="98" height="78"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Session" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jhL-K7-Ap7">
+                                <rect key="frame" x="153" y="89" width="121" height="66"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Don't have an account?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qa3-8a-iuJ">
+                                <rect key="frame" x="47" y="373" width="140" height="21"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ldk-Lf-f1q">
+                                <rect key="frame" x="190" y="369" width="84" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="Sign up now!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signupButton:" destination="Mxn-qZ-adb" eventType="touchUpInside" id="qjr-WR-M8E"/>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" identifier="newuser" modalTransitionStyle="flipHorizontal" id="kNm-U8-YNE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h51-gK-rSA" userLabel="Facebook Button">
+                                <rect key="frame" x="57" y="194" width="206" height="46"/>
+                                <state key="normal" image="Facebook.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="bindingAnimationType" value="ButtonScale"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="FBLoginButton:" destination="Mxn-qZ-adb" eventType="touchUpInside" id="2Sx-WV-41W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRR-EQ-Bh8" userLabel="Twitter Button">
+                                <rect key="frame" x="57" y="265" width="206" height="46"/>
+                                <state key="normal" image="Twitter.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="bindingAnimationType" value="ButtonScale"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="TwitterLoginButton:" destination="Mxn-qZ-adb" eventType="touchUpInside" id="Bb3-jg-BHT"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BxT-qa-gip"/>
+                    <connections>
+                        <outlet property="backgroundImage" destination="lNY-Ao-xiD" id="Q3q-lt-TGe"/>
+                        <outlet property="signupButton" destination="Ldk-Lf-f1q" id="jIp-Rh-n8e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="teh-9B-8d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2361" y="-71"/>
+        </scene>
+        <!--New User Login View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController storyboardIdentifier="NewUserLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="NewUserLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Mc-nJ-D5Q">
+                                <rect key="frame" x="20" y="80" width="280" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ebp-Ax-tEy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vj2-T3-qby">
+                                <rect key="frame" x="20" y="120" width="280" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Pass Again" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NWs-xL-LaP">
+                                <rect key="frame" x="20" y="160" width="280" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="School" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nVD-U5-JBA">
+                                <rect key="frame" x="20" y="200" width="280" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="a19-IM-zPU"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Major" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X67-RA-5H9">
+                                <rect key="frame" x="20" y="240" width="280" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Tdi-Mo-EDH"/>
+                                </connections>
+                            </textField>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-et-Wg9">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="barTintColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem id="rMf-gV-8Vb">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LzK-hu-iWX">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="cancel:" destination="vXZ-lx-hvc" id="DdE-S6-z3h"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="vqX-cL-4Ak">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="done:" destination="vXZ-lx-hvc" id="8bW-6O-wXt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Why-o9-F9h"/>
+                                </connections>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="Ebp-Ax-tEy" id="uUS-bu-PiY"/>
+                        <outlet property="cancelButton" destination="LzK-hu-iWX" id="bkY-EZ-xSr"/>
+                        <outlet property="doneButton" destination="vqX-cL-4Ak" id="ma4-9Y-BoL"/>
+                        <outlet property="emailField" destination="7Mc-nJ-D5Q" id="XPn-sM-K8m"/>
+                        <outlet property="majorField" destination="X67-RA-5H9" id="a5f-2J-8BS"/>
+                        <outlet property="passwordAgainField" destination="NWs-xL-LaP" id="bFI-2m-heZ"/>
+                        <outlet property="passwordField" destination="Vj2-T3-qby" id="IWg-zZ-fTL"/>
+                        <outlet property="schoolField" destination="nVD-U5-JBA" id="LVm-MI-5X0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1851" y="-71"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="5RB-Fu-RFd">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="odo-oo-dyK" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kKp-vT-Mhs"/>
+                        <viewControllerLayoutGuide type="bottom" id="Czx-c9-23A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iGs-Td-GKP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-XZ-xYM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="odo-oo-dyK" id="fVV-wO-xUy"/>
+                                    <outlet property="delegate" destination="odo-oo-dyK" id="4oj-SL-ZvJ"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSr-9I-1Lz">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <color key="barTintColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Settings" id="gZw-j8-jjc">
+                                        <barButtonItem key="leftBarButtonItem" title="Close" id="vWR-1I-54k">
+                                            <connections>
+                                                <action selector="closeButton:" destination="odo-oo-dyK" id="NBz-Qz-Dlp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="egb-ix-AJ6">
+                                            <connections>
+                                                <action selector="logout:" destination="odo-oo-dyK" id="lx3-WB-Rz6"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="yFB-jS-vGh"/>
+                                </connections>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BYf-kS-erE"/>
+                    <connections>
+                        <outlet property="tableView" destination="YhW-XZ-xYM" id="zpr-e2-PlG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xAa-k2-ban" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1267" y="-37"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="W5h-DJ-u9z">
+            <objects>
+                <navigationController storyboardIdentifier="MapNavBar" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lP6-ga-Xtl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8F6-5f-AcN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.23529411764705882" green="0.25098039215686274" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="A7n-wt-G3D" kind="relationship" relationship="rootViewController" id="137-CO-kcX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3cR-4I-gUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2947" y="1296"/>
+        </scene>
+        <!--Wall Map View Controller-->
+        <scene sceneID="D3I-rc-v64">
+            <objects>
+                <viewController storyboardIdentifier="WallMapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="A7n-wt-G3D" customClass="WallMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FLo-ld-hRG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Php-yT-FAP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iSG-uo-hAJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="u9Z-zd-F5U">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                                <connections>
+                                    <outlet property="delegate" destination="A7n-wt-G3D" id="Wrf-z0-Wky"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="N50-OS-aos">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="VmL-lO-qNL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="logout:" destination="A7n-wt-G3D" id="E84-lY-Usu"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lCs-iz-Kmh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="newSession:" destination="A7n-wt-G3D" id="n1S-bE-zjJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="u9Z-zd-F5U" id="bhe-ea-XZc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t7k-Rd-XDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2301" y="1296"/>
+        </scene>
+        <!--Session Parallax View Controller-->
+        <scene sceneID="MyK-bu-Ro9">
+            <objects>
+                <viewController id="KaY-xm-XBe" customClass="SessionParallaxViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ebk-PD-vsu"/>
+                        <viewControllerLayoutGuide type="bottom" id="WgH-VC-dcK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PMq-QN-CHx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="zXB-Fp-RTt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ski-vQ-i8A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1802" y="1198"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Li3-PG-wbQ">
+            <objects>
+                <navigationController storyboardIdentifier="NavBar" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lal-93-VrF" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ko-OL-ahx">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.23529411764705882" green="0.25098039215686274" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XpC-lb-OA9">
+                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Vdc-Nf-xA4" kind="relationship" relationship="rootViewController" id="ek4-Eo-3Hh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ydj-dl-eUS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3007" y="644"/>
+        </scene>
+        <!--Wall View Controller-->
+        <scene sceneID="s8C-dV-Y0a">
+            <objects>
+                <tableViewController storyboardIdentifier="WallViewController" id="Vdc-Nf-xA4" customClass="WallViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VTY-mm-ayY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="separatorColor" red="0.86700994318181812" green="0.86700994318181812" blue="0.86700994318181812" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <connections>
+                            <outlet property="dataSource" destination="Vdc-Nf-xA4" id="2nl-25-xmv"/>
+                            <outlet property="delegate" destination="Vdc-Nf-xA4" id="wUL-UT-blh"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="NdB-5J-Ud8">
+                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Icj-sQ-89X">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="logout:" destination="Vdc-Nf-xA4" id="qcD-X6-7y7"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kfl-7s-ofR">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="newSession:" destination="Vdc-Nf-xA4" id="Vkq-3C-23z"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="parseClassName" value="PlaceObject"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="objectsPerPage">
+                            <integer key="value" value="20"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="pullToRefreshEnabled" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <outlet property="logout" destination="Icj-sQ-89X" id="bmV-3D-3cv"/>
+                        <segue destination="KaY-xm-XBe" kind="push" identifier="toSession" id="sJf-j5-ptt"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xjm-BR-fge" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2361" y="644"/>
+        </scene>
+        <!--Session View Controller-->
+        <scene sceneID="0N0-V3-JIF">
+            <objects>
+                <viewController storyboardIdentifier="SessionViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wal-CH-BXE" customClass="SessionViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Qkw-DQ-Okz"/>
+                        <viewControllerLayoutGuide type="bottom" id="3XF-42-uAw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uhc-C1-qld">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="10h-KU-hN5">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="SessionCell" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="SessionViewTableCell" id="rSb-Id-uxS">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rSb-Id-uxS" id="HgF-QG-RZk">
+                                            <rect key="frame" x="0.0" y="0.0" width="253" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="lvP-9I-ydO" kind="push" identifier="usersView" id="qpi-rQ-KIF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wal-CH-BXE" id="m22-03-FIX"/>
+                                    <outlet property="delegate" destination="wal-CH-BXE" id="kOG-SO-kKs"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99607843137254903" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y2I-mt-xIS"/>
+                    <connections>
+                        <outlet property="tableView" destination="10h-KU-hN5" id="s49-rz-EKL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U1f-ma-ra7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1311" y="1050"/>
+        </scene>
+        <!--UsersViewController-->
+        <scene sceneID="NkK-eB-9HY">
+            <objects>
+                <viewController storyboardIdentifier="UsersViewController" title="UsersViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lvP-9I-ydO" customClass="UsersViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ohs-eZ-z6j"/>
+                        <viewControllerLayoutGuide type="bottom" id="EbL-eb-JN2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="A04-U0-bGe">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="spE-x2-6dt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htw-rW-x9a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-839" y="1028"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bQ2-AX-NEG">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="dH5-HC-TLY" sceneMemberID="viewController">
+                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="Qld-0X-y2R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </mapView>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="150"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JlY-In-yJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1802" y="482"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="U6n-W7-rFg">
+            <objects>
+                <navigationController storyboardIdentifier="NavController" definesPresentationContext="YES" id="b6F-y1-kxD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gk2-2T-TFA">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mxn-qZ-adb" kind="relationship" relationship="rootViewController" id="fz6-vV-Lp7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oYb-Q9-8Lz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2855" y="-86"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Facebook.png" width="588" height="130"/>
+        <image name="Twitter.png" width="587" height="130"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+</document>

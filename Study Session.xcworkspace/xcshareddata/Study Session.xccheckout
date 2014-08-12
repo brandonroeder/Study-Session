@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FE645F66-B695-4848-AB7C-944CD8DD2C53</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Study Session</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</key>
+		<string>ssh://github.com/brandonroeder/Study-Session.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Study Session.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/brandonroeder/Study-Session.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>study session</string>
+		</dict>
+	</array>
+</dict>
+</plist>
