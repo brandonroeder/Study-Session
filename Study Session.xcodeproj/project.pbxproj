@@ -10,7 +10,7 @@
 		1102AF9919815A6C0002D281 /* MKGyroManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9419815A6C0002D281 /* MKGyroManager.m */; };
 		1102AF9A19815A6C0002D281 /* MKParallaxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9619815A6C0002D281 /* MKParallaxManager.m */; };
 		1102AF9B19815A6C0002D281 /* MKParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9819815A6C0002D281 /* MKParallaxView.m */; };
-		1133BCA51975DD67005713C3 /* SignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCA41975DD67005713C3 /* SignupViewController.m */; };
+		1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCA41975DD67005713C3 /* NewSessionViewController.m */; };
 		1133BCBC19797668005713C3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCBB19797668005713C3 /* SettingsViewController.m */; };
 		114CAFCD196C735A0035091A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCC196C735A0035091A /* Social.framework */; };
 		114CAFCF196C73840035091A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCE196C73840035091A /* AVFoundation.framework */; };
@@ -147,8 +147,8 @@
 		1102AF9619815A6C0002D281 /* MKParallaxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKParallaxManager.m; sourceTree = "<group>"; };
 		1102AF9719815A6C0002D281 /* MKParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKParallaxView.h; sourceTree = "<group>"; };
 		1102AF9819815A6C0002D281 /* MKParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKParallaxView.m; sourceTree = "<group>"; };
-		1133BCA31975DD67005713C3 /* SignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignupViewController.h; sourceTree = "<group>"; };
-		1133BCA41975DD67005713C3 /* SignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignupViewController.m; sourceTree = "<group>"; };
+		1133BCA31975DD67005713C3 /* NewSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSessionViewController.h; sourceTree = "<group>"; };
+		1133BCA41975DD67005713C3 /* NewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSessionViewController.m; sourceTree = "<group>"; };
 		1133BCBA19797668005713C3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		1133BCBB19797668005713C3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		114CAFCC196C735A0035091A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -466,8 +466,8 @@
 		118C7394196F0F8B007D8389 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1133BCA31975DD67005713C3 /* SignupViewController.h */,
-				1133BCA41975DD67005713C3 /* SignupViewController.m */,
+				1133BCA31975DD67005713C3 /* NewSessionViewController.h */,
+				1133BCA41975DD67005713C3 /* NewSessionViewController.m */,
 				11D62321196339470021DABD /* WallViewController.h */,
 				11D62322196339470021DABD /* WallViewController.m */,
 				CAD8592D19884091004CCD27 /* WallMapViewController.h */,
@@ -926,7 +926,7 @@
 				CAC5BA00199813DA00F3395E /* LPGeocodingFilter.m in Sources */,
 				CAC5BA15199813DA00F3395E /* LPVehicle.m in Sources */,
 				CAC5BA0F199813DA00F3395E /* LPRoute.m in Sources */,
-				1133BCA51975DD67005713C3 /* SignupViewController.m in Sources */,
+				1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */,
 				CAC5BA0B199813DA00F3395E /* LPPlacesAutocomplete.m in Sources */,
 				CAC5BA04199813DA00F3395E /* LPLine.m in Sources */,
 				CAC5BA02199813DA00F3395E /* LPGeometry.m in Sources */,

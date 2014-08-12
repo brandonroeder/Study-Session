@@ -1,11 +1,11 @@
-#import "SignupViewController.h"
+#import "NewSessionViewController.h"
 #import "DescriptionViewController.h"
 #import "UIColor+FlatColors.h"
 #import <Parse/Parse.h>
 #import "KLCPopup.h"
 #import "THDatePickerViewController.h"
 
-@interface SignupViewController ()
+@interface NewSessionViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSDate *curDate;
 @property (nonatomic, retain) NSDateFormatter *formatter;
@@ -15,7 +15,7 @@
 
 @end
 
-@implementation SignupViewController
+@implementation NewSessionViewController
 
 - (void)viewDidLoad
 {

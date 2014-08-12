@@ -11,7 +11,7 @@
 #import "LoginViewController.h"
 #import "GeoPointAnnotation.h"
 #import "GeoQueryAnnotation.h"
-#import "SignupViewController.h"
+#import "NewSessionViewController.h"
 #import "SessionViewController.h"
 #import "UIImage+ImageEffects.h"
 #import "CircleOverlay.h"
@@ -157,7 +157,7 @@ enum PinAnnotationTypeTag {
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    //PFObject *object = [self.objects objectAtIndex:indexPath.row];
     [self performSegueWithIdentifier:@"toSession" sender:self];
 }
 
@@ -202,9 +202,9 @@ enum PinAnnotationTypeTag {
 - (IBAction)newSession:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SignupViewController *signupViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignupViewController"];
-    signupViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
-    [[self navigationController] pushViewController: signupViewController animated:YES];
+    NewSessionViewController *newSessionViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewSessionViewController"];
+    newSessionViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
+    [[self navigationController] pushViewController: newSessionViewController animated:YES];
 }
 
 

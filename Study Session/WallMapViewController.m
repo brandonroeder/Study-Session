@@ -7,7 +7,7 @@
 //
 
 #import "WallMapViewController.h"
-#import "SignupViewController.h"
+#import "NewSessionViewController.h"
 #import "GeoPointAnnotation.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <POP/POP.H>
@@ -207,9 +207,9 @@ enum PinAnnotationTypeTag {
 - (IBAction)newSession:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SignupViewController *signupViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignupViewController"];
-    signupViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
-    [[self navigationController] pushViewController: signupViewController animated:YES];
+    NewSessionViewController *newSessionViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewSessionViewController"];
+    newSessionViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
+    [[self navigationController] pushViewController: newSessionViewController animated:YES];
 }
 
 - (void) addAvatarAnimation
