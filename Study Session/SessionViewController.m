@@ -202,13 +202,13 @@ static CGFloat kImageOriginHight = 140.f;
         UITextView *sessionDetails= [[UITextView alloc]initWithFrame:CGRectMake(0,0,cell.contentView.frame.size.width, 70)];
         [sessionDetails setScrollEnabled:NO];
         [sessionDetails setSelectable:NO];
-        sessionDetails.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo.";
+        sessionDetails.text = self.detailItem[@"description"];
         sessionDetails.textColor = [UIColor flatGrayColor];
         [cell.contentView addSubview:sessionDetails];
     }
     if (indexPath.section == 1)
     {
-        cell.textLabel.text = @"8:00pm - 11:30pm";
+        cell.textLabel.text = self.detailItem[@"time"];
         cell.textLabel.textColor = [UIColor flatGrayColor];
         cell.textLabel.textAlignment = NSTextAlignmentLeft;
     }

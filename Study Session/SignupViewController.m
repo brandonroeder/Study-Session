@@ -23,13 +23,19 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
     self.view.backgroundColor= [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(signup)];
-    [self.navigationItem.rightBarButtonItem setEnabled:NO];
+    //[self.navigationItem.rightBarButtonItem setEnabled:NO];
     
     self.curDate = [NSDate date];
     self.formatter = [[NSDateFormatter alloc] init];
     [_formatter setDateFormat:@"EEE, MMM dd"];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self.locationField becomeFirstResponder];
+    
+}
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -56,8 +62,11 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    
-    
+    UIImageView *imgView=[[UIImageView alloc] initWithFrame:CGRectMake(20, cell.frame.size.height/2, 10, 15)];
+    imgView.backgroundColor=[UIColor clearColor];
+    [imgView.layer setCornerRadius:8.0f];
+    [imgView.layer setMasksToBounds:YES];
+
     for (UIView *view in cell.contentView.subviews)
     {
         if ([view isKindOfClass:[UIView class]])
@@ -71,6 +80,8 @@
     cell.backgroundColor = [UIColor whiteColor];
     if (indexPath.section == 0)
     {
+        [imgView setImage:[UIImage imageNamed:@"location"]];
+        [cell.contentView addSubview:imgView];
         self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(15, 0, cell.frame.size.width, cell.frame.size.height)];
         self.locationField.placeholder = @"Location";
         self.locationField.tintColor = [UIColor blueColor];
@@ -278,9 +289,9 @@
              [placeObject setObject:subject forKey:@"subject"];
              [placeObject setObject:user forKey:@"email"];
              [placeObject addObject:user forKey:@"members"];
-             [placeObject addObject:description forKey:@"description"];
-             [placeObject addObject:time forKey:@"time"];
-             [placeObject addObject:date forKey:@"date"];
+             [placeObject setObject:description forKey:@"description"];
+             [placeObject setObject:time forKey:@"time"];
+             [placeObject setObject:date forKey:@"date"];
              [placeObject saveInBackground];
          }
      }];
