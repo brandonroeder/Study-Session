@@ -10,6 +10,8 @@
 	<string>Study Session</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>18B5332E4F7AB7123F24F494BA50BDC53CC557ED</key>
+		<string>github.com:brandonroeder/Study-Session.git</string>
 		<key>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</key>
 		<string>ssh://github.com/brandonroeder/Study-Session.git</string>
 	</dict>
@@ -17,15 +19,17 @@
 	<string>Study Session.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</key>
+		<key>18B5332E4F7AB7123F24F494BA50BDC53CC557ED</key>
 		<string>..</string>
+		<key>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</key>
+		<string>../../study session</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/brandonroeder/Study-Session.git</string>
+	<string>github.com:brandonroeder/Study-Session.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</string>
+	<string>18B5332E4F7AB7123F24F494BA50BDC53CC557ED</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>9FBEE41E-3CF2-4E79-98CB-C8520F20FEBB</string>
 			<key>IDESourceControlWCCName</key>
 			<string>study session</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>18B5332E4F7AB7123F24F494BA50BDC53CC557ED</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Study%20Session</string>
 		</dict>
 	</array>
 </dict>
