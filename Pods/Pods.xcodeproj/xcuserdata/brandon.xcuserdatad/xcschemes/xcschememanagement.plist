@@ -9,27 +9,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-BZGFormViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-FastAnimationWithPOP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-ReactiveCocoa.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-libPhoneNumber-iOS.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Pods-libextobjc.xcscheme</key>
+		<key>Pods-FontasticIcons.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,62 +32,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>259EDD65FB0C40FE91228CCF</key>
+		<key>64FAA8D86DEA40968A622AA1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>336EF466531246FB8C383E53</key>
+		<key>6D97ACB99FC04569884F2F6E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4CB093A2D7184E4A97918532</key>
+		<key>8046F786CB7C4C36A2A9CE36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4EBF4A2B3028490088101F4A</key>
+		<key>B98739513B964849B5EC3E53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8034A5ED5A3D4948AD19E3DD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>94B802EEA45246FDA7B8212B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DA3D24F410C64FA787D1E101</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E759206D38474A9F99B6520D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E8077CE5D88C4DFBA57CCB5F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F14A7B2ED1934A7D9B4308A0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F61013E5A9EF4A50837D1BF2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FEA5B53A6143419388B46440</key>
+		<key>F727B68234D8415F84E8485D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -2,6 +2,7 @@
 #import "DescriptionViewController.h"
 #import "UIColor+FlatColors.h"
 #import <Parse/Parse.h>
+#import <FontasticIcons.h>
 #import "KLCPopup.h"
 #import "THDatePickerViewController.h"
 
@@ -12,6 +13,10 @@
 @property (nonatomic, strong) UITextField *locationField;
 @property (nonatomic, strong) UITextField *subjectField;
 @property (nonatomic, strong) NSString *descriptionText;
+@property (nonatomic, strong) NSString *startTimeText;
+@property (nonatomic, strong) NSString *endTimeText;
+@property (nonatomic, strong) UIDatePicker *startTimePicker;
+@property (nonatomic, strong) UIDatePicker *endTimePicker;
 
 @end
 
@@ -62,10 +67,6 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    UIImageView *imgView=[[UIImageView alloc] initWithFrame:CGRectMake(20, cell.frame.size.height/2, 10, 15)];
-    imgView.backgroundColor=[UIColor clearColor];
-    [imgView.layer setCornerRadius:8.0f];
-    [imgView.layer setMasksToBounds:YES];
 
     for (UIView *view in cell.contentView.subviews)
     {
@@ -74,15 +75,16 @@
             [view removeFromSuperview];
         }
     }
-
     cell.textLabel.textColor = [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900];
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     cell.backgroundColor = [UIColor whiteColor];
     if (indexPath.section == 0)
     {
-        [imgView setImage:[UIImage imageNamed:@"location"]];
-        [cell.contentView addSubview:imgView];
-        self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(15, 0, cell.frame.size.width, cell.frame.size.height)];
+        FIIcon *icon = [FIEntypoIcon locationIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+        
+        self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(40, 0, cell.frame.size.width, cell.frame.size.height)];
         self.locationField.placeholder = @"Location";
         self.locationField.tintColor = [UIColor blueColor];
         [cell.contentView addSubview:self.locationField];
@@ -90,7 +92,11 @@
     }
     if (indexPath.section == 1)
     {
-        self.subjectField = [[UITextField alloc]initWithFrame:CGRectMake(15, 0, cell.frame.size.width, cell.frame.size.height)];
+        FIIcon *icon = [FIEntypoIcon bookIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+
+        self.subjectField = [[UITextField alloc]initWithFrame:CGRectMake(40, 0, cell.frame.size.width, cell.frame.size.height)];
         self.subjectField.placeholder = @"Subject";
         self.subjectField.tintColor = [UIColor blueColor];
         [cell.contentView addSubview:self.subjectField];
@@ -116,8 +122,8 @@
             [dateHalf addSubview:dateButton];
         
             UIView *timeHalf = [[UIView alloc]initWithFrame:CGRectMake((cell.frame.size.width/2)-40, 0, (cell.frame.size.width/2)+60, 90)];
-            UIButton *timeButton = [[UIButton alloc]initWithFrame:dateHalf.frame];
-            [dateButton addTarget:self action:@selector(presentTimePicker) forControlEvents:UIControlEventTouchUpInside];
+            UIButton *timeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, (cell.frame.size.width/2)+60, 90)];
+            [timeButton addTarget:self action:@selector(presentTimePicker) forControlEvents:UIControlEventTouchUpInside];
             [timeHalf addSubview:timeButton];
         
             UIView *seperator = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 1, 90)];
@@ -140,21 +146,19 @@
             
             UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:17];
 
-            NSString *timeStart = @"11:00";
-            NSString *timeEnd = @"12:00";
-            NSString *am = @"AM";
-            NSString *pm = @"PM";
+//            self.startTimeText = @"11:00 AM";
+//            self.endTimeText = @"12:00 PM";
             NSString *arrow = @"→";
-            NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", timeStart, am, arrow, timeEnd, pm];
+            NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", self.startTimeText, arrow, self.endTimeText];
             NSMutableAttributedString *timeString = [[NSMutableAttributedString alloc] initWithString:formattedTimeString];
             
             NSDictionary *boldAttributes = @{NSFontAttributeName:boldFont, NSForegroundColorAttributeName: [UIColor blackColor]};
             NSDictionary *regAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900]};
 
-            [timeString setAttributes:boldAttributes range:NSMakeRange(0, 5)];
-            [timeString setAttributes:regAttributes range:NSMakeRange(6, 4)];
-            [timeString setAttributes:boldAttributes range:NSMakeRange(11, 5)];
-            [timeString setAttributes:regAttributes range:NSMakeRange(17, 2)];
+//            [timeString setAttributes:boldAttributes range:NSMakeRange(0, 5)];
+//            [timeString setAttributes:regAttributes range:NSMakeRange(6, 4)];
+//            [timeString setAttributes:boldAttributes range:NSMakeRange(11, 5)];
+//            [timeString setAttributes:regAttributes range:NSMakeRange(17, 2)];
 
             timeSubTitle.attributedText = timeString;
 
@@ -168,6 +172,10 @@
     }
     if (indexPath.section == 3)
     {
+        FIIcon *icon = [FIEntypoIcon textDocIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"Description";
         UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(120, 0, self.view.frame.size.width-140, cell.contentView.frame.size.height)];
@@ -222,7 +230,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 25;
+    return 10;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -294,7 +302,58 @@
 
 - (void)presentTimePicker
 {
+    [self.locationField resignFirstResponder];
+    [self.subjectField resignFirstResponder];
+
+    UIView* contentView = [[UIView alloc] init];
+    contentView.layer.cornerRadius = 4;
+    contentView.frame = CGRectMake(0, 0, 300, 200);
+    contentView.backgroundColor = [UIColor whiteColor];
     
+    self.startTimePicker = [[UIDatePicker alloc] init];
+    self.startTimePicker.frame = CGRectMake(0, 0, 150, 200); // set frame as your need
+    self.startTimePicker.datePickerMode = UIDatePickerModeTime;
+    [self.startTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
+
+    self.endTimePicker = [[UIDatePicker alloc] init];
+    self.endTimePicker.frame = CGRectMake(160, 0, 150, 200); // set frame as your need
+    self.endTimePicker.datePickerMode = UIDatePickerModeTime;
+    NSTimeInterval theTimeInterval = 3600;
+
+    [self.endTimePicker setDate:[NSDate dateWithTimeInterval:theTimeInterval sinceDate:[NSDate date]]];
+    [self.endTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
+
+    [contentView addSubview: self.startTimePicker];
+    [contentView addSubview: self.endTimePicker];
+
+    KLCPopup* popup = [KLCPopup popupWithContentView:contentView];
+    [popup show];
+    
+    popup.didFinishDismissingCompletion = ^()
+    {
+//        [self.tableView beginUpdates];
+//        NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
+//        NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+//        [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
+//        [self.tableView endUpdates];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"hh:mm a"];
+        self.startTimeText = [dateFormatter stringFromDate:self.startTimePicker.date];
+        self.endTimeText = [dateFormatter stringFromDate:self.endTimePicker.date];
+
+        [self.tableView reloadData];
+    };
+
+}
+
+
+- (void)timeChanged
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    self.startTimeText = [dateFormatter stringFromDate:self.startTimePicker.date];
+    self.endTimeText = [dateFormatter stringFromDate:self.endTimePicker.date];
 }
 
 - (void)signup

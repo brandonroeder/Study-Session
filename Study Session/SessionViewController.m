@@ -56,20 +56,15 @@ static CGFloat kImageOriginHight = 140.f;
     [self.tableView addSubview:self.mapView];
     self.tableView.showsVerticalScrollIndicator= NO;
     
-    self.joinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 505, 240, 44)];
-    self.joinSessionView= [[UIView alloc] initWithFrame:CGRectMake(0, 505, 240, 44)];
-    self.joinButton.frame = CGRectMake(0, 505, 240, 44);
+    self.joinButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 568, self.view.frame.size.width, 44)];
+    self.joinSessionView= [[UIView alloc] initWithFrame:CGRectMake(0, 568, self.view.frame.size.width, 44)];
+    self.joinButton.frame = CGRectMake(0, 568, self.view.frame.size.width, 44);
     [self.joinButton addTarget:self
                         action:@selector(joinSession)
               forControlEvents:UIControlEventTouchUpInside];
     
-    self.joinButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height-40);
-    self.joinButton.alpha = 1;
-    self.joinButton.layer.cornerRadius = 2;
-    //[self.joinButton setTitle:@"Create Session" forState:UIControlStateNormal];
-    
-    self.joinButton.backgroundColor = [UIColor flatBlueColor];
-
+    self.joinButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height-22);
+    self.joinButton.alpha = 0.5;
     [self.view addSubview:self.joinButton];
     [self configureBottomButton];
 }

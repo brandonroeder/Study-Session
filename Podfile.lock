@@ -22,15 +22,18 @@ PODS:
     - AFNetworking/NSURLSession
   - FastAnimationWithPOP (0.0.2):
     - pop (~> 1.0.5)
+  - FontasticIcons (0.5.0)
   - pop (1.0.6)
 
 DEPENDENCIES:
   - AFNetworking
   - FastAnimationWithPOP
+  - FontasticIcons
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
   FastAnimationWithPOP: 453cac7e3671d27c57db04abec4f6c08a930f413
+  FontasticIcons: a19672f86f2bf1b0ad51b21f1f7f1fad1ddd83f7
   pop: e518794da38942c05255eb64b36d894e70cb4f00
 
 COCOAPODS: 0.33.1

@@ -132,16 +132,16 @@ enum PinAnnotationTypeTag {
     
     rightLabel.text = [NSString stringWithFormat:@"%d members", members.count];
     rightLabel.textAlignment = NSTextAlignmentRight;
-    rightLabel.textColor=  [UIColor colorWithWhite:0.161 alpha:1.000];
+    rightLabel.textColor= [UIColor blackColor];
     rightLabel.font= [UIFont fontWithName:@"CircularAir-Book" size:11];
     
     cell.textLabel.text = object[@"name"];
-    cell.textLabel.textColor=  [UIColor colorWithWhite:0.117 alpha:1.000];
-    cell.textLabel.font= [UIFont fontWithName:@"CircularAir-Book" size:17];
+    cell.textLabel.textColor = [UIColor blackColor];
+    cell.textLabel.font = [UIFont fontWithName:@"CircularAir-Book" size:17];
     
     cell.detailTextLabel.text = object[@"subject"];
-    cell.detailTextLabel.textColor=  [UIColor colorWithWhite:0.117 alpha:1.000];
-    cell.detailTextLabel.font= [UIFont fontWithName:@"CircularAir-Book" size:11];
+    cell.detailTextLabel.textColor = [UIColor blackColor];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"CircularAir-Book" size:11];
     cell.backgroundColor = [UIColor whiteColor];
 
     [cell.textLabel setNumberOfLines:0];
