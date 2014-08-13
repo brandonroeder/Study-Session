@@ -99,8 +99,8 @@
     {
         if (indexPath.row == 0)
         {
+
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
             cell.textLabel.text = @"All Day Event";
             UISwitch *toggleSwitch = [[UISwitch alloc] init];
             cell.accessoryView = [[UIView alloc] initWithFrame:toggleSwitch.frame];
@@ -110,12 +110,12 @@
         {
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
      
-            UIView *dateHalf = [[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width/2, 90)];
+            UIView *dateHalf = [[UIView alloc]initWithFrame:CGRectMake(0, 0, (cell.frame.size.width/2)-60, 90)];
             UIButton *dateButton = [[UIButton alloc]initWithFrame:dateHalf.frame];
             [dateButton addTarget:self action:@selector(presentCalendar) forControlEvents:UIControlEventTouchUpInside];
             [dateHalf addSubview:dateButton];
         
-            UIView *timeHalf = [[UIView alloc]initWithFrame:CGRectMake(cell.frame.size.width/2, 0, cell.frame.size.width/2, 90)];
+            UIView *timeHalf = [[UIView alloc]initWithFrame:CGRectMake((cell.frame.size.width/2)-40, 0, (cell.frame.size.width/2)+60, 90)];
             UIButton *timeButton = [[UIButton alloc]initWithFrame:dateHalf.frame];
             [dateButton addTarget:self action:@selector(presentTimePicker) forControlEvents:UIControlEventTouchUpInside];
             [timeHalf addSubview:timeButton];
@@ -129,13 +129,38 @@
             
             UILabel *dateSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, cell.frame.size.width/2, 20)];
             dateSubTitle.text = [self.formatter stringFromDate:self.curDate];
-            dateSubTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:17];
+            dateSubTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
             [dateButton addSubview:dateTitle];
             [dateButton addSubview:dateSubTitle];
 
             UILabel *timeTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, cell.frame.size.width/2, 20)];
-            timeTitle.text = @"Time";
+            timeTitle.text = @"Time (CDT)";
+            
+            UILabel *timeSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, (cell.frame.size.width/2)+60   , 20)];
+            
+            UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:17];
+
+            NSString *timeStart = @"11:00";
+            NSString *timeEnd = @"12:00";
+            NSString *am = @"AM";
+            NSString *pm = @"PM";
+            NSString *arrow = @"→";
+            NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", timeStart, am, arrow, timeEnd, pm];
+            NSMutableAttributedString *timeString = [[NSMutableAttributedString alloc] initWithString:formattedTimeString];
+            
+            NSDictionary *boldAttributes = @{NSFontAttributeName:boldFont, NSForegroundColorAttributeName: [UIColor blackColor]};
+            NSDictionary *regAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900]};
+
+            [timeString setAttributes:boldAttributes range:NSMakeRange(0, 5)];
+            [timeString setAttributes:regAttributes range:NSMakeRange(6, 4)];
+            [timeString setAttributes:boldAttributes range:NSMakeRange(11, 5)];
+            [timeString setAttributes:regAttributes range:NSMakeRange(17, 2)];
+
+            timeSubTitle.attributedText = timeString;
+
+            [timeButton addSubview:timeSubTitle];
             [timeButton addSubview: timeTitle];
+
             
             [cell.contentView addSubview:dateHalf];
             [cell.contentView addSubview:timeHalf];
@@ -219,7 +244,7 @@
 {
     self.descriptionText = descriptionText;
     [self.tableView beginUpdates];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
 }
 
@@ -227,7 +252,9 @@
 {
     self.curDate = datePicker.date;
     [self.tableView beginUpdates];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+    NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
+    NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+    [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     [self dismissSemiModalView];
 }
