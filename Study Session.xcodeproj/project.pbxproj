@@ -10,15 +10,24 @@
 		1102AF9919815A6C0002D281 /* MKGyroManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9419815A6C0002D281 /* MKGyroManager.m */; };
 		1102AF9A19815A6C0002D281 /* MKParallaxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9619815A6C0002D281 /* MKParallaxManager.m */; };
 		1102AF9B19815A6C0002D281 /* MKParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9819815A6C0002D281 /* MKParallaxView.m */; };
+		1122F04F199D5C2500F65EF4 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F046199D5C2500F65EF4 /* 1.jpg */; };
+		1122F050199D5C2500F65EF4 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F047199D5C2500F65EF4 /* 2.jpg */; };
+		1122F051199D5C2500F65EF4 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F048199D5C2500F65EF4 /* 3.jpg */; };
+		1122F052199D5C2500F65EF4 /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F049199D5C2500F65EF4 /* 4.jpg */; };
+		1122F053199D5C2500F65EF4 /* 5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F04A199D5C2500F65EF4 /* 5.jpg */; };
+		1122F054199D5C2500F65EF4 /* 6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F04B199D5C2500F65EF4 /* 6.jpg */; };
+		1122F055199D5C2500F65EF4 /* 7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F04C199D5C2500F65EF4 /* 7.jpg */; };
+		1122F056199D5C2500F65EF4 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F04D199D5C2500F65EF4 /* 8.jpg */; };
+		1122F057199D5C2500F65EF4 /* 9.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F04E199D5C2500F65EF4 /* 9.jpg */; };
+		1122F05A199D5E2900F65EF4 /* NSMutableArray+Shuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 1122F059199D5E2900F65EF4 /* NSMutableArray+Shuffle.m */; };
+		1122F05D199D62DF00F65EF4 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1122F05C199D62DF00F65EF4 /* PlaceViewController.m */; };
 		1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCA41975DD67005713C3 /* NewSessionViewController.m */; };
 		1133BCBC19797668005713C3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCBB19797668005713C3 /* SettingsViewController.m */; };
 		114CAFCD196C735A0035091A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCC196C735A0035091A /* Social.framework */; };
 		114CAFCF196C73840035091A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCE196C73840035091A /* AVFoundation.framework */; };
 		114CAFD1196C74120035091A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFD0196C74120035091A /* Accounts.framework */; };
 		118C7387196EFDB9007D8389 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C7386196EFDB9007D8389 /* UIImage+ImageEffects.m */; };
-		118C738D196F0001007D8389 /* utdallas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 118C738C196F0001007D8389 /* utdallas.jpg */; };
 		118C7390196F073F007D8389 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C738F196F073F007D8389 /* UIColor+FlatColors.m */; };
-		118C739619702D54007D8389 /* lake.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 118C739519702D54007D8389 /* lake.jpg */; };
 		118C739C19702EDC007D8389 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 118C739919702EDC007D8389 /* SVProgressHUD.bundle */; };
 		118C739D19702EDC007D8389 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C739B19702EDC007D8389 /* SVProgressHUD.m */; };
 		11A583C6199BC35C009B2868 /* AmenitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11A583C5199BC35C009B2868 /* AmenitiesViewController.m */; };
@@ -123,6 +132,19 @@
 		1102AF9619815A6C0002D281 /* MKParallaxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKParallaxManager.m; sourceTree = "<group>"; };
 		1102AF9719815A6C0002D281 /* MKParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKParallaxView.h; sourceTree = "<group>"; };
 		1102AF9819815A6C0002D281 /* MKParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKParallaxView.m; sourceTree = "<group>"; };
+		1122F046199D5C2500F65EF4 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		1122F047199D5C2500F65EF4 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		1122F048199D5C2500F65EF4 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
+		1122F049199D5C2500F65EF4 /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
+		1122F04A199D5C2500F65EF4 /* 5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5.jpg; sourceTree = "<group>"; };
+		1122F04B199D5C2500F65EF4 /* 6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 6.jpg; sourceTree = "<group>"; };
+		1122F04C199D5C2500F65EF4 /* 7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 7.jpg; sourceTree = "<group>"; };
+		1122F04D199D5C2500F65EF4 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
+		1122F04E199D5C2500F65EF4 /* 9.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 9.jpg; sourceTree = "<group>"; };
+		1122F058199D5E2900F65EF4 /* NSMutableArray+Shuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffle.h"; sourceTree = "<group>"; };
+		1122F059199D5E2900F65EF4 /* NSMutableArray+Shuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffle.m"; sourceTree = "<group>"; };
+		1122F05B199D62DF00F65EF4 /* PlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
+		1122F05C199D62DF00F65EF4 /* PlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
 		1133BCA31975DD67005713C3 /* NewSessionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewSessionViewController.h; sourceTree = "<group>"; };
 		1133BCA41975DD67005713C3 /* NewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSessionViewController.m; sourceTree = "<group>"; };
 		1133BCBA19797668005713C3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
@@ -132,10 +154,8 @@
 		114CAFD0196C74120035091A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		118C7385196EFDB9007D8389 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		118C7386196EFDB9007D8389 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		118C738C196F0001007D8389 /* utdallas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = utdallas.jpg; sourceTree = "<group>"; };
 		118C738E196F073F007D8389 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
 		118C738F196F073F007D8389 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
-		118C739519702D54007D8389 /* lake.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lake.jpg; sourceTree = "<group>"; };
 		118C739819702EDC007D8389 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
 		118C739919702EDC007D8389 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		118C739A19702EDC007D8389 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
@@ -336,6 +356,22 @@
 			path = MKParallaxView;
 			sourceTree = "<group>";
 		};
+		1122F045199D5C2500F65EF4 /* Login Background Images */ = {
+			isa = PBXGroup;
+			children = (
+				1122F046199D5C2500F65EF4 /* 1.jpg */,
+				1122F047199D5C2500F65EF4 /* 2.jpg */,
+				1122F048199D5C2500F65EF4 /* 3.jpg */,
+				1122F049199D5C2500F65EF4 /* 4.jpg */,
+				1122F04A199D5C2500F65EF4 /* 5.jpg */,
+				1122F04B199D5C2500F65EF4 /* 6.jpg */,
+				1122F04C199D5C2500F65EF4 /* 7.jpg */,
+				1122F04D199D5C2500F65EF4 /* 8.jpg */,
+				1122F04E199D5C2500F65EF4 /* 9.jpg */,
+			);
+			path = "Login Background Images";
+			sourceTree = "<group>";
+		};
 		113A54F21969D9BA00E76110 /* Login/Registration Stuff */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +379,8 @@
 				11D622EB19632EEF0021DABD /* LoginViewController.m */,
 				11D6231E1963382D0021DABD /* NewUserLoginViewController.h */,
 				11D6231F1963382D0021DABD /* NewUserLoginViewController.m */,
+				1122F058199D5E2900F65EF4 /* NSMutableArray+Shuffle.h */,
+				1122F059199D5E2900F65EF4 /* NSMutableArray+Shuffle.m */,
 			);
 			name = "Login/Registration Stuff";
 			sourceTree = "<group>";
@@ -363,6 +401,7 @@
 		118C7391196F0747007D8389 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				CA50EEA0199581F400A4F443 /* KLCPopup */,
 				11A583C8199BCA63009B2868 /* M13Checkbox.h */,
 				11A583C9199BCA63009B2868 /* M13Checkbox.m */,
 				CAC5B9B2199813DA00F3395E /* LPGoogleFunctions */,
@@ -370,7 +409,6 @@
 				CAC9F7821997EBD000717C65 /* NSObject+YMOptionsAndDefaults.m */,
 				CAC9F7831997EBD000717C65 /* UIViewController+KNSemiModal.h */,
 				CAC9F7841997EBD000717C65 /* UIViewController+KNSemiModal.m */,
-				CA50EEA0199581F400A4F443 /* KLCPopup */,
 				1102AF9219815A6C0002D281 /* MKParallaxView */,
 				CAD8593B19887D2F004CCD27 /* QMBParallax */,
 				CAD8593219887756004CCD27 /* MDCParallaxView.h */,
@@ -391,6 +429,7 @@
 				11D622E719632EEF0021DABD /* Main.storyboard */,
 				11D622E419632EEF0021DABD /* AppDelegate.h */,
 				11D622E519632EEF0021DABD /* AppDelegate.m */,
+				11A583CD199D372A009B2868 /* Controllers */,
 				118C7394196F0F8B007D8389 /* Views */,
 				118C7391196F0747007D8389 /* Categories */,
 			);
@@ -400,12 +439,11 @@
 		118C7393196F0E88007D8389 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1122F045199D5C2500F65EF4 /* Login Background Images */,
 				118C739719702EDC007D8389 /* SVProgressHUD */,
 				11D622D319632EEF0021DABD /* Products */,
 				BB5C1D590DF3494795BA7401 /* Pods.xcconfig */,
 				11D622ED19632EEF0021DABD /* Images.xcassets */,
-				118C739519702D54007D8389 /* lake.jpg */,
-				118C738C196F0001007D8389 /* utdallas.jpg */,
 				CA83EE9D19832FF600E4496E /* Facebook.png */,
 				CA83EE9B19832D4500E4496E /* Twitter.png */,
 				11BA1668197ECF2F007C78DC /* profile.gif */,
@@ -419,19 +457,13 @@
 		118C7394196F0F8B007D8389 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				1133BCA31975DD67005713C3 /* NewSessionViewController.h */,
-				1133BCA41975DD67005713C3 /* NewSessionViewController.m */,
-				11D62321196339470021DABD /* WallViewController.h */,
-				11D62322196339470021DABD /* WallViewController.m */,
-				CAD8592D19884091004CCD27 /* WallMapViewController.h */,
-				CAD8592E19884091004CCD27 /* WallMapViewController.m */,
+				113A54F21969D9BA00E76110 /* Login/Registration Stuff */,
+				11A583C7199BC36A009B2868 /* NewSessionViewController */,
+				11A583CB199D36CE009B2868 /* WallViewController */,
 				11DE813B196918BC002B83A4 /* SessionViewController.h */,
 				11DE813C196918BC002B83A4 /* SessionViewController.m */,
 				1133BCBA19797668005713C3 /* SettingsViewController.h */,
 				1133BCBB19797668005713C3 /* SettingsViewController.m */,
-				11A583C7199BC36A009B2868 /* NewSession Views */,
-				113A54F31969D9DC00E76110 /* Map View Stuff */,
-				113A54F21969D9BA00E76110 /* Login/Registration Stuff */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -447,15 +479,38 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
-		11A583C7199BC36A009B2868 /* NewSession Views */ = {
+		11A583C7199BC36A009B2868 /* NewSessionViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1133BCA31975DD67005713C3 /* NewSessionViewController.h */,
+				1133BCA41975DD67005713C3 /* NewSessionViewController.m */,
 				CAD11CDB1999ADC70092F439 /* DescriptionViewController.h */,
 				CAD11CDC1999ADC70092F439 /* DescriptionViewController.m */,
 				11A583C4199BC35C009B2868 /* AmenitiesViewController.h */,
 				11A583C5199BC35C009B2868 /* AmenitiesViewController.m */,
+				1122F05B199D62DF00F65EF4 /* PlaceViewController.h */,
+				1122F05C199D62DF00F65EF4 /* PlaceViewController.m */,
 			);
-			name = "NewSession Views";
+			name = NewSessionViewController;
+			sourceTree = "<group>";
+		};
+		11A583CB199D36CE009B2868 /* WallViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11D62321196339470021DABD /* WallViewController.h */,
+				11D62322196339470021DABD /* WallViewController.m */,
+				CAD8592D19884091004CCD27 /* WallMapViewController.h */,
+				CAD8592E19884091004CCD27 /* WallMapViewController.m */,
+			);
+			name = WallViewController;
+			sourceTree = "<group>";
+		};
+		11A583CD199D372A009B2868 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				113A54F31969D9DC00E76110 /* Map View Stuff */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		11D622C919632EEF0021DABD = {
@@ -726,16 +781,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1122F054199D5C2500F65EF4 /* 6.jpg in Resources */,
+				1122F052199D5C2500F65EF4 /* 4.jpg in Resources */,
+				1122F051199D5C2500F65EF4 /* 3.jpg in Resources */,
 				CAD858F51985EFF3004CCD27 /* circular_book.ttf in Resources */,
 				CA83EE9E19832FF600E4496E /* Facebook.png in Resources */,
-				118C739619702D54007D8389 /* lake.jpg in Resources */,
+				1122F050199D5C2500F65EF4 /* 2.jpg in Resources */,
 				CA83EE9C19832D4500E4496E /* Twitter.png in Resources */,
 				118C739C19702EDC007D8389 /* SVProgressHUD.bundle in Resources */,
+				1122F053199D5C2500F65EF4 /* 5.jpg in Resources */,
 				11D622EE19632EEF0021DABD /* Images.xcassets in Resources */,
 				11D622E019632EEF0021DABD /* InfoPlist.strings in Resources */,
+				1122F04F199D5C2500F65EF4 /* 1.jpg in Resources */,
+				1122F057199D5C2500F65EF4 /* 9.jpg in Resources */,
+				1122F056199D5C2500F65EF4 /* 8.jpg in Resources */,
+				1122F055199D5C2500F65EF4 /* 7.jpg in Resources */,
 				11BA1669197ECF2F007C78DC /* profile.gif in Resources */,
 				11D622E919632EEF0021DABD /* Main.storyboard in Resources */,
-				118C738D196F0001007D8389 /* utdallas.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,6 +858,7 @@
 				CAC5B9F7199813DA00F3395E /* LPAddressComponent.m in Sources */,
 				1102AF9919815A6C0002D281 /* MKGyroManager.m in Sources */,
 				CAC5B9F8199813DA00F3395E /* LPAgencie.m in Sources */,
+				1122F05A199D5E2900F65EF4 /* NSMutableArray+Shuffle.m in Sources */,
 				11D623201963382D0021DABD /* NewUserLoginViewController.m in Sources */,
 				118C7387196EFDB9007D8389 /* UIImage+ImageEffects.m in Sources */,
 				CAC5B9FF199813DA00F3395E /* LPEvent.m in Sources */,
@@ -831,6 +894,7 @@
 				CAC5BA06199813DA00F3395E /* LPMapImageMarker.m in Sources */,
 				CAC5B9FC199813DA00F3395E /* LPDistanceMatrix.m in Sources */,
 				CAC5BA10199813DA00F3395E /* LPStep.m in Sources */,
+				1122F05D199D62DF00F65EF4 /* PlaceViewController.m in Sources */,
 				CAC5B9FB199813DA00F3395E /* LPDistance.m in Sources */,
 				11A583CA199BCA63009B2868 /* M13Checkbox.m in Sources */,
 				11D62323196339470021DABD /* WallViewController.m in Sources */,

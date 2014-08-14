@@ -1,13 +1,14 @@
 #import "NewSessionViewController.h"
 #import "DescriptionViewController.h"
 #import "AmenitiesViewController.h"
+#import "PlaceViewController.h"
 #import "ESDatePicker.h"
 #import "UIColor+FlatColors.h"
 #import <Parse/Parse.h>
 #import <FontasticIcons.h>
 #import "KLCPopup.h"
 
-@interface NewSessionViewController ()
+@interface NewSessionViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSDate *curDate;
 @property (nonatomic, retain) NSDateFormatter *formatter;
@@ -19,12 +20,13 @@
 @property (nonatomic, strong) UIDatePicker *endTimePicker;
 @property (nonatomic, strong) NSArray *amenities;
 @property (nonatomic, strong) KLCPopup *calendarPopup;
-
 @property (nonatomic, assign) BOOL quiet;
 @property (nonatomic, assign) BOOL wifi;
 @property (nonatomic, assign) BOOL tables;
 @property (nonatomic, assign) BOOL outlets;
 @property (nonatomic, assign) BOOL food;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) UIScrollView *scroll;
 
 @end
 
@@ -41,6 +43,7 @@
     self.curDate = [NSDate date];
     self.formatter = [[NSDateFormatter alloc] init];
     [_formatter setDateFormat:@"EEE, MMM dd"];
+    self.title = @"Create Session";
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -94,12 +97,6 @@
         FIIcon *icon = [FIEntypoIcon locationIcon];
         UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
         [cell.imageView setImage:image];
-        
-        self.locationField = [[UITextField alloc]initWithFrame:CGRectMake(40, 0, cell.frame.size.width, cell.frame.size.height)];
-        self.locationField.placeholder = @"Location";
-        self.locationField.tintColor = [UIColor blueColor];
-        [cell.contentView addSubview:self.locationField];
-        //[self.locationField becomeFirstResponder];
     }
     if (indexPath.section == 1)
     {
@@ -134,7 +131,7 @@
         
             UIView *timeHalf = [[UIView alloc]initWithFrame:CGRectMake((cell.frame.size.width/2)-40, 0, (cell.frame.size.width/2)+60, 90)];
             UIButton *timeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, (cell.frame.size.width/2)+60, 90)];
-            [timeButton addTarget:self action:@selector(presentTimePicker) forControlEvents:UIControlEventTouchUpInside];
+            [timeButton addTarget:self action:@selector(presentCalendar) forControlEvents:UIControlEventTouchUpInside];
             [timeHalf addSubview:timeButton];
         
             UIView *seperator = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 1, 90)];
@@ -155,10 +152,6 @@
             
             UILabel *timeSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, (cell.frame.size.width/2)+60   , 20)];
             
-            //UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:17];
-
-//            self.startTimeText = @"11:00 AM";
-//            self.endTimeText = @"12:00 PM";
             NSString *arrow = @"→";
             NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", self.startTimeText, arrow, self.endTimeText];
 
@@ -203,7 +196,10 @@
 
     if (indexPath.section == 0)
     {
-
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+        
+        PlaceViewController *placeController = [[PlaceViewController alloc] init];
+        [self.navigationController pushViewController:placeController animated:YES];
     }
     if (indexPath.section == 2)
     {
@@ -227,9 +223,8 @@
         amenitiesController.delegate = self;
         [self.navigationController pushViewController:amenitiesController animated:YES];
     }
-    
-    
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2)
@@ -259,13 +254,6 @@
     return sectionView;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //dismisses keyboard when scrolling
-    [self.locationField resignFirstResponder];
-    [self.subjectField resignFirstResponder];
-}
-
 - (void)addItemViewController:(DescriptionViewController *)controller didFinishEnteringItem:(NSString *)descriptionText
 {
     self.descriptionText = descriptionText;
@@ -289,17 +277,106 @@
 {
     [self.locationField resignFirstResponder];
     [self.subjectField resignFirstResponder];
-
-    UIView *calendar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 300)];
-    calendar.layer.cornerRadius = 4;
-    ESDatePicker *p = [[ESDatePicker alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+    
+    ESDatePicker *p = [[ESDatePicker alloc] initWithFrame:CGRectMake(10, 50, 300, 300)];
     p.layer.cornerRadius = 4;
     [p setDelegate:self];
     [p show];
-    [calendar addSubview:p];
+    UIView *calendar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    calendar.layer.cornerRadius = 4;
     
+    [self setupPopup];
+    
+    [self.scroll addSubview:p];
+
+    [calendar addSubview:self.scroll];
+    [calendar addSubview:self.pageControl];
+    
+    [self presentTimePicker];
     self.calendarPopup = [KLCPopup popupWithContentView:calendar];
     [self.calendarPopup show];
+}
+
+
+- (void)presentTimePicker
+{
+    [self.locationField resignFirstResponder];
+    [self.subjectField resignFirstResponder];
+    
+    UIView* contentView = [[UIView alloc] init];
+    contentView.layer.cornerRadius = 4;
+    contentView.frame = CGRectMake(330, 50, 300, 200);
+    contentView.backgroundColor = [UIColor whiteColor];
+    
+    self.startTimePicker = [[UIDatePicker alloc] init];
+    self.startTimePicker.frame = CGRectMake(0, 0, 150, 200); // set frame as your need
+    self.startTimePicker.datePickerMode = UIDatePickerModeTime;
+    [self.startTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
+    
+    self.endTimePicker = [[UIDatePicker alloc] init];
+    self.endTimePicker.frame = CGRectMake(160, 0, 150, 200); // set frame as your need
+    self.endTimePicker.datePickerMode = UIDatePickerModeTime;
+    NSTimeInterval theTimeInterval = 3600;
+    
+    [self.endTimePicker setDate:[NSDate dateWithTimeInterval:theTimeInterval sinceDate:[NSDate date]]];
+    [self.endTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
+    
+    [contentView addSubview: self.startTimePicker];
+    [contentView addSubview: self.endTimePicker];
+    
+    [self.scroll addSubview:contentView];
+    
+    //    popup.didFinishDismissingCompletion = ^()
+    //    {
+    //        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    //        [dateFormatter setDateFormat:@"hh:mm a"];
+    //        self.startTimeText = [dateFormatter stringFromDate:self.startTimePicker.date];
+    //        self.endTimeText = [dateFormatter stringFromDate:self.endTimePicker.date];
+    //
+    //        [self.tableView beginUpdates];
+    //        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+    //        [self.tableView endUpdates];
+    //
+    //    };
+    
+}
+
+
+- (void)setupPopup
+{
+    CGRect scrollViewFrame = CGRectMake(0, 62, 320, self.view.frame.size.height);
+    self.scroll = [[UIScrollView alloc] initWithFrame:scrollViewFrame];
+    self.scroll.delegate = self;
+    [self.view addSubview:self.scroll];
+    CGSize scrollViewContentSize = CGSizeMake(640, self.view.frame.size.height);
+    [self.scroll setContentSize:scrollViewContentSize];
+    
+    [self.scroll setPagingEnabled:YES];
+    self.scroll.showsHorizontalScrollIndicator = NO;
+    self.pageControl.frame = CGRectMake(110,400,100,100);
+    self.pageControl.numberOfPages = 2;
+    self.pageControl.currentPage = 0;
+    [self.pageControl addTarget:self action:@selector(changePage:) forControlEvents:UIControlEventValueChanged];
+}
+
+- (IBAction)changePage:(id)sender
+{
+    CGFloat pageWidth = self.scroll.frame.size.width;
+    float fractionalPage = self.scroll.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
+    
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self.locationField resignFirstResponder];
+    [self.subjectField resignFirstResponder];
+
+    CGFloat pageWidth = self.scroll.frame.size.width;
+    float fractionalPage = self.scroll.contentOffset.x / pageWidth;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
 }
 
 - (void)datePicker:(ESDatePicker *)datePicker dateSelected:(NSDate *)date
@@ -312,52 +389,6 @@
     [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
 }
-
-
-- (void)presentTimePicker
-{
-    [self.locationField resignFirstResponder];
-    [self.subjectField resignFirstResponder];
-
-    UIView* contentView = [[UIView alloc] init];
-    contentView.layer.cornerRadius = 4;
-    contentView.frame = CGRectMake(0, 0, 300, 200);
-    contentView.backgroundColor = [UIColor whiteColor];
-    
-    self.startTimePicker = [[UIDatePicker alloc] init];
-    self.startTimePicker.frame = CGRectMake(0, 0, 150, 200); // set frame as your need
-    self.startTimePicker.datePickerMode = UIDatePickerModeTime;
-    [self.startTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
-
-    self.endTimePicker = [[UIDatePicker alloc] init];
-    self.endTimePicker.frame = CGRectMake(160, 0, 150, 200); // set frame as your need
-    self.endTimePicker.datePickerMode = UIDatePickerModeTime;
-    NSTimeInterval theTimeInterval = 3600;
-
-    [self.endTimePicker setDate:[NSDate dateWithTimeInterval:theTimeInterval sinceDate:[NSDate date]]];
-    [self.endTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
-
-    [contentView addSubview: self.startTimePicker];
-    [contentView addSubview: self.endTimePicker];
-
-    KLCPopup* popup = [KLCPopup popupWithContentView:contentView];
-    [popup show];
-    
-    popup.didFinishDismissingCompletion = ^()
-    {
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"hh:mm a"];
-        self.startTimeText = [dateFormatter stringFromDate:self.startTimePicker.date];
-        self.endTimeText = [dateFormatter stringFromDate:self.endTimePicker.date];
-
-        [self.tableView beginUpdates];
-        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
-        [self.tableView endUpdates];
-
-    };
-
-}
-
 
 - (void)timeChanged
 {

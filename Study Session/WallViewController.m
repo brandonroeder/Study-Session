@@ -161,8 +161,6 @@ enum PinAnnotationTypeTag {
     [self performSegueWithIdentifier:@"toSession" sender:self];
 }
 
-
-
 - (CLLocationManager *)locationManager
 {
     if (_locationManager != nil) {
@@ -175,14 +173,11 @@ enum PinAnnotationTypeTag {
     return _locationManager;
 }
 
-
 - (void)setInitialLocation:(CLLocation *)aLocation
 {
     self.location = aLocation;
     self.radius = 1000;
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -205,14 +200,5 @@ enum PinAnnotationTypeTag {
     NewSessionViewController *newSessionViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewSessionViewController"];
     newSessionViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
     [[self navigationController] pushViewController: newSessionViewController animated:YES];
-}
-
-
-- (IBAction)logout:(id)sender
-{
-    [PFUser logOut];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self presentViewController:loginViewController animated:YES completion:nil];
 }
 @end

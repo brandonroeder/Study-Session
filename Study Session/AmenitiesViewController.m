@@ -176,21 +176,23 @@
     }
 }
 
-
 - (void)done
 {
     self.amenities = [NSArray arrayWithObjects:self.quietCheckbox.value, self.wifiCheckbox.value ,self.outletsCheckbox.value ,self.tablesCheckbox.value ,self.foodCheckbox.value, nil];
     [self.delegate addItemViewController:self didFinishEnteringAmenities:self.amenities];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 44;
 }
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 5;
 }
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;

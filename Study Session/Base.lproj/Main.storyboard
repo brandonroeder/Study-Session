@@ -201,9 +201,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-XZ-xYM">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-XZ-xYM">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <color key="backgroundColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="odo-oo-dyK" id="fVV-wO-xUy"/>
@@ -212,19 +212,21 @@
                             </tableView>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSr-9I-1Lz">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="barTintColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Settings" id="gZw-j8-jjc">
                                         <barButtonItem key="leftBarButtonItem" title="Close" id="vWR-1I-54k">
+                                            <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="closeButton:" destination="odo-oo-dyK" id="NBz-Qz-Dlp"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Logout" id="egb-ix-AJ6">
+                                            <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="logout:" destination="odo-oo-dyK" id="lx3-WB-Rz6"/>
                                             </connections>
@@ -236,7 +238,6 @@
                                 </connections>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="BYf-kS-erE"/>
                     <connections>
@@ -254,9 +255,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8F6-5f-AcN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.23529411764705882" green="0.25098039215686274" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -288,20 +290,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="N50-OS-aos">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="VmL-lO-qNL">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="logout:" destination="A7n-wt-G3D" id="E84-lY-Usu"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lCs-iz-Kmh">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="newSession:" destination="A7n-wt-G3D" id="n1S-bE-zjJ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="N50-OS-aos"/>
                     <connections>
                         <outlet property="mapView" destination="u9Z-zd-F5U" id="bhe-ea-XZc"/>
                         <segue destination="UPt-EU-i6y" kind="push" identifier="newSession" id="zjN-nv-rpg"/>
@@ -317,7 +306,10 @@
                 <navigationController storyboardIdentifier="NavBar" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lal-93-VrF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Ko-OL-ahx">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.23529411764705882" green="0.25098039215686274" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="XpC-lb-OA9">
                         <rect key="frame" x="0.0" y="524" width="320" height="44"/>
@@ -347,14 +339,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="NdB-5J-Ud8">
-                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Icj-sQ-89X">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="logout:" destination="Vdc-Nf-xA4" id="qcD-X6-7y7"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kfl-7s-ofR">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.58431372549019611" green="0.60784313725490191" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="newSession:" destination="Vdc-Nf-xA4" id="Vkq-3C-23z"/>
                             </connections>
@@ -368,7 +354,6 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="pullToRefreshEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="logout" destination="Icj-sQ-89X" id="bmV-3D-3cv"/>
                         <segue destination="wal-CH-BXE" kind="push" identifier="toSession" id="0bP-o5-9Cu"/>
                     </connections>
                 </tableViewController>
@@ -455,12 +440,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="RYQ-a3-uK2"/>
                     <connections>
+                        <outlet property="pageControl" destination="iiX-IN-5Ii" id="WMi-bf-U6h"/>
                         <outlet property="tableView" destination="XWT-4G-tqS" id="iTt-NW-LUJ"/>
                         <segue destination="Fg9-uI-MQL" kind="push" identifier="description" id="DcP-z9-mna"/>
                         <segue destination="Mgt-AP-8wb" kind="push" id="qWv-DB-Udf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-gu-N0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="iiX-IN-5Ii">
+                    <rect key="frame" x="0.0" y="0.0" width="38" height="36"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </pageControl>
             </objects>
             <point key="canvasLocation" x="-1781" y="1296"/>
         </scene>

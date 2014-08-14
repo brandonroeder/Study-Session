@@ -15,6 +15,7 @@
 #import "GeoQueryAnnotation.h"
 #import "WallViewController.h"
 #import <CoreLocation/CoreLocation.h>
+#import <FontasticIcons.h>
 
 enum PinAnnotationTypeTag {
     PinAnnotationTypeTagGeoPoint = 0,
@@ -56,6 +57,15 @@ enum PinAnnotationTypeTag {
     wallViewController.view.frame = CGRectMake(0, 300.0f, 320, self.view.bounds.size.height - 275.0f);
     [self.view addSubview:wallViewController.view];
     
+    FIIcon *gearIcon = [FIFontAwesomeIcon cogIcon];
+    UIImage *gearImage = [gearIcon imageWithBounds:CGRectMake(0, 0, 20, 20) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+
+    FIIcon *addIcon = [FIFontAwesomeIcon plusIcon];
+    UIImage *addImage = [addIcon imageWithBounds:CGRectMake(0, 0, 20, 20) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:gearImage style:UIBarButtonItemStylePlain target:self action:@selector(goToSettings)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addImage style:UIBarButtonItemStylePlain target:self action:@selector(newSession:)];
+
 
     [PFFacebookUtils initializeFacebook];
     self.avatarImage = nil;
@@ -195,15 +205,6 @@ enum PinAnnotationTypeTag {
      }];    
 }
 
-- (IBAction)logout:(id)sender
-{
-    [PFUser logOut];
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
-    [self presentViewController:loginViewController animated:YES completion:nil];
-
-}
-
 - (IBAction)newSession:(id)sender
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -230,8 +231,8 @@ enum PinAnnotationTypeTag {
     positionAnimation.springSpeed = 15;
     appearAnimation.toValue= [NSValue valueWithCGSize:CGSizeMake(40, 40)]; //first 2 values dont matter
     self.navigationItem.titleView.layer.cornerRadius = 20;
-    self.navigationItem.titleView.layer.borderWidth = 2;
-    self.navigationItem.titleView.layer.borderColor= [[UIColor whiteColor]CGColor];
+    //self.navigationItem.titleView.layer.borderWidth = 1;
+    //self.navigationItem.titleView.layer.borderColor= [[UIColor blackColor]CGColor];
     
     self.navigationItem.titleView.clipsToBounds = YES;
     

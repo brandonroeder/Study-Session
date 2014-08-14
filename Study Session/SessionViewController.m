@@ -66,6 +66,10 @@ static CGFloat kImageOriginHight = 140.f;
     self.joinButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height-22);
     self.joinButton.alpha = 0.9;
     [self.view addSubview:self.joinButton];
+    self.title = self.detailItem[@"name"];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
+
     [self configureBottomButton];
 }
 
@@ -166,11 +170,15 @@ static CGFloat kImageOriginHight = 140.f;
         headerLabel.text = @"  OTHER SHIT";
     if (section == 5)
         headerLabel.text = @"  MORE OTHER SHIT";
-
-
+    
     [headerView addSubview:headerLabel];
     
     return headerView;
+}
+
+- (void) share
+{
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
