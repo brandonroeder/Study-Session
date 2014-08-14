@@ -3,10 +3,9 @@
 //
 //
 #import <UIKit/UIKit.h>
-#import "THDatePickerViewController.h"
 #import "AmenitiesViewController.h"
+#import "ESDatePicker.h"
 #import "DescriptionViewController.h"
-@interface NewSessionViewController : UIViewController <THDatePickerDelegate, DescriptionViewControllerDelegate, AmenitiesViewControllerDelegate>
-@property (nonatomic, strong) THDatePickerViewController * datePicker;
+@interface NewSessionViewController : UIViewController <ESDatePickerDelegate, DescriptionViewControllerDelegate, AmenitiesViewControllerDelegate>
 @property (nonatomic, strong) UITextField *locationField;
 @end

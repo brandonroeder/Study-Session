@@ -91,32 +91,6 @@
 		CAC5BA14199813DA00F3395E /* LPTransitDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC5B9F1199813DA00F3395E /* LPTransitDetails.m */; };
 		CAC5BA15199813DA00F3395E /* LPVehicle.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC5B9F3199813DA00F3395E /* LPVehicle.m */; };
 		CAC5BA16199813DA00F3395E /* LPWaypoint.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC5B9F5199813DA00F3395E /* LPWaypoint.m */; };
-		CAC9F7671997EB6A00717C65 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F74B1997EB6A00717C65 /* arrow_left.png */; };
-		CAC9F7681997EB6A00717C65 /* arrow_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F74C1997EB6A00717C65 /* arrow_left@2x.png */; };
-		CAC9F7691997EB6A00717C65 /* arrow_right.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F74D1997EB6A00717C65 /* arrow_right.png */; };
-		CAC9F76A1997EB6A00717C65 /* arrow_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F74E1997EB6A00717C65 /* arrow_right@2x.png */; };
-		CAC9F76B1997EB6A00717C65 /* calendar_clear-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F74F1997EB6A00717C65 /* calendar_clear-disabled.png */; };
-		CAC9F76C1997EB6A00717C65 /* calendar_clear-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7501997EB6A00717C65 /* calendar_clear-disabled@2x.png */; };
-		CAC9F76D1997EB6A00717C65 /* calendar_littledot-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7511997EB6A00717C65 /* calendar_littledot-disabled.png */; };
-		CAC9F76E1997EB6A00717C65 /* calendar_littledot-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7521997EB6A00717C65 /* calendar_littledot-disabled@2x.png */; };
-		CAC9F76F1997EB6A00717C65 /* calendar_littledot.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7531997EB6A00717C65 /* calendar_littledot.png */; };
-		CAC9F7701997EB6A00717C65 /* calendar_littledot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7541997EB6A00717C65 /* calendar_littledot@2x.png */; };
-		CAC9F7711997EB6A00717C65 /* calendar_ok-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7551997EB6A00717C65 /* calendar_ok-disabled.png */; };
-		CAC9F7721997EB6A00717C65 /* calendar_ok-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7561997EB6A00717C65 /* calendar_ok-disabled@2x.png */; };
-		CAC9F7731997EB6A00717C65 /* dialog_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7571997EB6A00717C65 /* dialog_cancel.png */; };
-		CAC9F7741997EB6A00717C65 /* dialog_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7581997EB6A00717C65 /* dialog_cancel@2x.png */; };
-		CAC9F7751997EB6A00717C65 /* dialog_clear-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7591997EB6A00717C65 /* dialog_clear-disabled.png */; };
-		CAC9F7761997EB6A00717C65 /* dialog_clear-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F75A1997EB6A00717C65 /* dialog_clear-disabled@2x.png */; };
-		CAC9F7771997EB6A00717C65 /* dialog_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F75B1997EB6A00717C65 /* dialog_clear.png */; };
-		CAC9F7781997EB6A00717C65 /* dialog_clear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F75C1997EB6A00717C65 /* dialog_clear@2x.png */; };
-		CAC9F7791997EB6A00717C65 /* dialog_ok-disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F75D1997EB6A00717C65 /* dialog_ok-disabled.png */; };
-		CAC9F77A1997EB6A00717C65 /* dialog_ok-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F75E1997EB6A00717C65 /* dialog_ok-disabled@2x.png */; };
-		CAC9F77B1997EB6A00717C65 /* dialog_ok.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F75F1997EB6A00717C65 /* dialog_ok.png */; };
-		CAC9F77C1997EB6A00717C65 /* dialog_ok@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7601997EB6A00717C65 /* dialog_ok@2x.png */; };
-		CAC9F77D1997EB6A00717C65 /* THDateDay.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9F7621997EB6A00717C65 /* THDateDay.m */; };
-		CAC9F77E1997EB6A00717C65 /* THDateDay.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7631997EB6A00717C65 /* THDateDay.xib */; };
-		CAC9F77F1997EB6A00717C65 /* THDatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9F7651997EB6A00717C65 /* THDatePickerViewController.m */; };
-		CAC9F7801997EB6A00717C65 /* THDatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAC9F7661997EB6A00717C65 /* THDatePickerViewController.xib */; };
 		CAC9F7851997EBD000717C65 /* NSObject+YMOptionsAndDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9F7821997EBD000717C65 /* NSObject+YMOptionsAndDefaults.m */; };
 		CAC9F7861997EBD000717C65 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9F7841997EBD000717C65 /* UIViewController+KNSemiModal.m */; };
 		CAD11CDD1999ADC70092F439 /* DescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD11CDC1999ADC70092F439 /* DescriptionViewController.m */; };
@@ -281,34 +255,6 @@
 		CAC5B9F3199813DA00F3395E /* LPVehicle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPVehicle.m; sourceTree = "<group>"; };
 		CAC5B9F4199813DA00F3395E /* LPWaypoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPWaypoint.h; sourceTree = "<group>"; };
 		CAC5B9F5199813DA00F3395E /* LPWaypoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPWaypoint.m; sourceTree = "<group>"; };
-		CAC9F74B1997EB6A00717C65 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_left.png; sourceTree = "<group>"; };
-		CAC9F74C1997EB6A00717C65 /* arrow_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_left@2x.png"; sourceTree = "<group>"; };
-		CAC9F74D1997EB6A00717C65 /* arrow_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_right.png; sourceTree = "<group>"; };
-		CAC9F74E1997EB6A00717C65 /* arrow_right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_right@2x.png"; sourceTree = "<group>"; };
-		CAC9F74F1997EB6A00717C65 /* calendar_clear-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_clear-disabled.png"; sourceTree = "<group>"; };
-		CAC9F7501997EB6A00717C65 /* calendar_clear-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_clear-disabled@2x.png"; sourceTree = "<group>"; };
-		CAC9F7511997EB6A00717C65 /* calendar_littledot-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_littledot-disabled.png"; sourceTree = "<group>"; };
-		CAC9F7521997EB6A00717C65 /* calendar_littledot-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_littledot-disabled@2x.png"; sourceTree = "<group>"; };
-		CAC9F7531997EB6A00717C65 /* calendar_littledot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar_littledot.png; sourceTree = "<group>"; };
-		CAC9F7541997EB6A00717C65 /* calendar_littledot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_littledot@2x.png"; sourceTree = "<group>"; };
-		CAC9F7551997EB6A00717C65 /* calendar_ok-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_ok-disabled.png"; sourceTree = "<group>"; };
-		CAC9F7561997EB6A00717C65 /* calendar_ok-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar_ok-disabled@2x.png"; sourceTree = "<group>"; };
-		CAC9F7571997EB6A00717C65 /* dialog_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog_cancel.png; sourceTree = "<group>"; };
-		CAC9F7581997EB6A00717C65 /* dialog_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_cancel@2x.png"; sourceTree = "<group>"; };
-		CAC9F7591997EB6A00717C65 /* dialog_clear-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_clear-disabled.png"; sourceTree = "<group>"; };
-		CAC9F75A1997EB6A00717C65 /* dialog_clear-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_clear-disabled@2x.png"; sourceTree = "<group>"; };
-		CAC9F75B1997EB6A00717C65 /* dialog_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog_clear.png; sourceTree = "<group>"; };
-		CAC9F75C1997EB6A00717C65 /* dialog_clear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_clear@2x.png"; sourceTree = "<group>"; };
-		CAC9F75D1997EB6A00717C65 /* dialog_ok-disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_ok-disabled.png"; sourceTree = "<group>"; };
-		CAC9F75E1997EB6A00717C65 /* dialog_ok-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_ok-disabled@2x.png"; sourceTree = "<group>"; };
-		CAC9F75F1997EB6A00717C65 /* dialog_ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialog_ok.png; sourceTree = "<group>"; };
-		CAC9F7601997EB6A00717C65 /* dialog_ok@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dialog_ok@2x.png"; sourceTree = "<group>"; };
-		CAC9F7611997EB6A00717C65 /* THDateDay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDateDay.h; sourceTree = "<group>"; };
-		CAC9F7621997EB6A00717C65 /* THDateDay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDateDay.m; sourceTree = "<group>"; };
-		CAC9F7631997EB6A00717C65 /* THDateDay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THDateDay.xib; sourceTree = "<group>"; };
-		CAC9F7641997EB6A00717C65 /* THDatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THDatePickerViewController.h; sourceTree = "<group>"; };
-		CAC9F7651997EB6A00717C65 /* THDatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THDatePickerViewController.m; sourceTree = "<group>"; };
-		CAC9F7661997EB6A00717C65 /* THDatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = THDatePickerViewController.xib; sourceTree = "<group>"; };
 		CAC9F7811997EBD000717C65 /* NSObject+YMOptionsAndDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+YMOptionsAndDefaults.h"; sourceTree = "<group>"; };
 		CAC9F7821997EBD000717C65 /* NSObject+YMOptionsAndDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+YMOptionsAndDefaults.m"; sourceTree = "<group>"; };
 		CAC9F7831997EBD000717C65 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
@@ -424,7 +370,6 @@
 				CAC9F7821997EBD000717C65 /* NSObject+YMOptionsAndDefaults.m */,
 				CAC9F7831997EBD000717C65 /* UIViewController+KNSemiModal.h */,
 				CAC9F7841997EBD000717C65 /* UIViewController+KNSemiModal.m */,
-				CAC9F7491997EB6A00717C65 /* THCalendarDatePicker */,
 				CA50EEA0199581F400A4F443 /* KLCPopup */,
 				1102AF9219815A6C0002D281 /* MKParallaxView */,
 				CAD8593B19887D2F004CCD27 /* QMBParallax */,
@@ -689,49 +634,6 @@
 			path = LPGoogleObjects;
 			sourceTree = "<group>";
 		};
-		CAC9F7491997EB6A00717C65 /* THCalendarDatePicker */ = {
-			isa = PBXGroup;
-			children = (
-				CAC9F74A1997EB6A00717C65 /* Images */,
-				CAC9F7611997EB6A00717C65 /* THDateDay.h */,
-				CAC9F7621997EB6A00717C65 /* THDateDay.m */,
-				CAC9F7631997EB6A00717C65 /* THDateDay.xib */,
-				CAC9F7641997EB6A00717C65 /* THDatePickerViewController.h */,
-				CAC9F7651997EB6A00717C65 /* THDatePickerViewController.m */,
-				CAC9F7661997EB6A00717C65 /* THDatePickerViewController.xib */,
-			);
-			path = THCalendarDatePicker;
-			sourceTree = "<group>";
-		};
-		CAC9F74A1997EB6A00717C65 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				CAC9F74B1997EB6A00717C65 /* arrow_left.png */,
-				CAC9F74C1997EB6A00717C65 /* arrow_left@2x.png */,
-				CAC9F74D1997EB6A00717C65 /* arrow_right.png */,
-				CAC9F74E1997EB6A00717C65 /* arrow_right@2x.png */,
-				CAC9F74F1997EB6A00717C65 /* calendar_clear-disabled.png */,
-				CAC9F7501997EB6A00717C65 /* calendar_clear-disabled@2x.png */,
-				CAC9F7511997EB6A00717C65 /* calendar_littledot-disabled.png */,
-				CAC9F7521997EB6A00717C65 /* calendar_littledot-disabled@2x.png */,
-				CAC9F7531997EB6A00717C65 /* calendar_littledot.png */,
-				CAC9F7541997EB6A00717C65 /* calendar_littledot@2x.png */,
-				CAC9F7551997EB6A00717C65 /* calendar_ok-disabled.png */,
-				CAC9F7561997EB6A00717C65 /* calendar_ok-disabled@2x.png */,
-				CAC9F7571997EB6A00717C65 /* dialog_cancel.png */,
-				CAC9F7581997EB6A00717C65 /* dialog_cancel@2x.png */,
-				CAC9F7591997EB6A00717C65 /* dialog_clear-disabled.png */,
-				CAC9F75A1997EB6A00717C65 /* dialog_clear-disabled@2x.png */,
-				CAC9F75B1997EB6A00717C65 /* dialog_clear.png */,
-				CAC9F75C1997EB6A00717C65 /* dialog_clear@2x.png */,
-				CAC9F75D1997EB6A00717C65 /* dialog_ok-disabled.png */,
-				CAC9F75E1997EB6A00717C65 /* dialog_ok-disabled@2x.png */,
-				CAC9F75F1997EB6A00717C65 /* dialog_ok.png */,
-				CAC9F7601997EB6A00717C65 /* dialog_ok@2x.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		CAD8593B19887D2F004CCD27 /* QMBParallax */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,39 +727,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAD858F51985EFF3004CCD27 /* circular_book.ttf in Resources */,
-				CAC9F7691997EB6A00717C65 /* arrow_right.png in Resources */,
-				CAC9F76B1997EB6A00717C65 /* calendar_clear-disabled.png in Resources */,
-				CAC9F7741997EB6A00717C65 /* dialog_cancel@2x.png in Resources */,
-				CAC9F76C1997EB6A00717C65 /* calendar_clear-disabled@2x.png in Resources */,
 				CA83EE9E19832FF600E4496E /* Facebook.png in Resources */,
 				118C739619702D54007D8389 /* lake.jpg in Resources */,
-				CAC9F76F1997EB6A00717C65 /* calendar_littledot.png in Resources */,
-				CAC9F77B1997EB6A00717C65 /* dialog_ok.png in Resources */,
-				CAC9F7771997EB6A00717C65 /* dialog_clear.png in Resources */,
-				CAC9F7761997EB6A00717C65 /* dialog_clear-disabled@2x.png in Resources */,
-				CAC9F77E1997EB6A00717C65 /* THDateDay.xib in Resources */,
-				CAC9F7701997EB6A00717C65 /* calendar_littledot@2x.png in Resources */,
-				CAC9F7731997EB6A00717C65 /* dialog_cancel.png in Resources */,
-				CAC9F77A1997EB6A00717C65 /* dialog_ok-disabled@2x.png in Resources */,
-				CAC9F7791997EB6A00717C65 /* dialog_ok-disabled.png in Resources */,
-				CAC9F7721997EB6A00717C65 /* calendar_ok-disabled@2x.png in Resources */,
-				CAC9F76A1997EB6A00717C65 /* arrow_right@2x.png in Resources */,
-				CAC9F76E1997EB6A00717C65 /* calendar_littledot-disabled@2x.png in Resources */,
-				CAC9F77C1997EB6A00717C65 /* dialog_ok@2x.png in Resources */,
 				CA83EE9C19832D4500E4496E /* Twitter.png in Resources */,
-				CAC9F7801997EB6A00717C65 /* THDatePickerViewController.xib in Resources */,
 				118C739C19702EDC007D8389 /* SVProgressHUD.bundle in Resources */,
-				CAC9F7671997EB6A00717C65 /* arrow_left.png in Resources */,
-				CAC9F7751997EB6A00717C65 /* dialog_clear-disabled.png in Resources */,
 				11D622EE19632EEF0021DABD /* Images.xcassets in Resources */,
 				11D622E019632EEF0021DABD /* InfoPlist.strings in Resources */,
 				11BA1669197ECF2F007C78DC /* profile.gif in Resources */,
-				CAC9F7711997EB6A00717C65 /* calendar_ok-disabled.png in Resources */,
-				CAC9F7781997EB6A00717C65 /* dialog_clear@2x.png in Resources */,
 				11D622E919632EEF0021DABD /* Main.storyboard in Resources */,
-				CAC9F76D1997EB6A00717C65 /* calendar_littledot-disabled.png in Resources */,
 				118C738D196F0001007D8389 /* utdallas.jpg in Resources */,
-				CAC9F7681997EB6A00717C65 /* arrow_left@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,7 +798,6 @@
 				CAC5B9F8199813DA00F3395E /* LPAgencie.m in Sources */,
 				11D623201963382D0021DABD /* NewUserLoginViewController.m in Sources */,
 				118C7387196EFDB9007D8389 /* UIImage+ImageEffects.m in Sources */,
-				CAC9F77F1997EB6A00717C65 /* THDatePickerViewController.m in Sources */,
 				CAC5B9FF199813DA00F3395E /* LPEvent.m in Sources */,
 				CAC5B9F6199813DA00F3395E /* LPGoogleFunctions.m in Sources */,
 				CAD8593919887D29004CCD27 /* QMBParallaxScrollViewController.m in Sources */,
@@ -928,7 +805,6 @@
 				CAC9F7851997EBD000717C65 /* NSObject+YMOptionsAndDefaults.m in Sources */,
 				11D622EC19632EEF0021DABD /* LoginViewController.m in Sources */,
 				CAC5B9FA199813DA00F3395E /* LPDirections.m in Sources */,
-				CAC9F77D1997EB6A00717C65 /* THDateDay.m in Sources */,
 				CAC5B9F9199813DA00F3395E /* LPBounds.m in Sources */,
 				1102AF9B19815A6C0002D281 /* MKParallaxView.m in Sources */,
 				CAC5BA12199813DA00F3395E /* LPTerm.m in Sources */,

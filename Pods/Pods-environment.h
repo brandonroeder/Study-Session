@@ -48,6 +48,24 @@
 #define COCOAPODS_VERSION_MINOR_AFNetworking_UIKit 3
 #define COCOAPODS_VERSION_PATCH_AFNetworking_UIKit 1
 
+// ESDateHelper
+#define COCOAPODS_POD_AVAILABLE_ESDateHelper
+#define COCOAPODS_VERSION_MAJOR_ESDateHelper 1
+#define COCOAPODS_VERSION_MINOR_ESDateHelper 3
+#define COCOAPODS_VERSION_PATCH_ESDateHelper 0
+
+// ESDatePicker
+#define COCOAPODS_POD_AVAILABLE_ESDatePicker
+#define COCOAPODS_VERSION_MAJOR_ESDatePicker 1
+#define COCOAPODS_VERSION_MINOR_ESDatePicker 2
+#define COCOAPODS_VERSION_PATCH_ESDatePicker 0
+
+// ESObjectPool
+#define COCOAPODS_POD_AVAILABLE_ESObjectPool
+#define COCOAPODS_VERSION_MAJOR_ESObjectPool 1
+#define COCOAPODS_VERSION_MINOR_ESObjectPool 3
+#define COCOAPODS_VERSION_PATCH_ESObjectPool 1
+
 // FastAnimationWithPOP
 #define COCOAPODS_POD_AVAILABLE_FastAnimationWithPOP
 #define COCOAPODS_VERSION_MAJOR_FastAnimationWithPOP 0
@@ -59,6 +77,12 @@
 #define COCOAPODS_VERSION_MAJOR_FontasticIcons 0
 #define COCOAPODS_VERSION_MINOR_FontasticIcons 5
 #define COCOAPODS_VERSION_PATCH_FontasticIcons 0
+
+// Masonry
+#define COCOAPODS_POD_AVAILABLE_Masonry
+#define COCOAPODS_VERSION_MAJOR_Masonry 0
+#define COCOAPODS_VERSION_MINOR_Masonry 5
+#define COCOAPODS_VERSION_PATCH_Masonry 3
 
 // pop
 #define COCOAPODS_POD_AVAILABLE_pop

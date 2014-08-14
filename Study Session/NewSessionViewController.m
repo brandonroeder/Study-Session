@@ -1,11 +1,11 @@
 #import "NewSessionViewController.h"
 #import "DescriptionViewController.h"
 #import "AmenitiesViewController.h"
+#import "ESDatePicker.h"
 #import "UIColor+FlatColors.h"
 #import <Parse/Parse.h>
 #import <FontasticIcons.h>
 #import "KLCPopup.h"
-#import "THDatePickerViewController.h"
 
 @interface NewSessionViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -18,6 +18,7 @@
 @property (nonatomic, strong) UIDatePicker *startTimePicker;
 @property (nonatomic, strong) UIDatePicker *endTimePicker;
 @property (nonatomic, strong) NSArray *amenities;
+@property (nonatomic, strong) KLCPopup *calendarPopup;
 
 @property (nonatomic, assign) BOOL quiet;
 @property (nonatomic, assign) BOOL wifi;
@@ -199,7 +200,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 
     if (indexPath.section == 0)
     {
@@ -212,6 +212,8 @@
     
     if (indexPath.section == 3)
     {
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
         DescriptionViewController *descriptionController = [[DescriptionViewController alloc] init];
         descriptionController.delegate = self;
         descriptionController.oldText = self.descriptionText;
@@ -219,6 +221,8 @@
     }
     if (indexPath.section == 4)
     {
+        [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
         AmenitiesViewController *amenitiesController = [[AmenitiesViewController alloc]init];
         amenitiesController.delegate = self;
         [self.navigationController pushViewController:amenitiesController animated:YES];
@@ -250,7 +254,6 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    
     UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 728, 40)];
     sectionView.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
     return sectionView;
@@ -282,49 +285,34 @@
     self.food = [[self.amenities objectAtIndex:4]boolValue];
 }
 
--(void)datePickerDonePressed:(THDatePickerViewController *)datePicker
+- (void)presentCalendar
 {
-    self.curDate = datePicker.date;
+    [self.locationField resignFirstResponder];
+    [self.subjectField resignFirstResponder];
+
+    UIView *calendar = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 300, 300)];
+    calendar.layer.cornerRadius = 4;
+    ESDatePicker *p = [[ESDatePicker alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+    p.layer.cornerRadius = 4;
+    [p setDelegate:self];
+    [p show];
+    [calendar addSubview:p];
+    
+    self.calendarPopup = [KLCPopup popupWithContentView:calendar];
+    [self.calendarPopup show];
+}
+
+- (void)datePicker:(ESDatePicker *)datePicker dateSelected:(NSDate *)date
+{
+    [self.calendarPopup dismiss:YES];
+    self.curDate = date;
     [self.tableView beginUpdates];
     NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
     NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
     [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
-    [self dismissSemiModalView];
 }
 
--(void)datePickerCancelPressed:(THDatePickerViewController *)datePicker
-{
-    //[self.datePicker slideDownAndOut];
-    [self dismissSemiModalView];
-}
-
-- (void)presentCalendar
-{
-    if(!self.datePicker)
-        self.datePicker = [THDatePickerViewController datePicker];
-    self.datePicker.date = self.curDate;
-    self.datePicker.delegate = self;
-    [self.datePicker setAllowClearDate:NO];
-    [self.datePicker setAutoCloseOnSelectDate:YES];
-    [self.datePicker setSelectedBackgroundColor:[UIColor flatBlueColor]];
-    [self.datePicker setCurrentDateColor:[UIColor flatBlueColor]];
-    [self.datePicker setDateHasItemsCallback:^BOOL(NSDate *date)
-     {
-         int tmp = (arc4random() % 30)+1;
-         if(tmp % 5 == 0)
-             return YES;
-         return NO;
-     }];
-    
-    [self presentSemiViewController:self.datePicker
-                        withOptions:@{
-                                      KNSemiModalOptionKeys.pushParentBack    : @(NO),
-                                      KNSemiModalOptionKeys.animationDuration : @(0.3),
-                                      KNSemiModalOptionKeys.shadowOpacity     : @(0.3),
-                                      }];
-
-}
 
 - (void)presentTimePicker
 {
@@ -362,7 +350,10 @@
         self.startTimeText = [dateFormatter stringFromDate:self.startTimePicker.date];
         self.endTimeText = [dateFormatter stringFromDate:self.endTimePicker.date];
 
-        [self.tableView reloadData];
+        [self.tableView beginUpdates];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+
     };
 
 }
