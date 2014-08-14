@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="b6F-y1-kxD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="b6F-y1-kxD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -457,6 +457,7 @@
                     <connections>
                         <outlet property="tableView" destination="XWT-4G-tqS" id="iTt-NW-LUJ"/>
                         <segue destination="Fg9-uI-MQL" kind="push" identifier="description" id="DcP-z9-mna"/>
+                        <segue destination="Mgt-AP-8wb" kind="push" id="qWv-DB-Udf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-gu-N0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -480,7 +481,40 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ujt-ov-G2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1271" y="1291"/>
+            <point key="canvasLocation" x="-1197" y="907"/>
+        </scene>
+        <!--Amenities View Controller-->
+        <scene sceneID="8ol-tY-2wa">
+            <objects>
+                <viewController storyboardIdentifier="AmenitiesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Mgt-AP-8wb" customClass="AmenitiesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AZb-fG-EyX"/>
+                        <viewControllerLayoutGuide type="bottom" id="vPb-d1-Rha"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mwx-Pj-Y6L">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Sr-Bg-xj5">
+                                <rect key="frame" x="0.0" y="116" width="320" height="337"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="sectionIndexBackgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mgt-AP-8wb" id="bNL-Vc-SES"/>
+                                    <outlet property="delegate" destination="Mgt-AP-8wb" id="Usk-Nn-Ty2"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="R6m-g7-4yL"/>
+                    <connections>
+                        <outlet property="tableView" destination="0Sr-Bg-xj5" id="x8w-re-RIe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ndm-0Z-M83" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1197" y="1568"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="U6n-W7-rFg">
@@ -508,13 +542,10 @@
         <image name="Facebook.png" width="588" height="130"/>
         <image name="Twitter.png" width="587" height="130"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4">
-            <size key="portraitSize" width="320" height="568"/>
-            <size key="landscapeSize" width="568" height="320"/>
-        </simulatedScreenMetrics>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

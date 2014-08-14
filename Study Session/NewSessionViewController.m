@@ -1,5 +1,6 @@
 #import "NewSessionViewController.h"
 #import "DescriptionViewController.h"
+#import "AmenitiesViewController.h"
 #import "UIColor+FlatColors.h"
 #import <Parse/Parse.h>
 #import <FontasticIcons.h>
@@ -10,13 +11,19 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) NSDate *curDate;
 @property (nonatomic, retain) NSDateFormatter *formatter;
-@property (nonatomic, strong) UITextField *locationField;
 @property (nonatomic, strong) UITextField *subjectField;
 @property (nonatomic, strong) NSString *descriptionText;
 @property (nonatomic, strong) NSString *startTimeText;
 @property (nonatomic, strong) NSString *endTimeText;
 @property (nonatomic, strong) UIDatePicker *startTimePicker;
 @property (nonatomic, strong) UIDatePicker *endTimePicker;
+@property (nonatomic, strong) NSArray *amenities;
+
+@property (nonatomic, assign) BOOL quiet;
+@property (nonatomic, assign) BOOL wifi;
+@property (nonatomic, assign) BOOL tables;
+@property (nonatomic, assign) BOOL outlets;
+@property (nonatomic, assign) BOOL food;
 
 @end
 
@@ -38,9 +45,12 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.locationField becomeFirstResponder];
-    
+    if (self.descriptionText == nil)
+    {
+        [self.locationField becomeFirstResponder];
+    }
 }
+
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -126,7 +136,7 @@
             [timeButton addTarget:self action:@selector(presentTimePicker) forControlEvents:UIControlEventTouchUpInside];
             [timeHalf addSubview:timeButton];
         
-            UIView *seperator = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 1, 90)];
+            UIView *seperator = [[UIView alloc]initWithFrame:CGRectMake(10, 0, 1, 90)];
             seperator.backgroundColor = [UIColor colorWithRed:200/255.0 green:199/255.0 blue:204/255.0 alpha:1.0];
             [timeButton addSubview:seperator];
             
@@ -144,23 +154,14 @@
             
             UILabel *timeSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, (cell.frame.size.width/2)+60   , 20)];
             
-            UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:17];
+            //UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:17];
 
 //            self.startTimeText = @"11:00 AM";
 //            self.endTimeText = @"12:00 PM";
             NSString *arrow = @"→";
             NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", self.startTimeText, arrow, self.endTimeText];
-            NSMutableAttributedString *timeString = [[NSMutableAttributedString alloc] initWithString:formattedTimeString];
-            
-            NSDictionary *boldAttributes = @{NSFontAttributeName:boldFont, NSForegroundColorAttributeName: [UIColor blackColor]};
-            NSDictionary *regAttributes = @{NSForegroundColorAttributeName: [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900]};
 
-//            [timeString setAttributes:boldAttributes range:NSMakeRange(0, 5)];
-//            [timeString setAttributes:regAttributes range:NSMakeRange(6, 4)];
-//            [timeString setAttributes:boldAttributes range:NSMakeRange(11, 5)];
-//            [timeString setAttributes:regAttributes range:NSMakeRange(17, 2)];
-
-            timeSubTitle.attributedText = timeString;
+            timeSubTitle.text = formattedTimeString;
 
             [timeButton addSubview:timeSubTitle];
             [timeButton addSubview: timeTitle];
@@ -178,13 +179,19 @@
 
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"Description";
-        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(120, 0, self.view.frame.size.width-140, cell.contentView.frame.size.height)];
+        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, cell.contentView.frame.size.height)];
         labelText.text = self.descriptionText;
         labelText.font = [UIFont fontWithName:@"Helvetica" size:16];
         [cell.contentView addSubview:labelText];
     }
     if (indexPath.section == 4)
     {
+        FIIcon *icon = [FIEntypoIcon clipboardIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"Select Amenities";
     }
     
     return cell;
@@ -210,6 +217,14 @@
         descriptionController.oldText = self.descriptionText;
         [self.navigationController pushViewController:descriptionController animated:YES];
     }
+    if (indexPath.section == 4)
+    {
+        AmenitiesViewController *amenitiesController = [[AmenitiesViewController alloc]init];
+        amenitiesController.delegate = self;
+        [self.navigationController pushViewController:amenitiesController animated:YES];
+    }
+    
+    
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -254,6 +269,17 @@
     [self.tableView beginUpdates];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
+}
+
+- (void)addItemViewController:(AmenitiesViewController *)controller didFinishEnteringAmenities:(NSArray *)arrayOfAmenities
+{
+    self.amenities = arrayOfAmenities;
+    
+    self.quiet = [[self.amenities objectAtIndex:0] boolValue];
+    self.wifi = [[self.amenities objectAtIndex:1]boolValue];
+    self.outlets = [[self.amenities objectAtIndex:2]boolValue];
+    self.tables = [[self.amenities objectAtIndex:3]boolValue];
+    self.food = [[self.amenities objectAtIndex:4]boolValue];
 }
 
 -(void)datePickerDonePressed:(THDatePickerViewController *)datePicker
@@ -331,12 +357,6 @@
     
     popup.didFinishDismissingCompletion = ^()
     {
-//        [self.tableView beginUpdates];
-//        NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
-//        NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
-//        [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
-//        [self.tableView endUpdates];
-        
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"hh:mm a"];
         self.startTimeText = [dateFormatter stringFromDate:self.startTimePicker.date];
@@ -362,7 +382,8 @@
     NSString *name= self.locationField.text;
     NSString *subject = self.subjectField.text;
     NSString *description = self.descriptionText;
-    NSString *time = @"Time";
+    NSString *startTime = self.startTimeText;
+    NSString *endTime = self.endTimeText;
     NSString *date = [self.formatter stringFromDate:self.curDate];
     NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser]valueForKey:@"email"]];
     
@@ -376,8 +397,15 @@
              [placeObject setObject:user forKey:@"email"];
              [placeObject addObject:user forKey:@"members"];
              [placeObject setObject:description forKey:@"description"];
-             [placeObject setObject:time forKey:@"time"];
+             [placeObject setObject:startTime forKey:@"startTime"];
+             [placeObject setObject:endTime forKey:@"endTime"];
              [placeObject setObject:date forKey:@"date"];
+             [placeObject setObject:[NSNumber numberWithBool:self.quiet] forKey:@"quiet"];
+             [placeObject setObject:[NSNumber numberWithBool:self.wifi] forKey:@"wifi"];
+             [placeObject setObject:[NSNumber numberWithBool:self.tables] forKey:@"tables"];
+             [placeObject setObject:[NSNumber numberWithBool:self.food] forKey:@"food"];
+             [placeObject setObject:[NSNumber numberWithBool:self.outlets] forKey:@"outlets"];
+
              [placeObject saveInBackground];
          }
      }];

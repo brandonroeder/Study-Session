@@ -8,21 +8,34 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-FastAnimationWithPOP.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-FontasticIcons.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
 		</dict>
 		<key>Pods-pop.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -37,12 +50,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>64FAA8D86DEA40968A622AA1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6D97ACB99FC04569884F2F6E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>8034A5ED5A3D4948AD19E3DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8046F786CB7C4C36A2A9CE36</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B98739513B964849B5EC3E53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>DA3D24F410C64FA787D1E101</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F727B68234D8415F84E8485D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

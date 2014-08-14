@@ -208,7 +208,6 @@ enum PinAnnotationTypeTag {
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NewSessionViewController *newSessionViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewSessionViewController"];
-    newSessionViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
     [[self navigationController] pushViewController: newSessionViewController animated:YES];
 }
 

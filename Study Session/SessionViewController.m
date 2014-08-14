@@ -64,7 +64,7 @@ static CGFloat kImageOriginHight = 140.f;
               forControlEvents:UIControlEventTouchUpInside];
     
     self.joinButton.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height-22);
-    self.joinButton.alpha = 0.5;
+    self.joinButton.alpha = 0.9;
     [self.view addSubview:self.joinButton];
     [self configureBottomButton];
 }
@@ -96,6 +96,10 @@ static CGFloat kImageOriginHight = 140.f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (section == 1)
+    {
+        return 2;
+    }
     return 1;
 }
 
@@ -153,7 +157,7 @@ static CGFloat kImageOriginHight = 140.f;
     if (section == 0)
         headerLabel.text= @"  DESCRIPTION";
     if (section == 1)
-        headerLabel.text= @"  TIME";
+        headerLabel.text= @"  DETAILS";
     if (section == 2)
         headerLabel.text= @"  MEMBERS";
     if (section == 3)
@@ -203,9 +207,25 @@ static CGFloat kImageOriginHight = 140.f;
     }
     if (indexPath.section == 1)
     {
-        cell.textLabel.text = self.detailItem[@"time"];
-        cell.textLabel.textColor = [UIColor flatGrayColor];
-        cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        if (indexPath.row == 0)
+        {
+            NSString *date = self.detailItem[@"date"];
+            cell.textLabel.text = date;
+            cell.textLabel.textColor = [UIColor flatGrayColor];
+            cell.textLabel.textAlignment = NSTextAlignmentLeft;
+            
+        }
+        if (indexPath.row == 1)
+        {
+            NSString *startTimeText = self.detailItem[@"startTime"];
+            NSString *endTimeText = self.detailItem[@"endTime"];
+            NSString *arrow = @"→";
+            NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", startTimeText, arrow, endTimeText];
+
+            cell.textLabel.text = formattedTimeString;
+            cell.textLabel.textColor = [UIColor flatGrayColor];
+            cell.textLabel.textAlignment = NSTextAlignmentLeft;
+        }
     }
     
     if (indexPath.section == 2)
