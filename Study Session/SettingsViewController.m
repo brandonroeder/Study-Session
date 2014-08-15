@@ -26,12 +26,13 @@
     self.title = @"Settings";
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButton:)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:0.872 green:0.207 blue:0.182 alpha:1.000];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:0.872 green:0.207 blue:0.182 alpha:1.000];
 }
 - (IBAction)closeButton:(id)sender
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -112,35 +113,6 @@
         default:
             break;
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
-    return 20;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-{
-    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 728, 20)];
-
-    if (section == 1)
-    {
-        UILabel *footerText = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
-        UILabel *cuteTagline = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, 320, 20)];
-        cuteTagline.text = @"Designed and coded in Texas";
-        cuteTagline.textColor = [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900];
-        cuteTagline.font = [UIFont fontWithName:@"Helvetica" size:12];
-        [cuteTagline setTextAlignment:NSTextAlignmentCenter];
-
-        footerText.text = @"Study Session v0.2 (Build 200)";
-        footerText.textColor = [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900];
-        footerText.font = [UIFont fontWithName:@"Helvetica" size:12];
-        [footerText setTextAlignment:NSTextAlignmentCenter];
-        
-        [sectionView addSubview:cuteTagline];
-        [sectionView addSubview:footerText];
-    }
-    return sectionView;
 }
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet

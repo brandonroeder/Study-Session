@@ -6,6 +6,9 @@
 #import "AmenitiesViewController.h"
 #import "ESDatePicker.h"
 #import "DescriptionViewController.h"
-@interface NewSessionViewController : UIViewController <ESDatePickerDelegate, DescriptionViewControllerDelegate, AmenitiesViewControllerDelegate>
+#import "PlaceViewController.h"
+#import "KLCPopup.h"
+
+@interface NewSessionViewController : UIViewController <ESDatePickerDelegate, DescriptionViewControllerDelegate, AmenitiesViewControllerDelegate, PlaceViewControllerDelegate>
 @property (nonatomic, strong) UITextField *locationField;
 @end

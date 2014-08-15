@@ -1,12 +1,8 @@
 #import "NewSessionViewController.h"
-#import "DescriptionViewController.h"
-#import "AmenitiesViewController.h"
-#import "PlaceViewController.h"
-#import "ESDatePicker.h"
+#import "LPGoogleFunctions.h"
 #import "UIColor+FlatColors.h"
 #import <Parse/Parse.h>
 #import <FontasticIcons.h>
-#import "KLCPopup.h"
 
 @interface NewSessionViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,6 +23,8 @@
 @property (nonatomic, assign) BOOL food;
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) UIScrollView *scroll;
+@property (nonatomic, strong) LPPlaceDetails *placeDetails;
+
 
 @end
 
@@ -42,7 +40,7 @@
     
     self.curDate = [NSDate date];
     self.formatter = [[NSDateFormatter alloc] init];
-    [_formatter setDateFormat:@"EEE, MMM dd"];
+    [self.formatter setDateFormat:@"EEE, MMM dd"];
     self.title = @"Create Session";
 }
 
@@ -100,10 +98,10 @@
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"Location";
-//        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, cell.contentView.frame.size.height)];
-//        labelText.text = self.descriptionText;
-//        labelText.font = [UIFont fontWithName:@"Helvetica" size:16];
-//        [cell.contentView addSubview:labelText];
+        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, cell.contentView.frame.size.height)];
+        labelText.text = self.placeDetails.name;
+        labelText.font = [UIFont fontWithName:@"Helvetica" size:16];
+        [cell.contentView addSubview:labelText];
 
     }
     if (indexPath.section == 1)
@@ -121,7 +119,6 @@
     {
         if (indexPath.row == 0)
         {
-
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.textLabel.text = @"All Day Event";
             UISwitch *toggleSwitch = [[UISwitch alloc] init];
@@ -207,6 +204,7 @@
         [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
         
         PlaceViewController *placeController = [[PlaceViewController alloc] init];
+        placeController.delegate = self;
         [self.navigationController pushViewController:placeController animated:YES];
     }
     if (indexPath.section == 2)
@@ -266,7 +264,7 @@
 {
     self.descriptionText = descriptionText;
     [self.tableView beginUpdates];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
 }
 
@@ -279,6 +277,14 @@
     self.outlets = [[self.amenities objectAtIndex:2]boolValue];
     self.tables = [[self.amenities objectAtIndex:3]boolValue];
     self.food = [[self.amenities objectAtIndex:4]boolValue];
+}
+
+- (void)setPlace:(PlaceViewController *)controller didFinishSelectingLocation:(LPPlaceDetails *)placeDetails
+{
+    self.placeDetails = placeDetails;
+    [self.tableView beginUpdates];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
+    [self.tableView endUpdates];
 }
 
 - (void)presentCalendar
@@ -416,29 +422,23 @@
     NSString *endTime = self.endTimeText;
     NSString *date = [self.formatter stringFromDate:self.curDate];
     NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser]valueForKey:@"email"]];
+    PFGeoPoint *sessionLocation = [PFGeoPoint geoPointWithLatitude:self.placeDetails.geometry.location.latitude longitude:self.placeDetails.geometry.location.longitude];
     
-    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error)
-     {
-         if (!error)
-         {
-             [placeObject setObject:geoPoint forKey:@"location"];
-             [placeObject setObject:name forKey:@"name"];
-             [placeObject setObject:subject forKey:@"subject"];
-             [placeObject setObject:user forKey:@"email"];
-             [placeObject addObject:user forKey:@"members"];
-             [placeObject setObject:description forKey:@"description"];
-             [placeObject setObject:startTime forKey:@"startTime"];
-             [placeObject setObject:endTime forKey:@"endTime"];
-             [placeObject setObject:date forKey:@"date"];
-             [placeObject setObject:[NSNumber numberWithBool:self.quiet] forKey:@"quiet"];
-             [placeObject setObject:[NSNumber numberWithBool:self.wifi] forKey:@"wifi"];
-             [placeObject setObject:[NSNumber numberWithBool:self.tables] forKey:@"tables"];
-             [placeObject setObject:[NSNumber numberWithBool:self.food] forKey:@"food"];
-             [placeObject setObject:[NSNumber numberWithBool:self.outlets] forKey:@"outlets"];
-
-             [placeObject saveInBackground];
-         }
-     }];
+    [placeObject setObject:sessionLocation forKey:@"location"];
+    [placeObject setObject:name forKey:@"name"];
+    [placeObject setObject:subject forKey:@"subject"];
+    [placeObject setObject:user forKey:@"email"];
+    [placeObject addObject:user forKey:@"members"];
+    [placeObject setObject:description forKey:@"description"];
+    [placeObject setObject:startTime forKey:@"startTime"];
+    [placeObject setObject:endTime forKey:@"endTime"];
+    [placeObject setObject:date forKey:@"date"];
+    [placeObject setObject:[NSNumber numberWithBool:self.quiet] forKey:@"quiet"];
+    [placeObject setObject:[NSNumber numberWithBool:self.wifi] forKey:@"wifi"];
+    [placeObject setObject:[NSNumber numberWithBool:self.tables] forKey:@"tables"];
+    [placeObject setObject:[NSNumber numberWithBool:self.food] forKey:@"food"];
+    [placeObject setObject:[NSNumber numberWithBool:self.outlets] forKey:@"outlets"];
+    [placeObject saveInBackground];
     
     if ([PFFacebookUtils isLinkedWithUser:[PFUser currentUser]])
     {

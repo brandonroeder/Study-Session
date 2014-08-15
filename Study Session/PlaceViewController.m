@@ -7,9 +7,6 @@
 //
 
 #import "PlaceViewController.h"
-#import "LPGoogleFunctions.h"
-#import <CoreLocation/CoreLocation.h>
-
 
 NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw";
 
@@ -111,8 +108,17 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     LPPlaceDetails *placeDetails = (LPPlaceDetails *)[self.placesList objectAtIndex:indexPath.row];
     cell.textLabel.text = placeDetails.name;
     cell.detailTextLabel.text = placeDetails.formattedAddress;
+    
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.placeDetails= (LPPlaceDetails *)[self.placesList objectAtIndex:indexPath.row];
+    [self.delegate setPlace:self didFinishSelectingLocation:self.placeDetails];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
@@ -175,11 +181,6 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     }
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
-
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     self.location = [locations lastObject];
@@ -232,29 +233,11 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     }];
 }
 
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
     UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
     [errorAlert show];
     NSLog(@"Error: %@",error.description);
 }
-
-#pragma mark - LPGoogleFunctions Delegate
-
-- (void)googleFunctionsWillLoadPlacesAutocomplate:(LPGoogleFunctions *)googleFunctions forInput:(NSString *)input
-{
-    NSLog(@"willLoadPlacesAutcompleteForInput: %@", input);
-}
-
-- (void)googleFunctions:(LPGoogleFunctions *)googleFunctions didLoadPlacesAutocomplate:(LPPlacesAutocomplete *)placesAutocomplate
-{
-    NSLog(@"didLoadPlacesAutocomplete - Delegate");
-}
-
-- (void)googleFunctions:(LPGoogleFunctions *)googleFunctions errorLoadingPlacesAutocomplateWithStatus:(LPGoogleStatus)status
-{
-    NSLog(@"errorLoadingPlacesAutocomplateWithStatus - Delegate: %@", [LPGoogleFunctions getGoogleStatus:status]);
-}
-
 
 @end

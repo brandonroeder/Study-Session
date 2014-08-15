@@ -193,12 +193,4 @@
 {
     return 1;
 }
-
-- (void)checkChangedValue
-{
-    
-}
-
-
-
 @end
