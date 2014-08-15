@@ -97,6 +97,14 @@
         FIIcon *icon = [FIEntypoIcon locationIcon];
         UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
         [cell.imageView setImage:image];
+        
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.textLabel.text = @"Location";
+//        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, cell.contentView.frame.size.height)];
+//        labelText.text = self.descriptionText;
+//        labelText.font = [UIFont fontWithName:@"Helvetica" size:16];
+//        [cell.contentView addSubview:labelText];
+
     }
     if (indexPath.section == 1)
     {
