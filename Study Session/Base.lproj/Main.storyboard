@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="b6F-y1-kxD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="b6F-y1-kxD">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -92,98 +93,14 @@
             <objects>
                 <viewController storyboardIdentifier="NewUserLoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vXZ-lx-hvc" customClass="NewUserLoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="cyP-mH-BYf"/>
+                        <viewControllerLayoutGuide type="bottom" id="0D0-a4-uvf"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                    <view key="view" contentMode="scaleToFill" id="Vzd-th-oPn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Mc-nJ-D5Q">
-                                <rect key="frame" x="20" y="80" width="280" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardType="emailAddress"/>
-                            </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ebp-Ax-tEy">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vj2-T3-qby">
-                                <rect key="frame" x="20" y="120" width="280" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Pass Again" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NWs-xL-LaP">
-                                <rect key="frame" x="20" y="160" width="280" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" secureTextEntry="YES"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="School" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nVD-U5-JBA">
-                                <rect key="frame" x="20" y="200" width="280" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="a19-IM-zPU"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Major" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X67-RA-5H9">
-                                <rect key="frame" x="20" y="240" width="280" height="32"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Tdi-Mo-EDH"/>
-                                </connections>
-                            </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wT-et-Wg9">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="barTintColor" red="0.23529411759999999" green="0.25098039220000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <items>
-                                    <navigationItem id="rMf-gV-8Vb">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="LzK-hu-iWX">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="cancel:" destination="vXZ-lx-hvc" id="DdE-S6-z3h"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Done" id="vqX-cL-4Ak">
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <connections>
-                                                <action selector="done:" destination="vXZ-lx-hvc" id="8bW-6O-wXt"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="Why-o9-F9h"/>
-                                </connections>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="backgroundImage" destination="Ebp-Ax-tEy" id="uUS-bu-PiY"/>
-                        <outlet property="cancelButton" destination="LzK-hu-iWX" id="bkY-EZ-xSr"/>
-                        <outlet property="doneButton" destination="vqX-cL-4Ak" id="ma4-9Y-BoL"/>
-                        <outlet property="emailField" destination="7Mc-nJ-D5Q" id="XPn-sM-K8m"/>
-                        <outlet property="majorField" destination="X67-RA-5H9" id="a5f-2J-8BS"/>
-                        <outlet property="passwordAgainField" destination="NWs-xL-LaP" id="bFI-2m-heZ"/>
-                        <outlet property="passwordField" destination="Vj2-T3-qby" id="IWg-zZ-fTL"/>
-                        <outlet property="schoolField" destination="nVD-U5-JBA" id="LVm-MI-5X0"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -267,7 +184,7 @@
                     <connections>
                         <outlet property="mapView" destination="u9Z-zd-F5U" id="bhe-ea-XZc"/>
                         <segue destination="UPt-EU-i6y" kind="push" identifier="newSession" id="zjN-nv-rpg"/>
-                        <segue destination="odo-oo-dyK" kind="push" id="HYn-a1-6GU"/>
+                        <segue destination="odo-oo-dyK" kind="push" identifier="toSettings" id="HYn-a1-6GU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7k-Rd-XDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,7 +334,7 @@
                         <outlet property="pageControl" destination="iiX-IN-5Ii" id="WMi-bf-U6h"/>
                         <outlet property="tableView" destination="XWT-4G-tqS" id="iTt-NW-LUJ"/>
                         <segue destination="Fg9-uI-MQL" kind="push" identifier="description" id="DcP-z9-mna"/>
-                        <segue destination="Mgt-AP-8wb" kind="push" id="qWv-DB-Udf"/>
+                        <segue destination="Mgt-AP-8wb" kind="push" identifier="toAmenities" id="qWv-DB-Udf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Df-gu-N0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -461,7 +378,6 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0Sr-Bg-xj5">
                                 <rect key="frame" x="0.0" y="116" width="320" height="337"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="sectionIndexBackgroundColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Mgt-AP-8wb" id="bNL-Vc-SES"/>
@@ -487,7 +403,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gk2-2T-TFA">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.1529411765" green="0.68235294120000001" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -506,10 +421,13 @@
         <image name="Facebook.png" width="588" height="130"/>
         <image name="Twitter.png" width="587" height="130"/>
     </resources>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
     </simulatedMetricsContainer>
+    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>
