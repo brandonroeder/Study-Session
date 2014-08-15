@@ -10,7 +10,6 @@
 #import <Parse/Parse.h>
 @interface WallViewController : PFQueryTableViewController <CLLocationManagerDelegate, UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *logout;
 - (void)setInitialLocation:(CLLocation *)aLocation;
 
 @end

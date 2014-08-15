@@ -33,7 +33,6 @@
 {
     [super viewDidAppear:animated];
     [self.descriptionText becomeFirstResponder];
-
 }
 
 - (void)done

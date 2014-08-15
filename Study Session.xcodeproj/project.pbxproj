@@ -379,8 +379,6 @@
 				11D622EB19632EEF0021DABD /* LoginViewController.m */,
 				11D6231E1963382D0021DABD /* NewUserLoginViewController.h */,
 				11D6231F1963382D0021DABD /* NewUserLoginViewController.m */,
-				1122F058199D5E2900F65EF4 /* NSMutableArray+Shuffle.h */,
-				1122F059199D5E2900F65EF4 /* NSMutableArray+Shuffle.m */,
 			);
 			name = "Login/Registration Stuff";
 			sourceTree = "<group>";
@@ -401,6 +399,8 @@
 		118C7391196F0747007D8389 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				1122F058199D5E2900F65EF4 /* NSMutableArray+Shuffle.h */,
+				1122F059199D5E2900F65EF4 /* NSMutableArray+Shuffle.m */,
 				CA50EEA0199581F400A4F443 /* KLCPopup */,
 				11A583C8199BCA63009B2868 /* M13Checkbox.h */,
 				11A583C9199BCA63009B2868 /* M13Checkbox.m */,

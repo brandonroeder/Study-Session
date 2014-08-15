@@ -92,9 +92,12 @@
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     
-    switch (popup.tag) {
-        case 1: {
-            switch (buttonIndex) {
+    switch (popup.tag)
+    {
+        case 1:
+        {
+            switch (buttonIndex)
+            {
                 case 0:
                     [PFUser logOut];
                     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -127,7 +130,6 @@
         cuteTagline.font = [UIFont fontWithName:@"Helvetica" size:12];
         [cuteTagline setTextAlignment:NSTextAlignmentCenter];
 
-        
         footerText.text = @"Study Session v0.2 (Build 200)";
         footerText.textColor = [UIColor colorWithRed:0.553 green:0.552 blue:0.578 alpha:0.900];
         footerText.font = [UIFont fontWithName:@"Helvetica" size:12];
@@ -139,15 +141,17 @@
     return sectionView;
 }
 
-
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
-    [actionSheet.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
-        if ([subview isKindOfClass:[UIButton class]]) {
+    [actionSheet.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop)
+    {
+        if ([subview isKindOfClass:[UIButton class]])
+        {
             UIButton *button = (UIButton *)subview;
             button.titleLabel.textColor = [UIColor flatRedColor];
             NSString *buttonText = button.titleLabel.text;
-            if ([buttonText isEqualToString:NSLocalizedString(@"Cancel", nil)]) {
+            if ([buttonText isEqualToString:NSLocalizedString(@"Cancel", nil)])
+            {
                 button.titleLabel.textColor = [UIColor flatBlueColor];
             }
         }

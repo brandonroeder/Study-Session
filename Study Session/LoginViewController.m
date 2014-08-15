@@ -58,10 +58,9 @@
 
 - (void)changeImage
 {
-    
     static int counter = 0;
     static int isFirstRun = 0;
-    if([self.randomizeImages count] == counter+1)
+    if ([self.randomizeImages count] == counter+1)
     {
         counter = 0;
     }
@@ -70,7 +69,7 @@
     UIImage *blurredSnapshotImage = [[UIImage imageNamed:[self.randomizeImages objectAtIndex:counter]] applyBlurWithRadius:3 tintColor:nil saturationDeltaFactor:0.8 maskImage:nil];
     
     MKParallaxView *basicBackground = [[MKParallaxView alloc] initWithFrame:self.view.frame]; basicBackground.backgroundImage = blurredSnapshotImage;
-    if(isFirstRun != 0)
+    if (isFirstRun != 0)
     {
         basicBackground.alpha = 0.00;
     }
@@ -89,7 +88,8 @@
 
 - (IBAction)TwitterLoginButton:(id)sender
 {
-    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error) {
+    [PFTwitterUtils logInWithBlock:^(PFUser *user, NSError *error)
+    {
         if (!user)
         {
             NSLog(@"Uh oh. The user cancelled the Twitter login.");
@@ -124,10 +124,14 @@
         // Login PFUser using Facebook
         [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error)
         {
-            if (!user) {
-                if (!error) {
+            if (!user)
+            {
+                if (!error)
+                {
                     NSLog(@"Uh oh. The user cancelled the Facebook login.");
-                } else {
+                }
+                else
+                {
                     NSLog(@"Uh oh. An error occurred: %@", error);
                 }
             }
