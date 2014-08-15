@@ -8,15 +8,21 @@
 
 #import "PlaceViewController.h"
 #import "LPGoogleFunctions.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw";
 
-@interface PlaceViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, LPGoogleFunctionsDelegate>
+@interface PlaceViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, LPGoogleFunctionsDelegate, CLLocationManagerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UITextField *searchField;
 @property (nonatomic, strong) LPGoogleFunctions *googleFunctions;
 @property (nonatomic, strong) NSMutableArray *placesList;
 @property (nonatomic, strong) UIImageView *googleLogo;
+@property (nonatomic, strong) UIActivityIndicatorView *spinner;
+@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *location;
+@property (nonatomic, strong) LPLocation *currentLocation;
 @end
 
 @implementation PlaceViewController
@@ -27,6 +33,7 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
     self.navigationController.navigationBar.topItem.title = @"";
+
     self.tableView.backgroundColor = [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
     self.title = @"Location";
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0,119, self.view.frame.size.width, self.view.frame.size.height- 44) style:UITableViewStyleGrouped];
@@ -45,6 +52,10 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     [self.searchField addTarget:self action:@selector(editingChanged)forControlEvents:UIControlEventEditingChanged];
     [self.searchField setValue:[UIFont fontWithName: @"Helvetica" size: 15] forKeyPath:@"_placeholderLabel.font"];
 
+    self.spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.frame = CGRectMake(270, 10, 20, 20);
+    [self.searchField addSubview:self.spinner];
+    
     UIImage *googleLogo = [UIImage imageNamed:@"googleLogo"];
     self.googleLogo = [[UIImageView alloc]initWithImage:googleLogo];
     self.googleLogo.frame = CGRectMake(0, 130, googleLogo.size.width, googleLogo.size.height);
@@ -52,11 +63,22 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     [fakeCell addSubview:self.searchField];
     [self.view addSubview:self.googleLogo];
     [self.view addSubview:fakeCell];
+    
+    [self startLocation];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [self.searchField becomeFirstResponder];
+}
+
+- (void)startLocation
+{
+    self.locationManager = [[CLLocationManager alloc]init]; // initializing locationManager
+    self.locationManager.delegate = self; // we set the delegate of locationManager to self.
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest; // setting the accuracy
+    [self.locationManager startUpdatingLocation];  //requesting location updates
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -116,21 +138,26 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     {
         [self.view addSubview:self.tableView];
         NSString *input = self.searchField.text;
-        [self.googleFunctions loadPlacesAutocompleteWithDetailsForInput:input offset:(int)[input length] radius:0 location:nil placeType:LPGooglePlaceTypeEstablishment countryRestriction:nil successfulBlock:^(NSArray *placesWithDetails)
+        [self.spinner startAnimating];
+
+        [self.googleFunctions loadPlacesAutocompleteWithDetailsForInput:input offset:(int)[input length] radius:5 location:self.currentLocation placeType:LPGooglePlaceTypeEstablishment countryRestriction:nil successfulBlock:^(NSArray *placesWithDetails)
         {
-                 NSLog(@"successful");
+                [self.spinner stopAnimating];
+                NSLog(@"successful");
                  
-                 self.placesList = [NSMutableArray arrayWithArray:placesWithDetails];
+                self.placesList = [NSMutableArray arrayWithArray:placesWithDetails];
                  
-                 if ([self.searchDisplayController isActive])
-                 {
-                     [self.searchDisplayController.searchResultsTableView reloadData];
-                 }
-                 else
-                 {
-                     [self.tableView reloadData];
-                 }
-             } failureBlock:^(LPGoogleStatus status)
+                if ([self.searchDisplayController isActive])
+                {
+                    [self.searchDisplayController.searchResultsTableView reloadData];
+                }
+                else
+                {
+                    [self.tableView reloadData];
+                }
+             }
+         
+            failureBlock:^(LPGoogleStatus status)
              {
                  NSLog(@"Error - Block: %@", [LPGoogleFunctions getGoogleStatus:status]);
                  
@@ -153,7 +180,16 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
     
 }
 
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    self.location = [locations lastObject];
+    self.currentLocation = [[LPLocation alloc]init];
+    self.currentLocation.latitude = self.location.coordinate.latitude;
+    self.currentLocation.longitude = self.location.coordinate.longitude;
+}
+
 #pragma mark - LPGoogleFunctions
+
 
 - (LPGoogleFunctions *)googleFunctions
 {
@@ -194,6 +230,13 @@ NSString *const googleAPIBrowserKey = @"AIzaSyAe-RagGM1Weor59-SDPauE52wisc-C3Uw"
             [self.tableView reloadData];
         }
     }];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
 }
 
 #pragma mark - LPGoogleFunctions Delegate
