@@ -415,7 +415,7 @@
 - (void)signup
 {
     PFObject *placeObject = [PFObject objectWithClassName:@"PlaceObject"];
-    NSString *name= self.locationField.text;
+    NSString *name= self.placeDetails.name;
     NSString *subject = self.subjectField.text;
     NSString *description = self.descriptionText;
     NSString *startTime = self.startTimeText;
