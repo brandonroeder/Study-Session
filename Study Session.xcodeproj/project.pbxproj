@@ -23,6 +23,7 @@
 		1122F05D199D62DF00F65EF4 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1122F05C199D62DF00F65EF4 /* PlaceViewController.m */; };
 		1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCA41975DD67005713C3 /* NewSessionViewController.m */; };
 		1133BCBC19797668005713C3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCBB19797668005713C3 /* SettingsViewController.m */; };
+		114A5D8F199E90A5003B311F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A5D8E199E90A5003B311F /* AboutViewController.m */; };
 		114CAFCD196C735A0035091A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCC196C735A0035091A /* Social.framework */; };
 		114CAFCF196C73840035091A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCE196C73840035091A /* AVFoundation.framework */; };
 		114CAFD1196C74120035091A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFD0196C74120035091A /* Accounts.framework */; };
@@ -149,6 +150,8 @@
 		1133BCA41975DD67005713C3 /* NewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSessionViewController.m; sourceTree = "<group>"; };
 		1133BCBA19797668005713C3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		1133BCBB19797668005713C3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		114A5D8D199E90A5003B311F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		114A5D8E199E90A5003B311F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		114CAFCC196C735A0035091A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		114CAFCE196C73840035091A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		114CAFD0196C74120035091A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -396,6 +399,17 @@
 			name = "Map View Stuff";
 			sourceTree = "<group>";
 		};
+		114A5D8C199E9071003B311F /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1133BCBA19797668005713C3 /* SettingsViewController.h */,
+				1133BCBB19797668005713C3 /* SettingsViewController.m */,
+				114A5D8D199E90A5003B311F /* AboutViewController.h */,
+				114A5D8E199E90A5003B311F /* AboutViewController.m */,
+			);
+			name = SettingsViewController;
+			sourceTree = "<group>";
+		};
 		118C7391196F0747007D8389 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,10 +474,9 @@
 				113A54F21969D9BA00E76110 /* Login/Registration Stuff */,
 				11A583C7199BC36A009B2868 /* NewSessionViewController */,
 				11A583CB199D36CE009B2868 /* WallViewController */,
-				11DE813B196918BC002B83A4 /* SessionViewController.h */,
+				114A5D8C199E9071003B311F /* SettingsViewController */,
 				11DE813C196918BC002B83A4 /* SessionViewController.m */,
-				1133BCBA19797668005713C3 /* SettingsViewController.h */,
-				1133BCBB19797668005713C3 /* SettingsViewController.m */,
+				11DE813B196918BC002B83A4 /* SessionViewController.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -891,6 +904,7 @@
 				CAC9F7861997EBD000717C65 /* UIViewController+KNSemiModal.m in Sources */,
 				CAC5BA14199813DA00F3395E /* LPTransitDetails.m in Sources */,
 				CAC5BA07199813DA00F3395E /* LPMatchedSubstring.m in Sources */,
+				114A5D8F199E90A5003B311F /* AboutViewController.m in Sources */,
 				CAC5BA06199813DA00F3395E /* LPMapImageMarker.m in Sources */,
 				CAC5B9FC199813DA00F3395E /* LPDistanceMatrix.m in Sources */,
 				CAC5BA10199813DA00F3395E /* LPStep.m in Sources */,

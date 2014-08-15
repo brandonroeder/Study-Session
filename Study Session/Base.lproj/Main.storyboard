@@ -202,7 +202,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="YhW-XZ-xYM">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -210,33 +210,6 @@
                                     <outlet property="delegate" destination="odo-oo-dyK" id="4oj-SL-ZvJ"/>
                                 </connections>
                             </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSr-9I-1Lz">
-                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                                <color key="tintColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="20"/>
-                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Settings" id="gZw-j8-jjc">
-                                        <barButtonItem key="leftBarButtonItem" title="Close" id="vWR-1I-54k">
-                                            <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="closeButton:" destination="odo-oo-dyK" id="NBz-Qz-Dlp"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Logout" id="egb-ix-AJ6">
-                                            <color key="tintColor" red="0.90588235289999997" green="0.29803921570000003" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="logout:" destination="odo-oo-dyK" id="lx3-WB-Rz6"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="yFB-jS-vGh"/>
-                                </connections>
-                            </navigationBar>
                         </subviews>
                     </view>
                     <navigationItem key="navigationItem" id="BYf-kS-erE"/>
@@ -246,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAa-k2-ban" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1325" y="-25"/>
+            <point key="canvasLocation" x="-1769" y="2119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="W5h-DJ-u9z">
@@ -294,6 +267,7 @@
                     <connections>
                         <outlet property="mapView" destination="u9Z-zd-F5U" id="bhe-ea-XZc"/>
                         <segue destination="UPt-EU-i6y" kind="push" identifier="newSession" id="zjN-nv-rpg"/>
+                        <segue destination="odo-oo-dyK" kind="push" id="HYn-a1-6GU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t7k-Rd-XDQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

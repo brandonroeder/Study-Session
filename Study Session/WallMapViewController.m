@@ -246,7 +246,9 @@ enum PinAnnotationTypeTag {
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *settingsViewController = [storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
-    [self presentViewController:settingsViewController animated:YES completion:nil];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    [self presentViewController:navController animated:YES completion:nil];
+    //[self presentViewController:settingsViewController animated:YES completion:nil];
 }
 
 

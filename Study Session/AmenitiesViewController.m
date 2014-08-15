@@ -157,22 +157,18 @@
     if (indexPath.row == 1)
     {
         [self.wifiCheckbox toggleCheckState];
-        
     }
     if (indexPath.row == 2)
     {
         [self.tablesCheckbox toggleCheckState];
-        
     }
     if (indexPath.row == 3)
     {
         [self.outletsCheckbox toggleCheckState];
-        
     }
     if (indexPath.row == 4)
     {
         [self.foodCheckbox toggleCheckState];
-        
     }
 }
 

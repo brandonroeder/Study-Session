@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "AboutViewController.h"
 #import "WallMapViewController.h"
 #import "UIColor+FlatColors.h"
 #import "UIImage+ImageEffects.h"
@@ -23,9 +24,9 @@
 {
     [super viewDidLoad];
     self.title = @"Settings";
-    self.tableView.backgroundColor = [UIColor colorWithWhite:0.961 alpha:1.000];
-    [UINavigationBar appearance].barTintColor = [UIColor colorWithWhite:0.961 alpha:1.000];
-    self.view.backgroundColor = [UIColor colorWithWhite:0.961 alpha:1.000];
+    self.tableView.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(closeButton:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain target:self action:@selector(logout:)];
 }
 - (IBAction)closeButton:(id)sender
 {
@@ -47,12 +48,13 @@
 {
     static NSString* cellIdentifier = @"CellIdentifier";
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
     cell.textLabel.textColor = [UIColor blackColor];
-    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundColor = [UIColor whiteColor];
     if (indexPath.section == 0)
     {
         cell.textLabel.text = @"Preferences";
@@ -68,12 +70,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0)
-    {
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        WallMapViewController *mapViewController = [storyboard instantiateViewControllerWithIdentifier:@"UsersViewController"];
-        [self presentViewController:mapViewController animated:YES completion:nil];
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
 
+    if (indexPath.section == 1)
+    {
+        AboutViewController *aboutViewController = [[AboutViewController alloc]init];
+        [[self navigationController] pushViewController: aboutViewController animated:YES];
     }
     
     
