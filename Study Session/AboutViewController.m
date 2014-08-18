@@ -7,6 +7,7 @@
 //
 
 #import "AboutViewController.h"
+#import <FontasticIcons.h>
 
 @interface AboutViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -50,7 +51,41 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.backgroundColor = [UIColor whiteColor];
-    cell.textLabel.text = @"";
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.textColor = [UIColor blackColor];
+
+    if (indexPath.row == 0)
+    {
+        FIIcon *icon = [FIEntypoSocialIcon twitterIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+
+        cell.textLabel.text = @"Follow me on Twitter";
+    }
+    if (indexPath.row == 1)
+    {
+        FIIcon *icon = [FIEntypoSocialIcon facebookIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+        
+        cell.textLabel.text = @"Don't add me on Facebook";
+    }
+    if (indexPath.row == 2)
+    {
+        FIIcon *icon = [FIEntypoIcon mailIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+        
+        cell.textLabel.text = @"Email me shit";
+    }
+    if (indexPath.row == 3)
+    {
+        FIIcon *icon = [FIEntypoIcon airplaneIcon];
+        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+        [cell.imageView setImage:image];
+        
+        cell.textLabel.text = @"I just liked the plane icon";
+    }
     
     return cell;
 }
@@ -69,8 +104,6 @@
 {
     UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 728, 20)];
     
-    if (section == 1)
-    {
         UILabel *footerText = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 320, 20)];
         UILabel *cuteTagline = [[UILabel alloc]initWithFrame:CGRectMake(0, 15, 320, 20)];
         cuteTagline.text = @"Designed and coded in Texas";
@@ -85,7 +118,7 @@
         
         [sectionView addSubview:cuteTagline];
         [sectionView addSubview:footerText];
-    }
+    
     return sectionView;
 }
 

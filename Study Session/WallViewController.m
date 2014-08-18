@@ -102,11 +102,11 @@ enum PinAnnotationTypeTag {
         query.cachePolicy = kPFCachePolicyCacheThenNetwork;
     }
 
-//    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:self.location.coordinate.latitude
-//                                               longitude:self.location.coordinate.longitude];
+    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:self.locationManager.location.coordinate.latitude
+                                               longitude:self.locationManager.location.coordinate.longitude];
     
-    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:32.985678
-                                               longitude:-96.755612];
+//    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:32.985678
+//                                               longitude:-96.755612];
     [query whereKey:kPAWParseLocationKey nearGeoPoint:point withinMiles:miles];
     [query includeKey:kPAWParseUserKey];
     return query;

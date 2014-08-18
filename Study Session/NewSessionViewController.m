@@ -37,10 +37,16 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
     self.view.backgroundColor= [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(signup)];
-    //[self.navigationItem.rightBarButtonItem setEnabled:NO];
+    [self.navigationItem.rightBarButtonItem setEnabled:NO];
 
     self.curDate = [NSDate date];
     self.formatter = [[NSDateFormatter alloc] init];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh:mm a"];
+    NSTimeInterval theTimeInterval = 3600;
+    self.startTimeText = [dateFormatter stringFromDate:[self nextHourDate:[NSDate date]]];
+    self.endTimeText = [dateFormatter stringFromDate:[NSDate dateWithTimeInterval:theTimeInterval sinceDate:[self nextHourDate:[NSDate date]]]];
     [self.formatter setDateFormat:@"EEE, MMM dd"];
     self.title = @"Create Session";
 }
@@ -150,7 +156,7 @@
             UILabel *dateTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 10, cell.frame.size.width/2, 20)];
             dateTitle.text = @"Date";
             
-            UILabel *dateSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, cell.frame.size.width/2, 20)];
+            UILabel *dateSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, cell.frame.size.width/2, 25)];
             dateSubTitle.text = [self.formatter stringFromDate:self.curDate];
             dateSubTitle.font = [UIFont fontWithName:@"Helvetica-Bold" size:18];
             [dateButton addSubview:dateTitle];
@@ -160,8 +166,8 @@
             timeTitle.text = @"Time (CDT)";
             
             UILabel *timeSubTitle = [[UILabel alloc]initWithFrame:CGRectMake(15, 35, (cell.frame.size.width/2)+60   , 20)];
-            
             NSString *arrow = @"→";
+            
             NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", self.startTimeText, arrow, self.endTimeText];
 
             timeSubTitle.text = formattedTimeString;
@@ -169,14 +175,13 @@
             [timeButton addSubview:timeSubTitle];
             [timeButton addSubview: timeTitle];
 
-            
             [cell.contentView addSubview:dateHalf];
             [cell.contentView addSubview:timeHalf];
         }
     }
     if (indexPath.section == 3)
     {
-        FIIcon *icon = [FIEntypoIcon textDocIcon];
+        FIIcon *icon = [FIFontAwesomeIcon fileAltIcon];
         UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
         [cell.imageView setImage:image];
 
@@ -264,12 +269,26 @@
     return sectionView;
 }
 
+- (NSDate*) nextHourDate:(NSDate*)inDate
+{
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *comps = [calendar components: NSEraCalendarUnit|NSYearCalendarUnit| NSMonthCalendarUnit|NSDayCalendarUnit|NSHourCalendarUnit fromDate: inDate];
+    [comps setHour: [comps hour]+1]; // Here you may also need to check if it's the last hour of the day
+    return [calendar dateFromComponents:comps];
+}
+
+
 - (void)addItemViewController:(DescriptionViewController *)controller didFinishEnteringItem:(NSString *)descriptionText
 {
     self.descriptionText = descriptionText;
     [self.tableView beginUpdates];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:3] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+    
+    if ([self shouldEnableDoneButton])
+    {
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    }
 }
 
 - (void)addItemViewController:(AmenitiesViewController *)controller didFinishEnteringAmenities:(NSArray *)arrayOfAmenities
@@ -281,6 +300,11 @@
     self.outlets = [[self.amenities objectAtIndex:2]boolValue];
     self.tables = [[self.amenities objectAtIndex:3]boolValue];
     self.food = [[self.amenities objectAtIndex:4]boolValue];
+    
+    if ([self shouldEnableDoneButton])
+    {
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    }
 }
 
 - (void)setPlace:(PlaceViewController *)controller didFinishSelectingLocation:(LPPlaceDetails *)placeDetails
@@ -289,6 +313,11 @@
     [self.tableView beginUpdates];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationNone];
     [self.tableView endUpdates];
+    
+    if ([self shouldEnableDoneButton])
+    {
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    }
 }
 
 - (void)presentCalendar
@@ -344,7 +373,7 @@
     
     UIView *contentView = [[UIView alloc] init];
     contentView.layer.cornerRadius = 5;
-    contentView.frame = CGRectMake(335, 0, 290, 450);
+    contentView.frame = CGRectMake(335, 10, 290, 400);
     contentView.backgroundColor = [UIColor whiteColor];
     
     self.timeHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 0, 290, 50)];
@@ -372,6 +401,7 @@
     self.startTimePicker.frame = CGRectMake(0, 0, 230, 200); // set frame as your need
     self.startTimePicker.center = CGPointMake(contentView.frame.size.width/2, contentView.frame.size.height/2);
     self.startTimePicker.datePickerMode = UIDatePickerModeTime;
+    [self.startTimePicker setDate:[self nextHourDate:[NSDate date]]];
     [self.startTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
     [contentView addSubview: self.startTimePicker];
     
@@ -381,7 +411,7 @@
     self.endTimePicker.datePickerMode = UIDatePickerModeTime;
     NSTimeInterval theTimeInterval = 3600;
         
-    [self.endTimePicker setDate:[NSDate dateWithTimeInterval:theTimeInterval sinceDate:[NSDate date]]];
+    [self.endTimePicker setDate:[NSDate dateWithTimeInterval:theTimeInterval sinceDate:[self nextHourDate:[NSDate date]]]];
     [self.endTimePicker addTarget:self action:@selector(timeChanged) forControlEvents:UIControlEventValueChanged];
     [contentView addSubview: self.endTimePicker];
     [self.endTimePicker setHidden:YES];
@@ -391,12 +421,16 @@
 - (void)closePopup
 {
     [self.calendarPopup dismiss:YES];
-    
     [self.tableView beginUpdates];
     NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
     NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
     [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
+    
+    if ([self shouldEnableDoneButton])
+    {
+        [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    }
 }
 - (IBAction)segmentSwitch:(id)sender
 {
@@ -473,6 +507,25 @@
     self.endTimeText = [dateFormatter stringFromDate:self.endTimePicker.date];
 }
 
+- (BOOL)shouldEnableDoneButton
+{
+    NSString *name= self.placeDetails.name;
+    NSString *subject = self.subjectField.text;
+    NSString *description = self.descriptionText;
+    NSString *startTime = self.startTimeText;
+    NSString *endTime = self.endTimeText;
+    NSString *date = [self.formatter stringFromDate:self.curDate];
+    PFGeoPoint *sessionLocation = [PFGeoPoint geoPointWithLatitude:self.placeDetails.geometry.location.latitude longitude:self.placeDetails.geometry.location.longitude];
+
+    if ( name.length == 0 || subject.length == 0 || description.length == 0 || startTime.length == 0 || endTime.length == 0 || date.length == 0 || sessionLocation == nil)
+    {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
 - (void)signup
 {
     PFObject *placeObject = [PFObject objectWithClassName:@"PlaceObject"];

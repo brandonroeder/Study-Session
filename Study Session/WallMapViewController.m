@@ -48,8 +48,8 @@ enum PinAnnotationTypeTag {
     [self.locationManager startUpdatingLocation];
     [self setInitialLocation:self.locationManager.location];
     
-//    self.mapView.region = MKCoordinateRegionMake(self.location.coordinate, MKCoordinateSpanMake(0.05f, 0.05f));
-    self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(32.985678, -96.755612),MKCoordinateSpanMake(0.05f, 0.05f));
+    self.mapView.region = MKCoordinateRegionMake(self.locationManager.location.coordinate, MKCoordinateSpanMake(0.05f, 0.05f));
+    //self.mapView.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(32.985678, -96.755612),MKCoordinateSpanMake(0.05f, 0.05f));
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
     WallViewController *wallViewController = [storyboard instantiateViewControllerWithIdentifier:@"WallViewController"];
@@ -72,7 +72,8 @@ enum PinAnnotationTypeTag {
     FBRequest *request = [FBRequest requestForMe];
     [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error)
      {
-         if (!error){
+         if (!error)
+         {
              NSDictionary *userData = (NSDictionary *)result;
              NSString *facebookID = userData[@"id"];
              NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
@@ -110,7 +111,7 @@ enum PinAnnotationTypeTag {
         annotationView.canShowCallout = YES;
         annotationView.draggable = NO;
         annotationView.animatesDrop = NO;
-        annotationView.image = [UIImage imageNamed:@"Map_Icon"];
+        //annotationView.image = [UIImage imageNamed:@"Map_Icon"];
         
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
         annotationView.rightCalloutAccessoryView=detailButton;
@@ -131,7 +132,7 @@ enum PinAnnotationTypeTag {
             annotationView.canShowCallout = YES;
             annotationView.animatesDrop = NO;
             annotationView.draggable = NO;
-            annotationView.image = [UIImage imageNamed:@"Map_Icon"];
+            //annotationView.image = [UIImage imageNamed:@"Map_Icon"];
             
         }
         

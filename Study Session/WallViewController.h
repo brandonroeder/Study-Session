@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 @interface WallViewController : PFQueryTableViewController <CLLocationManagerDelegate, UITableViewDataSource>
-@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
 - (void)setInitialLocation:(CLLocation *)aLocation;
 
 @end
