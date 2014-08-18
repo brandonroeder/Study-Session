@@ -9,14 +9,10 @@
 #import "WallViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#import "GeoPointAnnotation.h"
-#import "GeoQueryAnnotation.h"
 #import "NewSessionViewController.h"
 #import "SessionViewController.h"
-#import "UIImage+ImageEffects.h"
-#import "CircleOverlay.h"
+#import "SVProgressHUD.h"
 #import <FacebookSDK/FacebookSDK.h>
-#import <POP/POP.H>
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -50,6 +46,7 @@ enum PinAnnotationTypeTag {
         self.pullToRefreshEnabled = NO;
         self.paginationEnabled = YES;
         self.objectsPerPage = 25;
+        self.loadingViewEnabled = NO;
     }
     return self;
 }
@@ -59,9 +56,9 @@ enum PinAnnotationTypeTag {
     [self.locationManager startUpdatingLocation];
     [self setInitialLocation:self.locationManager.location];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self loadObjects];
     [self refreshControl];
     [self.tableView reloadData];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -73,19 +70,23 @@ enum PinAnnotationTypeTag {
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    [self loadObjects];
+    //[self loadObjects];
 
 }
 
 - (void)objectsWillLoad
 {
     [super objectsWillLoad];
-    
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0.424 green:0.476 blue:0.479 alpha:0.900]];
+    [SVProgressHUD setRingThickness:3];
+    [SVProgressHUD showWithStatus:@"Loading..."];
 }
 
 - (void)objectsDidLoad:(NSError *)error
 {
     [super objectsDidLoad:error];
+    [SVProgressHUD dismiss];
     [self.tableView reloadData];
 
 }
@@ -94,7 +95,6 @@ enum PinAnnotationTypeTag {
 {
     self.radius = 20000;
     CGFloat miles = self.radius/1000.0f;
-    
     PFQuery *query = [PFQuery queryWithClassName:@"PlaceObject"];
     
     if (self.objects.count == 0)
@@ -103,7 +103,7 @@ enum PinAnnotationTypeTag {
     }
 
     PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:self.locationManager.location.coordinate.latitude
-                                               longitude:self.locationManager.location.coordinate.longitude];
+                                               longitude:self.location.coordinate.longitude];
     
 //    PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:32.985678
 //                                               longitude:-96.755612];

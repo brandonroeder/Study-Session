@@ -109,18 +109,23 @@ static CGFloat kImageOriginHight = 140.f;
     {
         return 3;
     }
+    else if (section == 3)
+    {
+        return 5;
+    }
+    else
     return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0)
+    if (indexPath.section == 0) //Description
     {
         return 70;
     }
-    if (indexPath.section == 3)
+    if (indexPath.section == 3) //Amenities
     {
-        return 130;
+        return 44;
     }
     
     if (indexPath.section == 4)
@@ -196,15 +201,13 @@ static CGFloat kImageOriginHight = 140.f;
     
     if (indexPath.section == 0)
     {
-        FIIcon *icon = [FIFontAwesomeIcon fileAltIcon];
-        UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
-        [cell.imageView setImage:image];
 
-        UITextView *sessionDetails= [[UITextView alloc]initWithFrame:CGRectMake(30,0,cell.contentView.frame.size.width - 30, 70)];
+        UITextView *sessionDetails= [[UITextView alloc]initWithFrame:CGRectMake(15,0,cell.contentView.frame.size.width - 15, 70)];
         [sessionDetails setScrollEnabled:NO];
         [sessionDetails setSelectable:NO];
         sessionDetails.text = self.detailItem[@"description"];
-        sessionDetails.textColor = [UIColor blackColor];
+        sessionDetails.font = [UIFont fontWithName:@"Helvetica" size:16];
+        sessionDetails.textColor = [UIColor flatGrayColor];
         [cell.contentView addSubview:sessionDetails];
     }
     if (indexPath.section == 1)
@@ -219,7 +222,6 @@ static CGFloat kImageOriginHight = 140.f;
             cell.textLabel.text = subject;
             cell.textLabel.textColor = [UIColor flatGrayColor];
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
-            
         }
 
         if (indexPath.row == 1)
@@ -254,6 +256,54 @@ static CGFloat kImageOriginHight = 140.f;
     
     if (indexPath.section == 2)
     {
+    }
+    
+    if (indexPath.section == 3)
+    {
+        UILabel *amenitiesBool = [[UILabel alloc]initWithFrame:CGRectMake(cell.contentView.frame.size.width-50, 10, 200, 20)];
+        amenitiesBool.textColor = [UIColor flatGrayColor];
+        [cell.contentView addSubview:amenitiesBool];
+        if (indexPath.row == 0)
+        {
+            FIIcon *icon = [FIEntypoIcon muteIcon];
+            UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+            [cell.imageView setImage:image];
+            amenitiesBool.text = (self.detailItem[@"quiet"]) ? @"Yes" : @"No";
+            cell.textLabel.text = @"Quiet";
+        }
+        if (indexPath.row == 1)
+        {
+            FIIcon *icon = [FIEntypoIcon monitorIcon];
+            UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+            [cell.imageView setImage:image];
+            amenitiesBool.text = (self.detailItem[@"tables"]) ? @"Yes" : @"No";
+            cell.textLabel.text = @"Tables";
+        }
+        if (indexPath.row == 2)
+        {
+            FIIcon *icon = [FIEntypoIcon batteryIcon];
+            UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+            [cell.imageView setImage:image];
+            amenitiesBool.text = (self.detailItem[@"outlets"]) ? @"Yes" : @"No";
+            cell.textLabel.text = @"Outlets";
+        }
+        if (indexPath.row == 3)
+        {
+            FIIcon *icon = [FIEntypoIcon signalIcon];
+            UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+            [cell.imageView setImage:image];
+            amenitiesBool.text = (self.detailItem[@"wifi"]) ? @"Yes" : @"No";
+            cell.textLabel.text = @"WiFi";
+        }
+        if (indexPath.row == 4)
+        {
+            FIIcon *icon = [FIEntypoIcon cartIcon];
+            UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
+            [cell.imageView setImage:image];
+            amenitiesBool.text = (self.detailItem[@"Food"]) ? @"Yes" : @"No";
+            cell.textLabel.text = @"Food";
+        }
+        
     }
     
     if (indexPath.section == 4)
