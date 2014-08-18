@@ -56,7 +56,6 @@
         [self.quietCheckbox setValue:[NSNumber numberWithBool:NO] forKeyPath:@"uncheckedValue"];
 
         self.quietCheckbox.frame = CGRectMake(0, 0, self.quietCheckbox.frame.size.width, self.quietCheckbox.frame.size.height);
-        [self.quietCheckbox addTarget:self action:@selector(checkChangedValue) forControlEvents:UIControlEventValueChanged];
         self.quietCheckbox.flat = YES;
         self.quietCheckbox.strokeWidth = 0.5;
         self.quietCheckbox.strokeColor =  [UIColor colorWithRed:0.625 green:0.627 blue:0.657 alpha:0.900];
@@ -75,7 +74,6 @@
         [self.wifiCheckbox setValue:[NSNumber numberWithBool:NO] forKeyPath:@"uncheckedValue"];
 
         self.wifiCheckbox.frame = CGRectMake(0, 0, self.wifiCheckbox.frame.size.width, self.wifiCheckbox.frame.size.height);
-        [self.wifiCheckbox addTarget:self action:@selector(checkChangedValue) forControlEvents:UIControlEventValueChanged];
         self.wifiCheckbox.flat = YES;
         self.wifiCheckbox.strokeWidth = 0.5;
         self.wifiCheckbox.strokeColor =  [UIColor colorWithRed:0.625 green:0.627 blue:0.657 alpha:0.900];
@@ -94,7 +92,6 @@
         [self.tablesCheckbox setValue:[NSNumber numberWithBool:NO] forKeyPath:@"uncheckedValue"];
 
         self.tablesCheckbox.frame = CGRectMake(0, 0, self.tablesCheckbox.frame.size.width, self.tablesCheckbox.frame.size.height);
-        [self.tablesCheckbox addTarget:self action:@selector(checkChangedValue) forControlEvents:UIControlEventValueChanged];
         self.tablesCheckbox.flat = YES;
         self.tablesCheckbox.strokeWidth = 0.5;
         self.tablesCheckbox.strokeColor =  [UIColor colorWithRed:0.625 green:0.627 blue:0.657 alpha:0.900];
@@ -113,7 +110,6 @@
         [self.outletsCheckbox setValue:[NSNumber numberWithBool:NO] forKeyPath:@"uncheckedValue"];
 
         self.outletsCheckbox.frame = CGRectMake(0, 0, self.outletsCheckbox.frame.size.width, self.outletsCheckbox.frame.size.height);
-        [self.outletsCheckbox addTarget:self action:@selector(checkChangedValue) forControlEvents:UIControlEventValueChanged];
         self.outletsCheckbox.flat = YES;
         self.outletsCheckbox.strokeWidth = 0.5;
         self.outletsCheckbox.strokeColor =  [UIColor colorWithRed:0.625 green:0.627 blue:0.657 alpha:0.900];
@@ -132,7 +128,6 @@
         [self.foodCheckbox setValue:[NSNumber numberWithBool:NO] forKeyPath:@"uncheckedValue"];
 
         self.foodCheckbox.frame = CGRectMake(0, 0, self.foodCheckbox.frame.size.width, self.foodCheckbox.frame.size.height);
-        [self.foodCheckbox addTarget:self action:@selector(checkChangedValue) forControlEvents:UIControlEventValueChanged];
         self.foodCheckbox.flat = YES;
         self.foodCheckbox.strokeWidth = 0.5;
         self.foodCheckbox.strokeColor =  [UIColor colorWithRed:0.625 green:0.627 blue:0.657 alpha:0.900];

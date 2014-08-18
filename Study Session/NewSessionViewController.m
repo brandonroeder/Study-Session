@@ -24,8 +24,8 @@
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 @property (strong, nonatomic) UIScrollView *scroll;
 @property (nonatomic, strong) LPPlaceDetails *placeDetails;
-@property (nonatomic, strong) UILabel *headerLabel;
-
+@property (nonatomic, strong) UILabel *calHeaderLabel;
+@property (nonatomic, strong) UILabel *timeHeaderLabel;
 
 @end
 
@@ -306,8 +306,22 @@
     UIView *closeButtonHeader = [[UIView alloc]initWithFrame:CGRectMake(10, 10, 300, 50)];
     closeButtonHeader.backgroundColor = [UIColor whiteColor];
     closeButtonHeader.layer.cornerRadius = 4;
-    self.headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 0, 300, 50)];
-    [closeButtonHeader addSubview:self.headerLabel];
+    self.calHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 0, 300, 50)];
+    self.calHeaderLabel.text = [self.formatter stringFromDate:self.curDate];
+    [closeButtonHeader addSubview:self.calHeaderLabel];
+    
+    UIButton *checkmark = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [checkmark addTarget:self action:@selector(closePopup) forControlEvents:UIControlEventTouchUpInside];
+    checkmark.frame = CGRectMake(260, 10, 25, 25);
+    FIIcon *icon = [FIFontAwesomeIcon okCircleIcon];
+    
+    FIIconLayer *layer = [FIIconLayer new];
+    layer.icon = icon;
+    layer.frame = checkmark.bounds;
+    layer.iconColor = [UIColor colorWithRed:0.872 green:0.207 blue:0.182 alpha:1.000];
+    [checkmark.layer addSublayer:layer];
+    
+    [closeButtonHeader addSubview:checkmark];
     [self setupPopup];
     
     [self.scroll addSubview:p];
@@ -328,15 +342,30 @@
     [self.locationField resignFirstResponder];
     [self.subjectField resignFirstResponder];
     
-    UIView* contentView = [[UIView alloc] init];
+    UIView *contentView = [[UIView alloc] init];
     contentView.layer.cornerRadius = 5;
     contentView.frame = CGRectMake(335, 0, 290, 450);
     contentView.backgroundColor = [UIColor whiteColor];
     
+    self.timeHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 0, 290, 50)];
+    self.timeHeaderLabel.text = [self.formatter stringFromDate:self.curDate];
+    UIButton *checkmark = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [checkmark addTarget:self action:@selector(closePopup) forControlEvents:UIControlEventTouchUpInside];
+    checkmark.frame = CGRectMake(250, 15, 25, 25);
+    FIIcon *icon = [FIFontAwesomeIcon okCircleIcon];
+    
+    FIIconLayer *layer = [FIIconLayer new];
+    layer.icon = icon;
+    layer.frame = checkmark.bounds;
+    layer.iconColor = [UIColor colorWithRed:0.872 green:0.207 blue:0.182 alpha:1.000];
+    [checkmark.layer addSublayer:layer];
+
+    [contentView addSubview:self.timeHeaderLabel];
+    [contentView addSubview:checkmark];
     UISegmentedControl *timeControl = [[UISegmentedControl alloc]initWithItems:@[@"Start Time", @"End Time"]];
     timeControl.selectedSegmentIndex = 0;
     [timeControl addTarget:self action:@selector(segmentSwitch:) forControlEvents:UIControlEventValueChanged];
-    timeControl.frame = CGRectMake(15, 30, 260, 30);
+    timeControl.frame = CGRectMake(15, 60, 260, 30);
     [contentView addSubview:timeControl];
  
     self.startTimePicker = [[UIDatePicker alloc] init];
@@ -358,6 +387,16 @@
     [self.endTimePicker setHidden:YES];
 
     [self.scroll addSubview:contentView];
+}
+- (void)closePopup
+{
+    [self.calendarPopup dismiss:YES];
+    
+    [self.tableView beginUpdates];
+    NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
+    NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];
+    [self.tableView reloadRowsAtIndexPaths:rowsToReload withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
 }
 - (IBAction)segmentSwitch:(id)sender
 {
@@ -416,9 +455,9 @@
 
 - (void)datePicker:(ESDatePicker *)datePicker dateSelected:(NSDate *)date
 {
-    //[self.calendarPopup dismiss:YES];
     self.curDate = date;
-    self.headerLabel.text = [self.formatter stringFromDate:self.curDate];
+    self.calHeaderLabel.text = [self.formatter stringFromDate:self.curDate];
+    self.timeHeaderLabel.text = [self.formatter stringFromDate:self.curDate];
     [self.tableView beginUpdates];
     NSIndexPath* rowToReload = [NSIndexPath indexPathForRow:1 inSection:2];
     NSArray* rowsToReload = [NSArray arrayWithObjects:rowToReload, nil];

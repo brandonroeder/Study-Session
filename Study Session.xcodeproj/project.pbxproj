@@ -24,6 +24,7 @@
 		1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCA41975DD67005713C3 /* NewSessionViewController.m */; };
 		1133BCBC19797668005713C3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCBB19797668005713C3 /* SettingsViewController.m */; };
 		114A5D8F199E90A5003B311F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A5D8E199E90A5003B311F /* AboutViewController.m */; };
+		114A5D9119A24867003B311F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114A5D9019A24867003B311F /* FacebookSDK.framework */; };
 		114CAFCD196C735A0035091A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCC196C735A0035091A /* Social.framework */; };
 		114CAFCF196C73840035091A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCE196C73840035091A /* AVFoundation.framework */; };
 		114CAFD1196C74120035091A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFD0196C74120035091A /* Accounts.framework */; };
@@ -112,7 +113,6 @@
 		CAD8593A19887D29004CCD27 /* UIViewController+QMBParallaxScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD8593819887D29004CCD27 /* UIViewController+QMBParallaxScrollViewController.m */; };
 		CAE412301974C7D50057E296 /* GeoPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE4122D1974C7D50057E296 /* GeoPointAnnotation.m */; };
 		CAE412311974C7D50057E296 /* GeoQueryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = CAE4122F1974C7D50057E296 /* GeoQueryAnnotation.m */; };
-		CAFBC99D19774FB500D3BE54 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAFBC99C19774FB500D3BE54 /* FacebookSDK.framework */; };
 		CAFBC9A01978A36B00D3BE54 /* UIImageView+Letters.m in Sources */ = {isa = PBXBuildFile; fileRef = CAFBC99F1978A36B00D3BE54 /* UIImageView+Letters.m */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +152,7 @@
 		1133BCBB19797668005713C3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		114A5D8D199E90A5003B311F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		114A5D8E199E90A5003B311F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		114A5D9019A24867003B311F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		114CAFCC196C735A0035091A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		114CAFCE196C73840035091A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		114CAFD0196C74120035091A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -299,7 +300,6 @@
 		CAE4122D1974C7D50057E296 /* GeoPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoPointAnnotation.m; sourceTree = "<group>"; };
 		CAE4122E1974C7D50057E296 /* GeoQueryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoQueryAnnotation.h; sourceTree = "<group>"; };
 		CAE4122F1974C7D50057E296 /* GeoQueryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoQueryAnnotation.m; sourceTree = "<group>"; };
-		CAFBC99C19774FB500D3BE54 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		CAFBC99E1978A36B00D3BE54 /* UIImageView+Letters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Letters.h"; sourceTree = "<group>"; };
 		CAFBC99F1978A36B00D3BE54 /* UIImageView+Letters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Letters.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,7 +312,6 @@
 				CA83EEA01983356200E4496E /* Twitter.framework in Frameworks */,
 				CAAAA132197A3F1000908307 /* CoreMotion.framework in Frameworks */,
 				114CAFD1196C74120035091A /* Accounts.framework in Frameworks */,
-				CAFBC99D19774FB500D3BE54 /* FacebookSDK.framework in Frameworks */,
 				114CAFCF196C73840035091A /* AVFoundation.framework in Frameworks */,
 				11D6231B196330910021DABD /* StoreKit.framework in Frameworks */,
 				114CAFCD196C735A0035091A /* Social.framework in Frameworks */,
@@ -328,6 +327,7 @@
 				11D6230D196330540021DABD /* AudioToolbox.framework in Frameworks */,
 				11D622D819632EEF0021DABD /* CoreGraphics.framework in Frameworks */,
 				11D622DA19632EEF0021DABD /* UIKit.framework in Frameworks */,
+				114A5D9119A24867003B311F /* FacebookSDK.framework in Frameworks */,
 				11D6230B19632F120021DABD /* Parse.framework in Frameworks */,
 				7DCDEBAF113C478AB36F9382 /* libPods.a in Frameworks */,
 			);
@@ -548,7 +548,7 @@
 			children = (
 				CA83EE9F1983356200E4496E /* Twitter.framework */,
 				CAAAA131197A3F1000908307 /* CoreMotion.framework */,
-				CAFBC99C19774FB500D3BE54 /* FacebookSDK.framework */,
+				114A5D9019A24867003B311F /* FacebookSDK.framework */,
 				114CAFD0196C74120035091A /* Accounts.framework */,
 				114CAFCE196C73840035091A /* AVFoundation.framework */,
 				114CAFCC196C735A0035091A /* Social.framework */,
@@ -1057,6 +1057,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/brandon/Documents/FacebookSDK,
+					/Users/brandon.roeder/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Study Session/Study Session-Prefix.pch";
@@ -1083,6 +1084,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					/Users/brandon/Documents/FacebookSDK,
+					/Users/brandon.roeder/Documents/FacebookSDK,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Study Session/Study Session-Prefix.pch";
