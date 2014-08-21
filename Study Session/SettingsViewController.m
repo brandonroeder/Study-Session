@@ -11,6 +11,7 @@
 #import "WallMapViewController.h"
 #import "UIColor+FlatColors.h"
 #import "UIImage+ImageEffects.h"
+#import "PreferencesViewController.h"
 #import <Parse/Parse.h>
 #import "LoginViewController.h"
 
@@ -72,6 +73,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+
+    if (indexPath.section == 0)
+    {
+        PreferencesViewController *prefsViewController = [[PreferencesViewController alloc]init];
+        [[self navigationController] pushViewController: prefsViewController animated:YES];
+    }
 
     if (indexPath.section == 1)
     {

@@ -14,6 +14,7 @@
 #import "UIImageView+Letters.h"
 #import "SVProgressHUD.h"
 #import "AFNetworking.h"
+#import "AFTableViewCell.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import <CoreMotion/CoreMotion.h>
@@ -37,9 +38,14 @@ static CGFloat kImageOriginHight = 140.f;
 @property (nonatomic, strong) NSString *memberEmail;
 @property (strong, nonatomic) UIView *joinSessionView;
 @property (strong, nonatomic) UIButton *joinButton;
+@property (nonatomic, retain) NSDateFormatter *formatter;
+@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) NSDate *startTime;
+@property (nonatomic, retain) NSDate *endTime;
+@property (nonatomic, strong) NSMutableDictionary *contentOffsetDictionary;
+@property (nonatomic, strong) NSArray *colorArray;
 
-@property NSIndexPath *expandedRow;
-@property BOOL isExpanded;
+
 @end
 
 @implementation SessionViewController
@@ -49,9 +55,9 @@ static CGFloat kImageOriginHight = 140.f;
     [super viewDidLoad];
     [self setupMap];
 
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0.424 green:0.476 blue:0.479 alpha:0.900]];
-    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
-    
+    self.formatter = [[NSDateFormatter alloc] init];
+    [self.formatter setDateStyle:NSDateFormatterLongStyle];
+
     self.tableView.contentInset = UIEdgeInsetsMake(kImageOriginHight, 0, 0, 0);
     [self.tableView addSubview:self.mapView];
     self.tableView.showsVerticalScrollIndicator= NO;
@@ -71,14 +77,44 @@ static CGFloat kImageOriginHight = 140.f;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
 
     [self configureBottomButton];
+    [self collectionStuff];
 }
 
--(void)dealloc
+- (void)collectionStuff
+{
+    const NSInteger numberOfCollectionViewCells = 15;
+    const NSInteger numberOfTableViewRows = 20;
+
+    NSMutableArray *mutableArray = [NSMutableArray arrayWithCapacity:numberOfTableViewRows];
+    
+    for (NSInteger tableViewRow = 0; tableViewRow < numberOfTableViewRows; tableViewRow++)
+    {
+        NSMutableArray *colorArray = [NSMutableArray arrayWithCapacity:numberOfCollectionViewCells];
+        
+        for (NSInteger collectionViewItem = 0; collectionViewItem < numberOfCollectionViewCells; collectionViewItem++)
+        {
+            
+            CGFloat red = arc4random() % 255;
+            CGFloat green = arc4random() % 255;
+            CGFloat blue = arc4random() % 255;
+            UIColor *color = [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:1.0f];
+            
+            [colorArray addObject:color];
+        }
+        
+        [mutableArray addObject:colorArray];
+    }
+    self.colorArray = [NSArray arrayWithArray:mutableArray];
+    self.contentOffsetDictionary = [NSMutableDictionary dictionary];
+}
+
+- (void)dealloc
 {
     self.mapView.delegate = nil;
     self.mapView = nil;
     self.tableView.delegate = nil;
 }
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
@@ -96,6 +132,14 @@ static CGFloat kImageOriginHight = 140.f;
         f.size.height =  -yOffset;
         self.mapView.frame = f;
     }
+    
+    if (![scrollView isKindOfClass:[UICollectionView class]]) return;
+    
+    CGFloat horizontalOffset = scrollView.contentOffset.x;
+    
+    UICollectionView *collectionView = (UICollectionView *)scrollView;
+    NSInteger index = collectionView.tag;
+    self.contentOffsetDictionary[[@(index) stringValue]] = @(horizontalOffset);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -105,16 +149,16 @@ static CGFloat kImageOriginHight = 140.f;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 1)
+    if (section == 1) //details
     {
         return 3;
     }
-    else if (section == 3)
+    else if (section == 3) //amenities
     {
         return 5;
     }
     else
-    return 1;
+        return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -123,16 +167,20 @@ static CGFloat kImageOriginHight = 140.f;
     {
         return 70;
     }
+    if (indexPath.section == 2) //Members
+    {
+        return 66;
+    }
     if (indexPath.section == 3) //Amenities
     {
         return 44;
     }
     
-    if (indexPath.section == 4)
+    if (indexPath.section == 4) //Other
     {
         return 100;
     }
-    if (indexPath.section == 5)
+    if (indexPath.section == 5) //More other
     {
         return 100;
     }
@@ -178,17 +226,24 @@ static CGFloat kImageOriginHight = 140.f;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString* cellIdentifier = @"CellIdentifier";
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil)
+    static NSString* CellIdentifier = @"CellIdentifier";
+    
+//    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (cell == nil)
+//    {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+//    }
+//    static NSString *CellIdentifier = @"CellIdentifier";
+    
+    AFTableViewCell *cell = (AFTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (!cell)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        cell = [[AFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
     }
-
     cell.backgroundView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];
     cell.backgroundView.backgroundColor = [UIColor whiteColor];
     cell.clipsToBounds = YES;
-
     
     //view for avatars (helps contain them for gravity and fade in shit)
     UIView *backView =[[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, 48)];
@@ -201,7 +256,6 @@ static CGFloat kImageOriginHight = 140.f;
     
     if (indexPath.section == 0)
     {
-
         UITextView *sessionDetails= [[UITextView alloc]initWithFrame:CGRectMake(15,0,cell.contentView.frame.size.width - 15, 70)];
         [sessionDetails setScrollEnabled:NO];
         [sessionDetails setSelectable:NO];
@@ -230,8 +284,9 @@ static CGFloat kImageOriginHight = 140.f;
             UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
             [cell.imageView setImage:image];
 
-            NSString *date = self.detailItem[@"date"];
-            cell.textLabel.text = date;
+            self.date = self.detailItem[@"date"];
+        
+            cell.textLabel.text = [self.formatter stringFromDate:self.date];
             cell.textLabel.textColor = [UIColor flatGrayColor];
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
             
@@ -242,20 +297,18 @@ static CGFloat kImageOriginHight = 140.f;
             UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
             [cell.imageView setImage:image];
 
-            NSString *startTimeText = self.detailItem[@"startTime"];
-            NSString *endTimeText = self.detailItem[@"endTime"];
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"hh:mm a"];
+
+            self.startTime = self.detailItem[@"startTime"];
+            self.endTime= self.detailItem[@"endTime"];
             NSString *arrow = @"→";
-            NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", startTimeText, arrow, endTimeText];
+            NSString *formattedTimeString = [NSString stringWithFormat:@"%@ %@ %@", [dateFormatter stringFromDate:self.startTime], arrow, [dateFormatter stringFromDate:self.endTime]];
 
             cell.textLabel.text = formattedTimeString;
             cell.textLabel.textColor = [UIColor flatGrayColor];
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
         }
-    }
-    
-    
-    if (indexPath.section == 2)
-    {
     }
     
     if (indexPath.section == 3)
@@ -314,7 +367,6 @@ static CGFloat kImageOriginHight = 140.f;
         sessionDetails1.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo.";
         sessionDetails1.textColor = [UIColor flatGrayColor];
         [cell.contentView addSubview:sessionDetails1];
-        
     }
     
     if (indexPath.section == 5)
@@ -325,10 +377,7 @@ static CGFloat kImageOriginHight = 140.f;
         sessionDetails1.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo.";
         sessionDetails1.textColor = [UIColor flatGrayColor];
         [cell.contentView addSubview:sessionDetails1];
-        
     }
-
-    
     return cell;
 }
 
@@ -344,14 +393,175 @@ static CGFloat kImageOriginHight = 140.f;
                                 nil];
         popup.tag = 1;
         [popup showInView:[UIApplication sharedApplication].keyWindow];
-
     }
 
     PFACL *placeACL = [PFACL ACLWithUser:[PFUser currentUser]];
     [placeACL setPublicReadAccess:YES];
     [placeACL setPublicWriteAccess:YES];
     self.detailItem.ACL = placeACL;
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(AFTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2)
+    {
+        [cell setCollectionViewDataSourceDelegate:self index:indexPath.row];
+        NSInteger index = cell.collectionView.tag;
+        
+        CGFloat horizontalOffset = [self.contentOffsetDictionary[[@(index) stringValue]] floatValue];
+        [cell.collectionView setContentOffset:CGPointMake(horizontalOffset, 0)];
+    }
+}
+
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    NSArray *memberAvatarsArray = [self.detailItem objectForKey:@"facebookPictureURL"];
+    return memberAvatarsArray.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewCellIdentifier forIndexPath:indexPath];
     
+    NSArray *memberAvatars = [self.detailItem objectForKey:@"facebookPictureURL"];
+    NSMutableArray* images = [NSMutableArray arrayWithCapacity:memberAvatars.count];
+    
+    self.avatar1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    self.avatar2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    self.avatar3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    self.avatar4 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    self.avatar5 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    self.avatar6 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+
+    
+    cell.contentView.layer.cornerRadius = 20;
+    cell.contentView.layer.masksToBounds = YES;
+
+
+    for(int i = 0; i < memberAvatars.count; i++)
+    {
+        NSURL* url = [NSURL URLWithString:memberAvatars[i]];
+        
+        [self downloadImageWithURL:url completionBlock:^(BOOL succeeded, UIImage *image)
+         {
+             if (succeeded)
+             {
+                 [images addObject:image];
+                 if (i == (memberAvatars.count - 1))
+                 {
+                     if (memberAvatars.count >=6)
+                     {
+                         self.avatar1.image = [images objectAtIndex:0];
+                         self.avatar2.image = [images objectAtIndex:1];
+                         self.avatar3.image = [images objectAtIndex:2];
+                         self.avatar4.image = [images objectAtIndex:3];
+                         self.avatar5.image = [images objectAtIndex:4];
+                         self.avatar6.image = [images objectAtIndex:5];
+                     }
+                     
+                     switch (memberAvatars.count)
+                     {
+                         case 5:
+                         {
+                             self.avatar1.image = [images objectAtIndex:0];
+                             self.avatar2.image = [images objectAtIndex:1];
+                             self.avatar3.image = [images objectAtIndex:2];
+                             self.avatar4.image = [images objectAtIndex:3];
+                             self.avatar5.image = [images objectAtIndex:4];
+                             
+                             [self.avatar6 removeFromSuperview];
+                         }
+                         case 4:
+                         {
+                             self.avatar1.image = [images objectAtIndex:0];
+                             self.avatar2.image = [images objectAtIndex:1];
+                             self.avatar3.image = [images objectAtIndex:2];
+                             self.avatar4.image = [images objectAtIndex:3];
+                             
+                             [self.avatar5 removeFromSuperview];
+                             [self.avatar6 removeFromSuperview];
+                         }
+                         case 3:
+                         {
+                             self.avatar1.image = [images objectAtIndex:0];
+                             self.avatar2.image = [images objectAtIndex:1];
+                             self.avatar3.image = [images objectAtIndex:2];
+                             
+                             [self.avatar4 removeFromSuperview];
+                             [self.avatar5 removeFromSuperview];
+                             [self.avatar6 removeFromSuperview];
+                         }
+                         case 2:
+                         {
+                             self.avatar1.image = [images objectAtIndex:0];
+                             self.avatar2.image = [images objectAtIndex:1];
+                             
+                             [self.avatar3 removeFromSuperview];
+                             [self.avatar4 removeFromSuperview];
+                             [self.avatar5 removeFromSuperview];
+                             [self.avatar6 removeFromSuperview];
+                         }
+                         case 1:
+                         {
+                             self.avatar1.image = [images objectAtIndex:0];
+                             
+                             [self.avatar2 removeFromSuperview];
+                             [self.avatar3 removeFromSuperview];
+                             [self.avatar4 removeFromSuperview];
+                             [self.avatar5 removeFromSuperview];
+                             [self.avatar6 removeFromSuperview];
+                         }
+                     }
+
+                     if (indexPath.item == 0)
+                     {
+                         [cell.contentView addSubview:self.avatar1];
+                     }
+                     if (indexPath.item == 1)
+                     {
+                         [cell.contentView addSubview:self.avatar2];
+                     }
+                     if (indexPath.item == 2)
+                     {
+                         [cell.contentView addSubview:self.avatar3];
+                     }
+                     if (indexPath.item == 3)
+                     {
+                         [cell.contentView addSubview:self.avatar4];
+                     }
+                     if (indexPath.item == 4)
+                     {
+                         [cell.contentView addSubview:self.avatar5];
+                     }
+                     if (indexPath.item == 5)
+                     {
+                         [cell.contentView addSubview:self.avatar6];
+                     }
+                 }
+             }
+         }];
+    }
+    return cell;
+}
+
+
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error){
+                               if (!error)
+                               {
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               }
+                               else
+                               {
+                                   completionBlock(NO,nil);
+                               }
+                           }];
 }
 
 - (void)setupMap
@@ -448,11 +658,12 @@ static CGFloat kImageOriginHight = 140.f;
 
 - (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (popup.tag) {
+    switch (popup.tag)
+    {
         case 1: {
-            switch (buttonIndex) {
+            switch (buttonIndex)
+            {
                 case 0:
-                    
                     [SVProgressHUD showSuccessWithStatus:@"Added!"];
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                         [self addSessionToCalendar];
@@ -474,24 +685,21 @@ static CGFloat kImageOriginHight = 140.f;
 {
     EKEventStore *eventStore=[[EKEventStore alloc] init];
     
-    [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error){
+    [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error)
+    {
          if (granted)
          {
              EKEvent *event  = [EKEvent eventWithEventStore:eventStore];
-             NSDate *startDate = [NSDate date];
              //Create the end date components
-             NSDateComponents *tomorrowDateComponents = [[NSDateComponents alloc] init];
-             tomorrowDateComponents.day = 1;
-             
-             NSDate *endDate = [[NSCalendar currentCalendar] dateByAddingComponents:tomorrowDateComponents
-                                                                             toDate:startDate
-                                                                            options:0];
+//             NSDateComponents *tomorrowDateComponents = [[NSDateComponents alloc] init];
+//             
+//             NSDate *endDate = [[NSCalendar currentCalendar] dateByAddingComponents:tomorrowDateComponents
+//                                                                             toDate:startDate
+//                                                                            options:0];
              
              event.title =self.detailItem[@"name"];
-             event.startDate=startDate;
-             event.endDate=endDate;
-             event.notes = self.description;
-             event.allDay=YES;
+             event.startDate = self.date;
+             event.notes = self.detailItem[@"description"];
              
              [event setCalendar:[eventStore defaultCalendarForNewEvents]];
              
@@ -508,30 +716,28 @@ static CGFloat kImageOriginHight = 140.f;
 
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet
 {
-    [actionSheet.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop) {
-        if ([subview isKindOfClass:[UIButton class]]) {
+    [actionSheet.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop)
+    {
+        if ([subview isKindOfClass:[UIButton class]])
+        {
             UIButton *button = (UIButton *)subview;
             button.titleLabel.textColor = [UIColor flatBlueColor];
             NSString *buttonText = button.titleLabel.text;
-            if ([buttonText isEqualToString:NSLocalizedString(@"Cancel", nil)]) {
+            if ([buttonText isEqualToString:NSLocalizedString(@"Cancel", nil)])
+            {
                 button.titleLabel.textColor = [UIColor flatRedColor];
             }
         }
     }];
 }
 
-
-
 - (void)joinSession
 {
     NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser]valueForKey:@"email"]];
-    
     PFACL *placeACL = [PFACL ACLWithUser:[PFUser currentUser]];
-    
     [placeACL setPublicReadAccess:YES];
     [placeACL setPublicWriteAccess:YES];
     self.detailItem.ACL = placeACL;
-    
     
     if ([self isSessionCreator])
     {
@@ -556,7 +762,8 @@ static CGFloat kImageOriginHight = 140.f;
             FBRequest *request = [FBRequest requestForMe];
             [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error)
              {
-                 if (!error){
+                 if (!error)
+                 {
                      NSDictionary *userData = (NSDictionary *)result;
                      NSString *facebookID = userData[@"id"];
                      NSString *pictureURL = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID];
@@ -568,8 +775,6 @@ static CGFloat kImageOriginHight = 140.f;
         [self.detailItem saveInBackground];
     }
 }
-
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

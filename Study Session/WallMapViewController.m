@@ -230,7 +230,8 @@ enum PinAnnotationTypeTag {
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NewSessionViewController *newSessionViewController = [storyboard instantiateViewControllerWithIdentifier:@"NewSessionViewController"];
-    [[self navigationController] pushViewController: newSessionViewController animated:YES];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newSessionViewController];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (void) addAvatarAnimation

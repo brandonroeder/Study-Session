@@ -26,6 +26,7 @@
 @property (nonatomic, strong) LPPlaceDetails *placeDetails;
 @property (nonatomic, strong) UILabel *calHeaderLabel;
 @property (nonatomic, strong) UILabel *timeHeaderLabel;
+@property (nonatomic, strong) NSDate *sessionDate;
 
 @end
 
@@ -37,6 +38,9 @@
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.941 alpha:1.000];
     self.view.backgroundColor= [UIColor colorWithRed:0.937 green:0.937 blue:0.957 alpha:1.000];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(signup)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Close" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButton:)];
+    self.navigationItem.leftBarButtonItem.tintColor = [UIColor colorWithRed:0.872 green:0.207 blue:0.182 alpha:1.000];
+
     [self.navigationItem.rightBarButtonItem setEnabled:NO];
 
     self.curDate = [NSDate date];
@@ -105,7 +109,7 @@
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"Location";
-        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, cell.contentView.frame.size.height)];
+        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, 44)];
         labelText.text = self.placeDetails.name;
         labelText.font = [UIFont fontWithName:@"Helvetica" size:16];
         [cell.contentView addSubview:labelText];
@@ -113,6 +117,7 @@
     }
     if (indexPath.section == 1)
     {
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         FIIcon *icon = [FIEntypoIcon bookIcon];
         UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
         [cell.imageView setImage:image];
@@ -187,7 +192,8 @@
 
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.text = @"Description";
-        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, cell.contentView.frame.size.height)];
+        UILabel *labelText = [[UILabel alloc]initWithFrame:CGRectMake(130, 0, self.view.frame.size.width-150, 44)];
+        
         labelText.text = self.descriptionText;
         labelText.font = [UIFont fontWithName:@"Helvetica" size:16];
         [cell.contentView addSubview:labelText];
@@ -526,15 +532,62 @@
         return YES;
     }
 }
+- (IBAction)cancelButton:(id)sender
+{
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                                @"Discard Session",
+                                nil];
+    popup.tag = 1;
+    [popup showInView:[UIApplication sharedApplication].keyWindow];
+    
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    switch (popup.tag)
+    {
+        case 1:
+        {
+            switch (buttonIndex)
+            {
+                case 0:
+                    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    [actionSheet.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx, BOOL *stop)
+     {
+         if ([subview isKindOfClass:[UIButton class]])
+         {
+             UIButton *button = (UIButton *)subview;
+             button.titleLabel.textColor = [UIColor flatRedColor];
+             NSString *buttonText = button.titleLabel.text;
+             if ([buttonText isEqualToString:NSLocalizedString(@"Cancel", nil)])
+             {
+                 button.titleLabel.textColor = [UIColor flatBlueColor];
+             }
+         }
+     }];
+}
+
+
 - (void)signup
 {
     PFObject *placeObject = [PFObject objectWithClassName:@"PlaceObject"];
     NSString *name= self.placeDetails.name;
     NSString *subject = self.subjectField.text;
     NSString *description = self.descriptionText;
-    NSString *startTime = self.startTimeText;
-    NSString *endTime = self.endTimeText;
-    NSString *date = [self.formatter stringFromDate:self.curDate];
+    NSDate *startTime = self.startTimePicker.date;
+    NSDate *endTime = self.endTimePicker.date;
+    self.sessionDate = self.curDate;
     NSString *user = [NSString stringWithFormat:@"%@",[[PFUser currentUser]valueForKey:@"email"]];
     PFGeoPoint *sessionLocation = [PFGeoPoint geoPointWithLatitude:self.placeDetails.geometry.location.latitude longitude:self.placeDetails.geometry.location.longitude];
     
@@ -546,7 +599,7 @@
     [placeObject setObject:description forKey:@"description"];
     [placeObject setObject:startTime forKey:@"startTime"];
     [placeObject setObject:endTime forKey:@"endTime"];
-    [placeObject setObject:date forKey:@"date"];
+    [placeObject setObject:self.sessionDate forKey:@"date"];
     [placeObject setObject:[NSNumber numberWithBool:self.quiet] forKey:@"quiet"];
     [placeObject setObject:[NSNumber numberWithBool:self.wifi] forKey:@"wifi"];
     [placeObject setObject:[NSNumber numberWithBool:self.tables] forKey:@"tables"];
@@ -569,7 +622,6 @@
              }
          }];
     }
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
-
 @end

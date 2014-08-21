@@ -93,6 +93,25 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:YES];
+    NSString *recipients = @"mailto:brandonsroeder@gmail.com";
+    NSString *email = [NSString stringWithFormat:@"%@", recipients];
+    email = [email stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Why did you click this?" message:@"" delegate:self cancelButtonTitle:@"Because I'm annoying" otherButtonTitles:nil];
+
+    switch (indexPath.row)
+    {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:email]];
+            break;
+        case 3:
+            [alert show];
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

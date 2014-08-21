@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-
-@interface SessionViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate, UIScrollViewDelegate, UIActionSheetDelegate>
+@interface SessionViewController : UIViewController <UIAlertViewDelegate, UITableViewDelegate, UIScrollViewDelegate, UIActionSheetDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 @property (nonatomic, strong) PFObject *detailItem;
 
 @end

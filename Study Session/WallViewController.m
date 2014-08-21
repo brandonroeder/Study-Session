@@ -11,7 +11,6 @@
 #import "LoginViewController.h"
 #import "NewSessionViewController.h"
 #import "SessionViewController.h"
-#import "SVProgressHUD.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
@@ -46,7 +45,6 @@ enum PinAnnotationTypeTag {
         self.pullToRefreshEnabled = NO;
         self.paginationEnabled = YES;
         self.objectsPerPage = 25;
-        self.loadingViewEnabled = NO;
     }
     return self;
 }
@@ -70,23 +68,17 @@ enum PinAnnotationTypeTag {
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    //[self loadObjects];
-
+    [self loadObjects];
 }
 
 - (void)objectsWillLoad
 {
     [super objectsWillLoad];
-    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
-    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:0.424 green:0.476 blue:0.479 alpha:0.900]];
-    [SVProgressHUD setRingThickness:3];
-    [SVProgressHUD showWithStatus:@"Loading..."];
 }
 
 - (void)objectsDidLoad:(NSError *)error
 {
     [super objectsDidLoad:error];
-    [SVProgressHUD dismiss];
     [self.tableView reloadData];
 
 }

@@ -28,6 +28,8 @@
 		114CAFCD196C735A0035091A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCC196C735A0035091A /* Social.framework */; };
 		114CAFCF196C73840035091A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCE196C73840035091A /* AVFoundation.framework */; };
 		114CAFD1196C74120035091A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFD0196C74120035091A /* Accounts.framework */; };
+		117C407519A3A7EF0052B6F9 /* PreferencesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 117C407419A3A7EF0052B6F9 /* PreferencesViewController.m */; };
+		117C407919A3B9950052B6F9 /* AFTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 117C407819A3B9950052B6F9 /* AFTableViewCell.m */; };
 		118C7387196EFDB9007D8389 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C7386196EFDB9007D8389 /* UIImage+ImageEffects.m */; };
 		118C7390196F073F007D8389 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C738F196F073F007D8389 /* UIColor+FlatColors.m */; };
 		118C739C19702EDC007D8389 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 118C739919702EDC007D8389 /* SVProgressHUD.bundle */; };
@@ -156,6 +158,10 @@
 		114CAFCC196C735A0035091A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		114CAFCE196C73840035091A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		114CAFD0196C74120035091A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		117C407319A3A7EF0052B6F9 /* PreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesViewController.h; sourceTree = "<group>"; };
+		117C407419A3A7EF0052B6F9 /* PreferencesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesViewController.m; sourceTree = "<group>"; };
+		117C407719A3B9950052B6F9 /* AFTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFTableViewCell.h; sourceTree = "<group>"; };
+		117C407819A3B9950052B6F9 /* AFTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFTableViewCell.m; sourceTree = "<group>"; };
 		118C7385196EFDB9007D8389 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		118C7386196EFDB9007D8389 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		118C738E196F073F007D8389 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
@@ -406,8 +412,19 @@
 				1133BCBB19797668005713C3 /* SettingsViewController.m */,
 				114A5D8D199E90A5003B311F /* AboutViewController.h */,
 				114A5D8E199E90A5003B311F /* AboutViewController.m */,
+				117C407319A3A7EF0052B6F9 /* PreferencesViewController.h */,
+				117C407419A3A7EF0052B6F9 /* PreferencesViewController.m */,
 			);
 			name = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		117C407619A3B9760052B6F9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				117C407719A3B9950052B6F9 /* AFTableViewCell.h */,
+				117C407819A3B9950052B6F9 /* AFTableViewCell.m */,
+			);
+			name = Cells;
 			sourceTree = "<group>";
 		};
 		118C7391196F0747007D8389 /* Categories */ = {
@@ -477,6 +494,7 @@
 				114A5D8C199E9071003B311F /* SettingsViewController */,
 				11DE813C196918BC002B83A4 /* SessionViewController.m */,
 				11DE813B196918BC002B83A4 /* SessionViewController.h */,
+				117C407619A3B9760052B6F9 /* Cells */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -899,8 +917,10 @@
 				CAC5BA0F199813DA00F3395E /* LPRoute.m in Sources */,
 				1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */,
 				CAC5BA0B199813DA00F3395E /* LPPlacesAutocomplete.m in Sources */,
+				117C407519A3A7EF0052B6F9 /* PreferencesViewController.m in Sources */,
 				CAC5BA04199813DA00F3395E /* LPLine.m in Sources */,
 				CAC5BA02199813DA00F3395E /* LPGeometry.m in Sources */,
+				117C407919A3B9950052B6F9 /* AFTableViewCell.m in Sources */,
 				CAC9F7861997EBD000717C65 /* UIViewController+KNSemiModal.m in Sources */,
 				CAC5BA14199813DA00F3395E /* LPTransitDetails.m in Sources */,
 				CAC5BA07199813DA00F3395E /* LPMatchedSubstring.m in Sources */,

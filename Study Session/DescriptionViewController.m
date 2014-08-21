@@ -25,6 +25,7 @@
     
     self.title = @"Description";
     self.navigationController.navigationBar.topItem.title = @"";
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.872 green:0.207 blue:0.182 alpha:1.000];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(done)];
     [self.view addSubview:self.descriptionText];
 }
