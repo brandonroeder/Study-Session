@@ -13,15 +13,14 @@
 #import "LoginViewController.h"
 #import "GeoQueryAnnotation.h"
 #import "WallViewController.h"
-#import "VBFPopFlatButton.h"
-#import "JGActionSheet.h"
-#import "FilterDropdownMenu.h"
+#import "FilterPopupView.h"
 #import <CoreLocation/CoreLocation.h>
 #import <FontasticIcons.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <POP/POP.H>
 
-enum PinAnnotationTypeTag {
+enum PinAnnotationTypeTag
+{
     PinAnnotationTypeTagGeoPoint = 0,
     PinAnnotationTypeTagGeoQuery = 1
 };
@@ -32,9 +31,8 @@ enum PinAnnotationTypeTag {
 @property (nonatomic, assign) CLLocationDistance radius;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, strong) UIImage *avatarImage;
-@property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
+@property (nonatomic, strong) UIButton *flatRoundedButton;
 @property BOOL animate;
-@property (nonatomic, strong) FilterDropdownMenu *filterMenu;
 
 @end
 
@@ -65,16 +63,13 @@ enum PinAnnotationTypeTag {
     [self.view addSubview:wallViewController.view];
     
     self.animate = YES;
-    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(15, 525, 20, 20)
-                                                         buttonType:buttonMenuType
-                                                        buttonStyle:buttonRoundedStyle];
-    self.flatRoundedButton.roundBackgroundColor = [UIColor flatBlueColor];
-    self.flatRoundedButton.lineThickness = 2;
-    self.flatRoundedButton.linesColor = [UIColor whiteColor];
-    [self.flatRoundedButton addTarget:self action:@selector(flatButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.flatRoundedButton = [[UIButton alloc]initWithFrame:CGRectMake(20, 510, 40, 40)];
+    [self.flatRoundedButton addTarget:self action:@selector(filterButton) forControlEvents:UIControlEventTouchDown];
+    self.flatRoundedButton.backgroundColor = [UIColor flatGrayColor];
+    self.flatRoundedButton.layer.cornerRadius = 20;
     [self.view addSubview:self.flatRoundedButton];
 
-    
     FIIcon *gearIcon = [FIFontAwesomeIcon cogIcon];
     UIImage *gearImage = [gearIcon imageWithBounds:CGRectMake(0, 0, 20, 20) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
 
@@ -83,7 +78,6 @@ enum PinAnnotationTypeTag {
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:gearImage style:UIBarButtonItemStylePlain target:self action:@selector(goToSettings)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:addImage style:UIBarButtonItemStylePlain target:self action:@selector(newSession:)];
-
 
     [PFFacebookUtils initializeFacebook];
     self.avatarImage = nil;
@@ -291,23 +285,9 @@ enum PinAnnotationTypeTag {
     //[self presentViewController:settingsViewController animated:YES completion:nil];
 }
 
-- (void)flatButtonPressed
+- (void)filterButton
 {
-
-    self.filterMenu = [[FilterDropdownMenu alloc]init];
-
-    if (self.flatRoundedButton.currentButtonType == buttonMenuType)
-    {
-        [self.flatRoundedButton animateToType:buttonCloseType];
-        [self.filterMenu showFromNavigationBar:self.navigationController.navigationBar animated:YES];
-
-    }
-    else
-    {
-        [self.flatRoundedButton animateToType:buttonMenuType];
-        [self.filterMenu performSelectorOnMainThread:@selector(hideAnimated:) withObject:nil waitUntilDone:NO];
-
-    }
+    FilterPopupView *popup = [[FilterPopupView alloc]initWithFrame:CGRectMake(0, 330, 320, 300)];
+    [self.view addSubview:popup];
 }
-
 @end
