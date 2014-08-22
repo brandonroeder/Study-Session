@@ -1,7 +1,7 @@
 CLANG_CXX_LANGUAGE_STANDARD = c++11
 CLANG_CXX_LIBRARY = libc++
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ESDateHelper" "${PODS_ROOT}/Headers/ESDatePicker" "${PODS_ROOT}/Headers/ESObjectPool" "${PODS_ROOT}/Headers/FastAnimationWithPOP" "${PODS_ROOT}/Headers/FontasticIcons" "${PODS_ROOT}/Headers/Masonry" "${PODS_ROOT}/Headers/pop"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/ESDateHelper" -isystem "${PODS_ROOT}/Headers/ESDatePicker" -isystem "${PODS_ROOT}/Headers/ESObjectPool" -isystem "${PODS_ROOT}/Headers/FastAnimationWithPOP" -isystem "${PODS_ROOT}/Headers/FontasticIcons" -isystem "${PODS_ROOT}/Headers/Masonry" -isystem "${PODS_ROOT}/Headers/pop"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/ESDateHelper" "${PODS_ROOT}/Headers/ESDatePicker" "${PODS_ROOT}/Headers/ESObjectPool" "${PODS_ROOT}/Headers/FastAnimationWithPOP" "${PODS_ROOT}/Headers/FontasticIcons" "${PODS_ROOT}/Headers/Masonry" "${PODS_ROOT}/Headers/VBFPopFlatButton" "${PODS_ROOT}/Headers/pop"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/ESDateHelper" -isystem "${PODS_ROOT}/Headers/ESDatePicker" -isystem "${PODS_ROOT}/Headers/ESObjectPool" -isystem "${PODS_ROOT}/Headers/FastAnimationWithPOP" -isystem "${PODS_ROOT}/Headers/FontasticIcons" -isystem "${PODS_ROOT}/Headers/Masonry" -isystem "${PODS_ROOT}/Headers/VBFPopFlatButton" -isystem "${PODS_ROOT}/Headers/pop"
 OTHER_LDFLAGS = -ObjC -lc++ -framework CoreGraphics -framework CoreText -framework Foundation -framework MobileCoreServices -framework QuartzCore -framework Security -framework SystemConfiguration -framework UIKit
 PODS_ROOT = ${SRCROOT}/Pods

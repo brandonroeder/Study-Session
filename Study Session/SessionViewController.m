@@ -144,7 +144,7 @@ static CGFloat kImageOriginHight = 140.f;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -316,6 +316,7 @@ static CGFloat kImageOriginHight = 140.f;
         UILabel *amenitiesBool = [[UILabel alloc]initWithFrame:CGRectMake(cell.contentView.frame.size.width-50, 10, 200, 20)];
         amenitiesBool.textColor = [UIColor flatGrayColor];
         [cell.contentView addSubview:amenitiesBool];
+
         if (indexPath.row == 0)
         {
             FIIcon *icon = [FIEntypoIcon muteIcon];
@@ -353,39 +354,20 @@ static CGFloat kImageOriginHight = 140.f;
             FIIcon *icon = [FIEntypoIcon cartIcon];
             UIImage *image = [icon imageWithBounds:CGRectMake(0, 0, 15, 15) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
             [cell.imageView setImage:image];
-            amenitiesBool.text = (self.detailItem[@"Food"]) ? @"Yes" : @"No";
+            amenitiesBool.text = (self.detailItem[@"food"]) ? @"Yes" : @"No";
             cell.textLabel.text = @"Food";
         }
-        
-    }
-    
-    if (indexPath.section == 4)
-    {
-        UITextView *sessionDetails1 = [[UITextView alloc]initWithFrame:CGRectMake(0,0,cell.contentView.frame.size.width, 100)];
-        [sessionDetails1 setScrollEnabled:NO];
-        [sessionDetails1 setSelectable:NO];
-        sessionDetails1.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo.";
-        sessionDetails1.textColor = [UIColor flatGrayColor];
-        [cell.contentView addSubview:sessionDetails1];
-    }
-    
-    if (indexPath.section == 5)
-    {
-        UITextView *sessionDetails1 = [[UITextView alloc]initWithFrame:CGRectMake(0,0,cell.contentView.frame.size.width, 100)];
-        [sessionDetails1 setScrollEnabled:NO];
-        [sessionDetails1 setSelectable:NO];
-        sessionDetails1.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas egestas augue at sapien malesuada commodo.";
-        sessionDetails1.textColor = [UIColor flatGrayColor];
-        [cell.contentView addSubview:sessionDetails1];
     }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //NSArray *sessionMembers = [self.detailItem objectForKey:@"members"];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    PFACL *placeACL = [PFACL ACLWithUser:[PFUser currentUser]];
+    [placeACL setPublicReadAccess:YES];
+    [placeACL setPublicWriteAccess:YES];
+    self.detailItem.ACL = placeACL;
+    
     if (indexPath.section == 1)
     {
         UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
@@ -394,11 +376,8 @@ static CGFloat kImageOriginHight = 140.f;
         popup.tag = 1;
         [popup showInView:[UIApplication sharedApplication].keyWindow];
     }
-
-    PFACL *placeACL = [PFACL ACLWithUser:[PFUser currentUser]];
-    [placeACL setPublicReadAccess:YES];
-    [placeACL setPublicWriteAccess:YES];
-    self.detailItem.ACL = placeACL;
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(AFTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -433,12 +412,12 @@ static CGFloat kImageOriginHight = 140.f;
     self.avatar4 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     self.avatar5 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     self.avatar6 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-
     
     cell.contentView.layer.cornerRadius = 20;
     cell.contentView.layer.masksToBounds = YES;
-
-
+    UIImageView *placeholder = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"placeholder.gif"]];
+    placeholder.frame = CGRectMake(0, 0, 44, 44);
+    [cell.contentView addSubview:placeholder];
     for(int i = 0; i < memberAvatars.count; i++)
     {
         NSURL* url = [NSURL URLWithString:memberAvatars[i]];

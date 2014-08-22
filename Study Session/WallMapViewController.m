@@ -9,13 +9,17 @@
 #import "WallMapViewController.h"
 #import "NewSessionViewController.h"
 #import "GeoPointAnnotation.h"
-#import <FacebookSDK/FacebookSDK.h>
-#import <POP/POP.H>
+#import "UIColor+FlatColors.h"
 #import "LoginViewController.h"
 #import "GeoQueryAnnotation.h"
 #import "WallViewController.h"
+#import "VBFPopFlatButton.h"
+#import "JGActionSheet.h"
+#import "FilterDropdownMenu.h"
 #import <CoreLocation/CoreLocation.h>
 #import <FontasticIcons.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <POP/POP.H>
 
 enum PinAnnotationTypeTag {
     PinAnnotationTypeTagGeoPoint = 0,
@@ -28,6 +32,9 @@ enum PinAnnotationTypeTag {
 @property (nonatomic, assign) CLLocationDistance radius;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, strong) UIImage *avatarImage;
+@property (nonatomic, strong) VBFPopFlatButton *flatRoundedButton;
+@property BOOL animate;
+@property (nonatomic, strong) FilterDropdownMenu *filterMenu;
 
 @end
 
@@ -56,6 +63,17 @@ enum PinAnnotationTypeTag {
     [self addChildViewController:wallViewController];
     wallViewController.view.frame = CGRectMake(0, 300.0f, 320, self.view.bounds.size.height - 275.0f);
     [self.view addSubview:wallViewController.view];
+    
+    self.animate = YES;
+    self.flatRoundedButton = [[VBFPopFlatButton alloc]initWithFrame:CGRectMake(15, 525, 20, 20)
+                                                         buttonType:buttonMenuType
+                                                        buttonStyle:buttonRoundedStyle];
+    self.flatRoundedButton.roundBackgroundColor = [UIColor flatBlueColor];
+    self.flatRoundedButton.lineThickness = 2;
+    self.flatRoundedButton.linesColor = [UIColor whiteColor];
+    [self.flatRoundedButton addTarget:self action:@selector(flatButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.flatRoundedButton];
+
     
     FIIcon *gearIcon = [FIFontAwesomeIcon cogIcon];
     UIImage *gearImage = [gearIcon imageWithBounds:CGRectMake(0, 0, 20, 20) color:[UIColor colorWithWhite:0.425 alpha:1.000]];
@@ -273,8 +291,23 @@ enum PinAnnotationTypeTag {
     //[self presentViewController:settingsViewController animated:YES completion:nil];
 }
 
+- (void)flatButtonPressed
+{
 
+    self.filterMenu = [[FilterDropdownMenu alloc]init];
 
+    if (self.flatRoundedButton.currentButtonType == buttonMenuType)
+    {
+        [self.flatRoundedButton animateToType:buttonCloseType];
+        [self.filterMenu showFromNavigationBar:self.navigationController.navigationBar animated:YES];
 
+    }
+    else
+    {
+        [self.flatRoundedButton animateToType:buttonMenuType];
+        [self.filterMenu performSelectorOnMainThread:@selector(hideAnimated:) withObject:nil waitUntilDone:NO];
+
+    }
+}
 
 @end

@@ -15,11 +15,6 @@
 #import <Parse/Parse.h>
 #import <CoreLocation/CoreLocation.h>
 
-enum PinAnnotationTypeTag {
-    PinAnnotationTypeTagGeoPoint = 0,
-    PinAnnotationTypeTagGeoQuery = 1
-};
-
 @interface WallViewController ()
 @property (nonatomic, strong) UIImage *avatarImage;
 @property (nonatomic, strong) CLLocation *location;
@@ -193,4 +188,5 @@ enum PinAnnotationTypeTag {
     newSessionViewController.navigationController.navigationBar.barTintColor= [UIColor whiteColor];
     [[self navigationController] pushViewController: newSessionViewController animated:YES];
 }
+
 @end

@@ -4,3 +4,4 @@ pod "AFNetworking"
 pod 'FastAnimationWithPOP'
 pod 'FontasticIcons'
 pod 'ESDatePicker'
+pod 'VBFPopFlatButton'

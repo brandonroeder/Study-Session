@@ -10,6 +10,8 @@
 		1102AF9919815A6C0002D281 /* MKGyroManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9419815A6C0002D281 /* MKGyroManager.m */; };
 		1102AF9A19815A6C0002D281 /* MKParallaxManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9619815A6C0002D281 /* MKParallaxManager.m */; };
 		1102AF9B19815A6C0002D281 /* MKParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1102AF9819815A6C0002D281 /* MKParallaxView.m */; };
+		111644BE19A686A2007A97B9 /* JGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 111644BD19A686A2007A97B9 /* JGActionSheet.m */; };
+		111644C119A6954C007A97B9 /* FilterDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 111644C019A6954C007A97B9 /* FilterDropdownMenu.m */; };
 		1122F04F199D5C2500F65EF4 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F046199D5C2500F65EF4 /* 1.jpg */; };
 		1122F050199D5C2500F65EF4 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F047199D5C2500F65EF4 /* 2.jpg */; };
 		1122F051199D5C2500F65EF4 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1122F048199D5C2500F65EF4 /* 3.jpg */; };
@@ -23,6 +25,7 @@
 		1122F05D199D62DF00F65EF4 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1122F05C199D62DF00F65EF4 /* PlaceViewController.m */; };
 		1133BCA51975DD67005713C3 /* NewSessionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCA41975DD67005713C3 /* NewSessionViewController.m */; };
 		1133BCBC19797668005713C3 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1133BCBB19797668005713C3 /* SettingsViewController.m */; };
+		1135352619A6668200BE796C /* placeholder.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1135352519A6668200BE796C /* placeholder.gif */; };
 		114A5D8F199E90A5003B311F /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 114A5D8E199E90A5003B311F /* AboutViewController.m */; };
 		114A5D9119A24867003B311F /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114A5D9019A24867003B311F /* FacebookSDK.framework */; };
 		114CAFCD196C735A0035091A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 114CAFCC196C735A0035091A /* Social.framework */; };
@@ -135,6 +138,10 @@
 		1102AF9619815A6C0002D281 /* MKParallaxManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKParallaxManager.m; sourceTree = "<group>"; };
 		1102AF9719815A6C0002D281 /* MKParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MKParallaxView.h; sourceTree = "<group>"; };
 		1102AF9819815A6C0002D281 /* MKParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MKParallaxView.m; sourceTree = "<group>"; };
+		111644BC19A686A2007A97B9 /* JGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JGActionSheet.h; sourceTree = "<group>"; };
+		111644BD19A686A2007A97B9 /* JGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JGActionSheet.m; sourceTree = "<group>"; };
+		111644BF19A6954C007A97B9 /* FilterDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDropdownMenu.h; sourceTree = "<group>"; };
+		111644C019A6954C007A97B9 /* FilterDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterDropdownMenu.m; sourceTree = "<group>"; };
 		1122F046199D5C2500F65EF4 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		1122F047199D5C2500F65EF4 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		1122F048199D5C2500F65EF4 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
@@ -152,6 +159,7 @@
 		1133BCA41975DD67005713C3 /* NewSessionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewSessionViewController.m; sourceTree = "<group>"; };
 		1133BCBA19797668005713C3 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		1133BCBB19797668005713C3 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		1135352519A6668200BE796C /* placeholder.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = placeholder.gif; sourceTree = "<group>"; };
 		114A5D8D199E90A5003B311F /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
 		114A5D8E199E90A5003B311F /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
 		114A5D9019A24867003B311F /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
@@ -430,6 +438,8 @@
 		118C7391196F0747007D8389 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				111644BC19A686A2007A97B9 /* JGActionSheet.h */,
+				111644BD19A686A2007A97B9 /* JGActionSheet.m */,
 				1122F058199D5E2900F65EF4 /* NSMutableArray+Shuffle.h */,
 				1122F059199D5E2900F65EF4 /* NSMutableArray+Shuffle.m */,
 				CA50EEA0199581F400A4F443 /* KLCPopup */,
@@ -463,6 +473,8 @@
 				11A583CD199D372A009B2868 /* Controllers */,
 				118C7394196F0F8B007D8389 /* Views */,
 				118C7391196F0747007D8389 /* Categories */,
+				111644BF19A6954C007A97B9 /* FilterDropdownMenu.h */,
+				111644C019A6954C007A97B9 /* FilterDropdownMenu.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -478,6 +490,7 @@
 				CA83EE9D19832FF600E4496E /* Facebook.png */,
 				CA83EE9B19832D4500E4496E /* Twitter.png */,
 				11BA1668197ECF2F007C78DC /* profile.gif */,
+				1135352519A6668200BE796C /* placeholder.gif */,
 				11D622DC19632EEF0021DABD /* Supporting Files */,
 				11D622FA19632EEF0021DABD /* Study SessionTests */,
 				11D622D419632EEF0021DABD /* Frameworks */,
@@ -823,6 +836,7 @@
 				1122F053199D5C2500F65EF4 /* 5.jpg in Resources */,
 				11D622EE19632EEF0021DABD /* Images.xcassets in Resources */,
 				11D622E019632EEF0021DABD /* InfoPlist.strings in Resources */,
+				1135352619A6668200BE796C /* placeholder.gif in Resources */,
 				1122F04F199D5C2500F65EF4 /* 1.jpg in Resources */,
 				1122F057199D5C2500F65EF4 /* 9.jpg in Resources */,
 				1122F056199D5C2500F65EF4 /* 8.jpg in Resources */,
@@ -889,6 +903,7 @@
 				CAC5B9F7199813DA00F3395E /* LPAddressComponent.m in Sources */,
 				1102AF9919815A6C0002D281 /* MKGyroManager.m in Sources */,
 				CAC5B9F8199813DA00F3395E /* LPAgencie.m in Sources */,
+				111644BE19A686A2007A97B9 /* JGActionSheet.m in Sources */,
 				1122F05A199D5E2900F65EF4 /* NSMutableArray+Shuffle.m in Sources */,
 				11D623201963382D0021DABD /* NewUserLoginViewController.m in Sources */,
 				118C7387196EFDB9007D8389 /* UIImage+ImageEffects.m in Sources */,
@@ -906,6 +921,7 @@
 				11A583C6199BC35C009B2868 /* AmenitiesViewController.m in Sources */,
 				CAD11CDD1999ADC70092F439 /* DescriptionViewController.m in Sources */,
 				CAC5BA0C199813DA00F3395E /* LPPlaceSearchResults.m in Sources */,
+				111644C119A6954C007A97B9 /* FilterDropdownMenu.m in Sources */,
 				CAC5BA03199813DA00F3395E /* LPLeg.m in Sources */,
 				11D622E619632EEF0021DABD /* AppDelegate.m in Sources */,
 				CAC5BA05199813DA00F3395E /* LPLocation.m in Sources */,
